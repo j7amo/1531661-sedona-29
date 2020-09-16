@@ -1,23 +1,37 @@
 <!DOCTYPE html>
-<html lang="ru">
+<!-- добавим всей странице класс page, чтобы не использовать глобальные селекторы-->
+<html class="page" lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <title>HTML Academy: Седона</title>
+  <meta charset="utf-8">
+  <title>HTML Academy: Седона</title>
+  <!-- подключаем шрифт из Google Fonts (в макете, если верить Фигме, используется PT Sans -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=PT+Sans:wght@400;700&display=swap">
+  <!-- подключаем normalize.css (предварительно скачав его) и основной стилевой файл -->
+  <link href="css/normalize.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
 </head>
-  <body>
-    <header>
-      <nav>
-        <a href="index.html">
-          <img src="https://via.placeholder.com/138x70" width="138" height="70" alt="Логотип CITY OF SEDONA">
-        </a>
-        <ul>
+<!-- тут делаем то же самое - добавляем класс для body-->
+<body class="page-body">
+<!-- Добавим классы для header,nav и логотипа-->
+<header class="main-header">
+  <nav class="main-navigation">
+    <a class="main-header-logo">
+      <img src="img/logo.png" width="138" height="70" alt="Логотип CITY OF SEDONA">
+    </a>
+    <!-- на данном этапе делаем как в демке "Барбершоп": добавляем 2 дива (один будет видимо для горизонтального позиционирования, другой - для вертикального, но это не точно=)) -->
+    <div class="main-navigation-wrapper">
+      <div class="container">
+        <ul class="site-navigation">
           <li><a href="blank.html">Информация</a></li>
           <li><a href="blank.html">Фото и видео</a></li>
           <li><a href="blank.html">Карта штата</a></li>
           <li><a href="hotels.html">Гостиницы</a></li>
-         </ul>
-      </nav>
-    </header>
+        </ul>
+      </div>
+    </div>
+    <!-- т.к. список у нас не единственный, а стилизация списков разная, то нам надо каждому списку добавить свой класс -->
+  </nav>
+</header>
     <main>
       <!-- на странице с отелями никаких заголовков на макете не видно,
        поэтому добавим заголовок (который потом скроем) для описания содержимого страницы-->
@@ -91,27 +105,27 @@
         </ul>
       </section>
     </main>
-    <footer>
-      <section>
+    <footer class="page-footer main-footer">
+      <section class="footer-contacts">
         <p>
-          #visitSEDONA<br>
-          ТЕЛ: +7(495) 666-01-66
+          <a href="#">#visitSEDONA</a><br>
+          <span class="phone">ТЕЛ:</span><a class="footer-phone" href="tel:+74956660166">+7(495) 666-01-66</a>
         </p>
       </section>
-      <section>
-        <ul>
+      <section class="footer-social">
+        <ul class="footer-social-list">
           <li>
-            <a href="#">Twitter</a>
+            <a class="social-button" href="#">Twitter</a>
           </li>
           <li>
-            <a href="#">Facebook</a>
+            <a class="social-button" href="#">Facebook</a>
           </li>
           <li>
-            <a href="#">Youtube</a>
+            <a class="social-button" href="#">Youtube</a>
           </li>
         </ul>
       </section>
-      <p>Website by<img src="https://via.placeholder.com/113x39" width="113.98" height="39.78" alt="HTMLAcademy лого"></p>
+      <p class="footer-copyright">Website by<img src="img/logo-htmlacademy.png" width="115" height="41" alt="HTMLAcademy лого"></p>
     </footer>
   </body>
 </html>

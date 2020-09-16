@@ -1,110 +1,168 @@
 <!DOCTYPE html>
-<html lang="ru">
+<!-- добавим всей странице класс page, чтобы не использовать глобальные селекторы-->
+<html class="page" lang="ru">
   <head>
     <meta charset="utf-8">
     <title>HTML Academy: Седона</title>
+    <!-- подключаем шрифт из Google Fonts (в макете, если верить Фигме, используется PT Sans -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=PT+Sans:wght@400;700&display=swap">
+    <!-- подключаем normalize.css (предварительно скачав его) и основной стилевой файл -->
+    <link href="css/normalize.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
   </head>
-    <body>
-      <header>
-        <nav>
-          <a>
-            <img src="https://via.placeholder.com/138x70" width="138" height="70" alt="Логотип CITY OF SEDONA">
+  <!-- тут делаем то же самое - добавляем класс для body-->
+    <body class="page-body">
+     <!-- Добавим классы для header,nav и логотипа-->
+      <header class="main-header">
+        <nav class="main-navigation">
+          <a class="main-header-logo">
+            <img src="img/logo.png" width="138" height="70" alt="Логотип CITY OF SEDONA">
           </a>
-          <ul>
-            <li><a href="blank.html">Информация</a></li>
-            <li><a href="blank.html">Фото и видео</a></li>
-            <li><a href="blank.html">Карта штата</a></li>
-            <li><a href="hotels.html">Гостиницы</a></li>
-          </ul>
+          <!-- на данном этапе делаем как в демке "Барбершоп": добавляем 2 дива (один будет видимо для горизонтального позиционирования, другой - для вертикального, но это не точно=)) -->
+          <div class="main-navigation-wrapper">
+            <div class="container">
+              <ul class="site-navigation">
+                <li><a href="blank.html">Информация</a></li>
+                <li><a href="blank.html">Фото и видео</a></li>
+                <li><a href="blank.html">Карта штата</a></li>
+                <li><a href="hotels.html">Гостиницы</a></li>
+              </ul>
+            </div>
+          </div>
+          <!-- т.к. список у нас не единственный, а стилизация списков разная, то нам надо каждому списку добавить свой класс -->
         </nav>
       </header>
-      <main>
-        <section>
-          <img src="https://via.placeholder.com/1200x509" width="1200" height="509" alt="Красивое фото скал и сложная графика надписей">
+      <!-- даём название класса блоку main, используя одно из общепринятых названий для так называемых обёрток-центровщиков -->
+      <main class="container">
+        <section class="main-decoration-photo">
+          <!-- добавляем скрытый заголовок для раздела -->
+          <h2 class="visually-hidden">Красивые скалы</h2>
+          <!-- произведём небольшое изменение: если в первоначальном варианте весь данный блок был представлен некой большой картинкой, то раз уж мы начинаем стилизацию, можно изображение скал задать в CSS в качестве фона для данного блока section, а в теге img загрузить только графику надписей-->
+          <img src="img/welcome.png" width="458" height="352" alt="Сложная графика надписей">
         </section>
-        <h1>Седона — небольшой городок в Аризоне, заслуживающий большего!</h1>
-        <p>Рассмотрим 5 причин, по которым Седона круче, чем гранд каньон!</p>
-        <section>
-          <!--Добавим заголовок <h2>, описывающий содержимое списка.
-           Заголовка нет на макете, поэтому позже мы его скроем-->
-          <h2>Причины крутизны Седоны</h2>
-          <!-- Т.к. причины крутизны Седоны это однородные элементы,
-          которые можно перечислить через запятую, то имеет смысл разметить их в виде списка,
-          а весь визуал (расположение, фоны и т.д.) задавать в CSS-->
-          <ul>
-            <li>
-              <h3>Настоящий городок</h3>
-              <p>— №1 —</p>
-              <p>Седона - не аттракцион для туристов, там течёт своя жизнь</p>
-              <img src="https://via.placeholder.com/800x256" width="800" height="256" alt="Фото какого-то отеля">
+        <div class="main-header-wrapper">
+          <h1 class="main-header">Седона — небольшой городок в Аризоне,<br> заслуживающий большего!</h1>
+          <p class="five-reasons">Рассмотрим 5 причин, по которым Седона круче, чем гранд каньон!</p>
+        </div>
+        <!-- добавляем класс features (преимущества) -->
+        <section class="features">
+          <!-- добавляем скрытый заголовок для раздела -->
+          <h2 class="visually-hidden">Причины крутизны Седоны</h2>
+          <!-- т.к. список у нас не единственный, а стилизация списков разная, то нам надо каждому списку добавить свой класс -->
+          <ul class="features-list">
+            <!-- т.к. у нас фичи немного отличаются друг от друга (есть с порядковым номером, а есть с иконками), то имеет смысл дать им доп.классы для облегчения стилизации-->
+            <li class="feature-item">
+              <div class="feature-one-left">
+                <h3>Настоящий городок</h3>
+                <p>— №1 —</p>
+                <p>Седона - не аттракцион для туристов, там<br> течёт своя жизнь</p>
+              </div>
+              <div class="feature-one-right">
+                <img src="img/house.png" width="800" height="256" alt="Фото какого-то отеля">
+              </div>
             </li>
-            <li>
-              <img src="https://via.placeholder.com/75x72" width="75" height="72" alt="Иконка жилья">
+            <li class="feature-item">
+              <img src="img/house-icon.png" width="75" height="72" alt="Иконка жилья">
               <h3>Жильё</h3>
-              <p>Рекомендуем пожить в настоящем мотеле, всё как в кино!</p>
+              <p>Рекомендуем пожить в настоящем<br> мотеле, всё как в кино!</p>
             </li>
-            <li>
-              <img src="https://via.placeholder.com/75x70" width="75" height="70" alt="Иконка еды">
+            <li class="feature-item">
+              <img src="img/food-icon.png" width="75" height="70" alt="Иконка еды">
               <h3>Еда</h3>
-              <p>Всегда заказывайте фирменный бургер, вы не разочаруетесь!</p>
+              <p>Всегда заказывайте фирменный бургер,<br> вы не разочаруетесь!</p>
             </li>
-            <li>
-              <img src="https://via.placeholder.com/64x77" width="64" height="77" alt="Иконка сувениров">
+            <li class="feature-item">
+              <img src="img/box-icon.png" width="64" height="77" alt="Иконка сувениров">
               <h3>Сувениры</h3>
-              <p>Не только китайского, но и местного производства!</p>
+              <p>Не только китайского, но и местного<br> производства!</p>
             </li>
-            <li>
-              <img src="https://via.placeholder.com/800x256" width="800" height="256" alt="Фото моста дьявола">
-              <h3>Там есть Мост дьявола</h3>
-              <p>— №2 —</p>
-              <p>Да, по нему можно пройти! Если конечно вы осмелитесь</p>
+            <li class="feature-item">
+              <div class="feature-two-right">
+                <h3>Там есть Мост дьявола</h3>
+                <p>— №2 —</p>
+                <p>Да, по нему можно пройти! Если конечно<br> вы осмелитесь</p>
+              </div>
+              <div class="feature-two-left">
+                <img src="img/devils-bridge.png" width="800" height="256" alt="Фото моста дьявола">
+              </div>
             </li>
-            <li>
+            <li class="feature-item">
               <h3>Небольшая площадь</h3>
               <p>— №3 —</p>
-              <p>Все достопримечательности находятся очень близко</p>
+              <p>Все достопримечательности<br> находятся очень близко</p>
             </li>
-            <li>
+            <li class="feature-item">
               <h3>Красивая дорога</h3>
               <p>— №4 —</p>
-              <p>Ехать в седону из лас-вегаса совсем не скучно!</p>
+              <p>Ехать в седону из лас-вегаса совсем<br> не скучно!</p>
             </li>
-            <li>
+            <li class="feature-item">
               <h3>Мало туристов</h3>
               <p>— №5 —</p>
-              <p>Большинство едет в гранд каньон и толпится там</p>
+              <p>Большинство едет в гранд каньон<br> и толпится там</p>
             </li>
           </ul>
         </section>
-        <section>
-          <h2>Заинтересовались?</h2>
-          <p>Укажите предполагаемые даты поездки, и мы покажем вам лучшие предложения гостиниц в седоне</p>
-          <!-- Здесь будет форма поиска гостиницы в Седоне!
-          Пока разметку не делаем (согласно ТЗ к домашке)-->
-          <img src="https://via.placeholder.com/1199x594" width="1199" height="594" alt="Карта">
+        <section class="hotel-search">
+          <div class="interested-block">
+            <h2 class="interested">Заинтересовались?</h2>
+            <p class="hotel-search-info">Укажите предполагаемые даты поездки,<br> и мы покажем вам лучшие предложения гостиниц в седоне</p>
+          </div>
+          <!-- в ДЗ ничего не сказано про формы, но в демке стилизации "Барбершоп" формы УЖЕ размечены. Придётся делать... -->
+          <form class="hotel-search-form" action="#" method="get">
+            <div class="hotel-search-form-title-wrapper">
+              <h3 class="form-title visually-hidden">Поиск гостиницы в Седоне</h3>
+              <button type="submit" class="button form-top-search-submit">Поиск гостиницы в Седоне</button>
+            </div>
+            <div class="hotel-search-form-main-content">
+              <p class="hotel-search-item">
+                <label for="arrival-date">Дата заезда</label>
+                <input id="arrival-date" type="date" name="arrival-date" placeholder="24 апреля 2017">
+              </p>
+              <p class="hotel-search-item">
+                <label for="departure-date">Дата выезда</label>
+                <input id="departure-date" type="date" name="departure-date" placeholder="4 июля 2017">
+              </p>
+              <!-- далее идут 2 инпута, которые вероятно требуют использования JS-скрипта, поэтому пока сделаем их просто текстовыми полями со значениями по умолчанию -->
+              <p class="hotel-search-items-block">
+                  <label for="number-of-adults">Взрослые</label>
+                  <button type="button" class="button adult-number-decrease"><img src="img/minus.png" width="12" height="3" alt="Кнопка уменьшения значения"></button>
+                  <input id="number-of-adults" type="text" name="number-of-adults" placeholder="2">
+                  <button type="button" class="button adult-number-increase"><img src="img/plus.png" width="11" height="11" alt="Кнопка увеличения значения"></button>
+                  <label for="number-of-children">Дети</label>
+                  <button type="button" class="button children-number-decrease"><img src="img/minus.png" width="12" height="3" alt="Кнопка уменьшения значения"></button>
+                  <input id="number-of-children" type="text" name="number-of-children" placeholder="0">
+                  <button type="button" class="button children-number-increase"><img src="img/plus.png" width="11" height="11" alt="Кнопка увеличения значения"></button>
+              </p>
+              <button type="submit" class="button form-bottom-search-submit">Найти</button>
+            </div>
+          </form>
+          <div class="map">
+            <img src="img/map.png" width="1199" height="593" alt="Карта">
+          </div>
         </section>
       </main>
-      <footer>
-        <section>
+      <footer class="page-footer main-footer">
+        <section class="footer-contacts">
           <p>
-            #visitSEDONA<br>
-            ТЕЛ: +7(495) 666-01-66
+            <a href="#">#visitSEDONA</a><br>
+            <span class="phone">ТЕЛ:</span><a class="footer-phone" href="tel:+74956660166">+7(495) 666-01-66</a>
           </p>
         </section>
-        <section>
-          <ul>
+        <section class="footer-social">
+          <ul class="footer-social-list">
             <li>
-              <a href="#">Twitter</a>
+              <a class="social-button" href="#">Twitter</a>
             </li>
             <li>
-              <a href="#">Facebook</a>
+              <a class="social-button" href="#">Facebook</a>
             </li>
             <li>
-              <a href="#">Youtube</a>
+              <a class="social-button" href="#">Youtube</a>
             </li>
           </ul>
         </section>
-        <p>Website by<img src="https://via.placeholder.com/113x39" width="113.98" height="39.78" alt="HTMLAcademy лого"></p>
+        <p class="footer-copyright">Website by<img src="img/logo-htmlacademy.png" width="115" height="41" alt="HTMLAcademy лого"></p>
       </footer>
     </body>
 </html>

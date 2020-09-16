@@ -1,0 +1,367 @@
+/* Начинаем формировать основной стилевой файл*/
+
+/* 1) Просмотрим макет, выпишем все используемые цвета и определим их в кастомные свойства */
+
+/* Variables */
+
+
+:root {
+
+
+  --basic-black: #000000;
+  --basic-dark: #333333;
+  --basic-black-opacity-03: rgba(0, 0, 0, 0.3);
+
+  --box-shadow-color: rgba(0, 1, 1, 0.15);
+  --basic-gray: #eeeeee;
+  --lighter-gray: #F2F2F2;
+  --increase-decrease-gray: #A9A9A9;
+
+  --basic-white: #ffffff;
+  --basic-white-opacity-03: rgba(255, 255, 255, 0.3);
+
+  --the-darkest-blue: #5496BD;
+  --darker-blue: #669EC0;
+  --special-blue: #81B3D2;
+
+  --the-darkest-brown: #503E33;
+  --darker-brown: #604E43;
+  --basic-brown: #766357;
+}
+/* Добавим общие стили для страницы. Для <body> обнулим отступы, так как они не нужны (эти формулировки взяты из демки). Укажем параметры шрифта. */
+
+/* Global */
+
+body {
+  min-width: 1280px;
+  margin: 0;
+  padding: 0;
+  font-family: "PT Sans", Arial, sans-serif;
+  font-size: 14px;
+  line-height: 21px;
+  font-weight: normal;
+  color: var(--basic-dark);
+  text-transform: uppercase;
+  background-color: var(--basic-white);
+  background-position: top center;
+  background-repeat: no-repeat;
+  /* этого правила в демке не было, решил добавить , т.к. в основном текст в макете отцентрован. Есть сомнения в правильности такого решения... */
+  text-align: center; /* ОТСЕБЯТИНА */
+}
+
+/* У ссылок уберём подчёркивание, так как подчёркивания нет во всём проекте, кроме пары мест. */
+
+a {
+  text-decoration: none;
+  font-weight: bold;
+}
+
+/* Всем изображениям укажем max-width: 100%, чтобы они не вылезали за пределы своих родительских элементов, и укажем автоматическую высоту, чтобы изменение размеров было пропорциональным. */
+
+img {
+  max-width: 100%;
+  height: 100%;
+}
+
+/* ОТСЕБЯТИНА
+section,
+div,
+nav,
+form {
+  outline: 1px dashed #000000;
+}
+ОТСЕБЯТИНА */
+
+/* Взял на себя смелость экспортировать в проект немного графики, тем более в демке "Барбершоп" был экспортирован (правда, ничего не объяснили) логотип */
+
+.main-decoration-photo {/* ОТСЕБЯТИНА */
+  background-image: url("../img/background.png");/* ОТСЕБЯТИНА */
+  background-position: center;/* ОТСЕБЯТИНА */
+  background-repeat: no-repeat;/* ОТСЕБЯТИНА */
+}
+
+/* Стилизуем текст в Навигации, добавим ему фон и уберём буллеты у элементов списка */
+
+/* Main navigation */
+
+.main-navigation {
+  font-size: 14px;
+  line-height: 26px;
+  color: var(--basic-black);
+  background-color: transparent;
+}
+
+.main-navigation-wrapper {
+  background-color: var(--basic-white);
+}
+
+.site-navigation {
+  display: flex;/* ОТСЕБЯТИНА */
+  justify-content: space-around;/* ОТСЕБЯТИНА */
+  list-style: none;
+}
+
+/* Пользовательская навигация */
+
+/* User navigation */
+
+/* в состоянии покоя */
+.site-navigation a{
+  color: var(--basic-black);
+}
+
+/* при наведении */
+.site-navigation a:hover,
+.footer-contacts a:hover,
+.footer-social-list a:hover{
+  color: var(--special-blue);
+}
+
+/* при нажатии */
+.site-navigation a:active,
+.footer-contacts a:active,
+.footer-social-list a:active{
+  color: var(--basic-black-opacity-03);
+}
+
+.main-header-wrapper {
+  padding-top: 43px;
+  padding-bottom: 94px;
+}
+
+/* Стилизация основного заголовка */
+.main-header {
+  font-weight: bold;
+  font-size: 21px;
+  line-height: 26px;
+}
+
+/* Причины крутизны Седоны */
+/* Features */
+
+.five-reasons {
+  line-height: 21px;
+}
+
+.features-list {
+  display: grid;
+  margin: 100px auto;
+  width: 1200px;
+  grid-template-columns: 400px 400px 400px;
+  grid-template-rows: 256px 330px 256px 256px;
+  list-style: none;
+}
+
+.feature-item:nth-child(1) {
+  display: flex;
+  grid-column: 1 / 4;
+  grid-row: 1 / 2;
+}
+
+.feature-item:nth-child(2) {
+  grid-column: 1 / 2;
+  grid-row: 2 / 3;
+}
+
+.feature-item:nth-child(3) {
+  grid-column: 2 / 3;
+  grid-row: 2 / 3;
+}
+
+.feature-item:nth-child(4) {
+  grid-column: 3 / 4;
+  grid-row: 2 / 3;
+}
+
+.feature-item:nth-child(5) {
+  display: flex;
+  flex-direction: row-reverse;
+  grid-column: -1 / 1;
+  grid-row: 3 / 4;
+}
+
+.feature-item:nth-child(6) {
+  grid-column: 1 / 2;
+  grid-row: 4 / 5;
+}
+
+.feature-item:nth-child(7) {
+  grid-column: 2 / 3;
+  grid-row: 4 / 5;
+}
+
+.feature-item:nth-child(8) {
+  grid-column: 3 / 4;
+  grid-row: 4 / 5;
+}
+
+/* Делаем как в демке: Отключим стили списка у всего блока. Весь текст отцентрируем и зададим текстовые параметры для заголовка. */
+
+.feature-item {
+  margin: auto;
+}
+
+.feature-item h3 {
+  font-size: 21px;
+  line-height: 21px;
+}
+
+.feature-one-left,
+.feature-two-right{
+  color: var(--basic-white);
+  background-color: var(--special-blue);
+  padding-top: 47px;
+  padding-left: 50px;
+  padding-right: 50px;
+}
+
+/* Interested block */
+
+.interested-block {
+  padding: 50px;
+}
+
+.interested {
+  font-size: 30px;
+  line-height: 24px;
+}
+
+/* Hotel search form */
+
+.hotel-search-form {
+  width: 568px;
+  height: 395px;
+  margin: 50px auto;
+  margin-bottom: -310px;
+  background: var(--basic-white);
+  box-shadow: 0 7px 15px var(--box-shadow-color);
+  z-index: 1;
+  position: relative;
+}
+
+.form-title {
+  padding-top: 30px;
+  color: var(--basic-white)
+}
+
+label {
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 26px;
+}
+
+.hotel-search-form-main-content {
+  text-align: center;
+  padding-top: 61px;
+}
+
+.hotel-search-form-main-content input{
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 26px;
+  text-transform: uppercase;
+  padding-left: 10px;
+  color: var(--basic-black);
+  background-color: var(--lighter-gray);
+  border: none;
+}
+
+/* Делаем как в демке: Стилизуем кнопки. Используем значение inherit для свойства font для переопределения значения по умолчанию. Выровняем текст по центру, укажем цвет и размер, а также фон. Отключим стили для обводки. */
+
+/* Buttons */
+
+/* Вынесем в класс button самые общие свойства кнопок */
+.button {
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 21px;
+  text-align: center;
+  color: var(--basic-white);
+  vertical-align: middle;
+  text-transform: uppercase;
+  border: none;
+}
+
+.button.form-top-search-submit {
+  width: 568px;
+  height: 86px;
+  font-size: 21px;
+  line-height: 26px;
+  background-color: var(--basic-brown);
+}
+
+.button.form-top-search-submit:hover {
+  background-color: var(--darker-brown);
+}
+
+.button.form-top-search-submit:active {
+  background-color: var(--the-darkest-brown);
+  color: var(--basic-white-opacity-03);
+}
+
+.button.form-bottom-search-submit {
+  width: 458px;
+  height: 58px;
+  font-size: 21px;
+  line-height: 26px;
+  background-color: var(--special-blue);
+}
+
+.button.form-bottom-search-submit:hover {
+  background-color: var(--darker-blue);
+}
+
+.button.form-bottom-search-submit:active {
+  background-color: var(--the-darkest-blue);
+  color: var(--basic-white-opacity-03);
+}
+
+.adult-number-decrease,
+.adult-number-increase,
+.children-number-decrease,
+.children-number-increase {
+  background-color: transparent;
+}
+
+/* Footer */
+
+.footer-copyright {
+  display: flex;
+  height: 41px;
+  line-height: 26px;
+}
+
+.main-footer {
+  display: flex;
+  justify-content: space-around;
+}
+
+.footer-social-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.footer-social li {
+  list-style: none;
+}
+
+.footer-contacts a,
+.footer-social-list a,
+.phone {
+  font-style: normal;
+  font-weight: bold;
+  font-size: 21px;
+  line-height: 26px;
+  color: var(--basic-black);
+  text-transform: uppercase;
+}
+
+/* Other */
+
+.visually-hidden {
+  position: absolute;
+  clip: rect(0 0 0 0);
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+}
