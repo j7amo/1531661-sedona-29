@@ -32,100 +32,148 @@
     <!-- т.к. список у нас не единственный, а стилизация списков разная, то нам надо каждому списку добавить свой класс -->
   </nav>
 </header>
-    <main>
+    <main class="container">
       <!-- на странице с отелями никаких заголовков на макете не видно,
        поэтому добавим заголовок (который потом скроем) для описания содержимого страницы-->
-      <h1>Гостиницы Седоны</h1>
-      <section>
-        <h2>Фильтр гостиниц</h2>
-        <!-- здесь будет форма фильтра-->
+      <h1 class="visually-hidden">Гостиницы Седоны</h1>
+      <!-- у нас будут 2 основные секции: Фильтр и Блок выдачи результатов (Найденные гостиницы)-->
+      <section class="hotels-filter">
+        <h2 class="visually-hidden">Фильтр гостиниц</h2>
+        <!-- Добавим форму -->
+        <form class="filter" method="get" action="#">
+          <!-- Филдсэты -->
+          <fieldset class="infrastructure-fields">
+            <legend class="infrastructure-legend">Инфраструктура</legend>
+            <ul class="infrastructure-fields">
+              <li class="filter-option">
+                <input class="filter-option-checkbox" type="checkbox" checked name="swimming-pool" id="swimming-pool">
+                <label for="swimming-pool">Бассейн</label>
+              </li>
+              <li class="filter-option">
+                <input class="filter-option-checkbox" type="checkbox" name="parking-lot" id="parking-lot">
+                <label for="parking-lot">Парковка</label>
+              </li>
+              <li class="filter-option">
+                <input class="filter-option-checkbox" type="checkbox" name="wi-fi" id="wi-fi">
+                <label for="wi-fi">wi-fi</label>
+              </li>
+            </ul>
+          </fieldset>
+          <fieldset class="accommodation-fields">
+            <legend class="accommodation-legend">Тип жилья</legend>
+            <ul class="accommodation-fields">
+              <li class="filter-option">
+                <input class="filter-option-checkbox" type="checkbox" checked name="hotel" id="hotel">
+                <label for="hotel">Отель</label>
+              </li>
+              <li class="filter-option">
+                <input class="filter-option-checkbox" type="checkbox" checked name="parking-lot" id="motel">
+                <label for="motel">Мотель</label>
+              </li>
+              <li class="filter-option">
+                <input class="filter-option-checkbox" type="checkbox" checked name="wi-fi" id="appartment">
+                <label for="appartment">Аппартаменты</label>
+              </li>
+            </ul>
+          </fieldset>
+          <fieldset class="range-selector-and-submit">
+            <label for="range">Стоимость в сутки (Р):</label>
+            <div class="price-output">
+              <output name="price-start">от 0</output>
+              <output name="price-end">до 3000</output>
+            </div>
+            <input type="range" min="0" max="3000" name="range" id="range">
+            <button type="submit" class="filter-submit">Показать</button>
+          </fieldset>
+        </form>
       </section>
-      <section>
+
+      <section class="hotels-found">
         <!-- Этот заголовок будет скрыт-->
-        <h2>Найденные гостиницы</h2>
-        <p>Найдено: 3</p>
-        <p>Сортировка:</p>
+        <h2 class="visually-hidden">Найденные гостиницы</h2>
+        <p class="found">Найдено: 3</p>
+        <p class="sort-by">Сортировка:</p>
         <!-- в данном блоке разметку сделал исходя из того, что это кнопки-->
-        <p>
-          <button type="button">По цене</button>
-          <button type="button">По типу</button>
-          <button type="button">По рейтингу</button>
-          <img src="https://via.placeholder.com/11x10" width="11" height="10" alt="Стрелка вверх (сортировка по возрастанию)">
-          <img src="https://via.placeholder.com/11x10" width="11" height="10" alt="Стрелка вниз (сортировка по убыванию)">
+        <p class="sort-by-text-buttons">
+          <button type="button" class="sort-by-text">По цене</button>
+          <button type="button" class="sort-by-text">По типу</button>
+          <button type="button" class="sort-by-text">По рейтингу</button>
+          <img src="img/icon-up-dir.png" width="11" height="10" alt="Стрелка вверх (сортировка по возрастанию)">
+          <img src="img/icon-down-dir.png" width="11" height="10" alt="Стрелка вниз (сортировка по убыванию)">
         </p>
-        <ul>
+        <ul class="hotels-list">
           <li>
-            <h3>Amara Resort & Spa</h3>
-            <p>Гостиница</p>
-            <p>От 4000 Р.</p>
-            <p>Рейтинг: 8,5</p>
-            <button type="button">Подробнее</button>
-            <button type="button">Забронировать</button>
+            <a class="hotel-link" href=""><h3 class="hotel-name">Amara Resort & Spa</h3></a>
+            <p class="accommodation-type">Гостиница</p>
+            <p class="price-from">От 4000 Р.</p>
+            <p class="rating"><span class="rating-wrapper">Рейтинг: 8,5</span></p>
+            <button type="button" class="hotel-button details">Подробнее</button>
+            <button type="button" class="hotel-button reserve">Забронировать</button>
             <p>
-              <img src="https://via.placeholder.com/19x17" width="19" height="17" alt="Изображение звезды рейтинга">
-              <img src="https://via.placeholder.com/19x17" width="19" height="17" alt="Изображение звезды рейтинга">
-              <img src="https://via.placeholder.com/19x17" width="19" height="17" alt="Изображение звезды рейтинга">
-              <img src="https://via.placeholder.com/19x17" width="19" height="17" alt="Изображение звезды рейтинга">
+              <img src="img/star.png" width="19" height="17" alt="Изображение звезды рейтинга">
+              <img src="img/star.png" width="19" height="17" alt="Изображение звезды рейтинга">
+              <img src="img/star.png" width="19" height="17" alt="Изображение звезды рейтинга">
+              <img src="img/star.png" width="19" height="17" alt="Изображение звезды рейтинга">
             </p>
             <p>
-              <img src="https://via.placeholder.com/135x90" width="135" height="90" alt="Фото Amara Resort & Spa">
+              <img src="img/amara.png" width="135" height="90" alt="Фото Amara Resort & Spa">
             </p>
           </li>
           <li>
-            <h3>Desert Quail Inn</h3>
-            <p>Мотель</p>
-            <p>От 3000 Р.</p>
-            <p>Рейтинг: 8,9</p>
-            <button type="button">Подробнее</button>
-            <button type="button">Забронировать</button>
+            <a class="hotel-link" href=""><h3 class="hotel-name">Desert Quail Inn</h3></a>
+            <p class="accommodation-type">Мотель</p>
+            <p class="price-from">От 3000 Р.</p>
+            <p class="rating"><span class="rating-wrapper">Рейтинг: 8,9</span></p>
+            <button type="button" class="hotel-button details">Подробнее</button>
+            <button type="button" class="hotel-button reserve">Забронировать</button>
             <p>
-              <img src="https://via.placeholder.com/19x17" width="19" height="17" alt="Изображение звезды рейтинга">
-              <img src="https://via.placeholder.com/19x17" width="19" height="17" alt="Изображение звезды рейтинга">
-              <img src="https://via.placeholder.com/19x17" width="19" height="17" alt="Изображение звезды рейтинга">
+              <img src="img/star.png" width="19" height="17" alt="Изображение звезды рейтинга">
+              <img src="img/star.png" width="19" height="17" alt="Изображение звезды рейтинга">
+              <img src="img/star.png" width="19" height="17" alt="Изображение звезды рейтинга">
             </p>
             <p>
-              <img src="https://via.placeholder.com/135x90" width="135" height="90" alt="Фото Desert Quail Inn">
+              <img src="img/desert.png" width="135" height="90" alt="Фото Desert Quail Inn">
             </p>
           </li>
           <li>
-            <h3>Villas at Poco Diablo</h3>
-            <p>Апартаменты</p>
-            <p>От 2000 Р.</p>
-            <p>Рейтинг: 9,2</p>
-            <button type="button">Подробнее</button>
-            <button type="button">Забронировать</button>
+            <a class="hotel-link" href=""><h3 class="hotel-name">Villas at Poco Diablo</h3></a>
+            <p class="accommodation-type">Апартаменты</p>
+            <p class="price-from">От 2000 Р.</p>
+            <p class="rating"><span class="rating-wrapper">Рейтинг: 9,2</span></p>
+            <button type="button" class="hotel-button details">Подробнее</button>
+            <button type="button" class="hotel-button reserve">Забронировать</button>
             <p>
-              <img src="https://via.placeholder.com/19x17" width="19" height="17" alt="Изображение звезды рейтинга">
-              <img src="https://via.placeholder.com/19x17" width="19" height="17" alt="Изображение звезды рейтинга">
+              <img src="img/star.png" width="19" height="17" alt="Изображение звезды рейтинга">
+              <img src="img/star.png" width="19" height="17" alt="Изображение звезды рейтинга">
             </p>
             <p>
-              <img src="https://via.placeholder.com/135x90" width="135" height="90" alt="Фото Villas at Poco Diablo">
+              <img src="img/villas.png" width="135" height="90" alt="Фото Villas at Poco Diablo">
             </p>
           </li>
         </ul>
       </section>
     </main>
+
     <footer class="page-footer main-footer">
       <section class="footer-contacts">
-        <p>
-          <a href="#">#visitSEDONA</a><br>
-          <span class="phone">ТЕЛ:</span><a class="footer-phone" href="tel:+74956660166">+7(495) 666-01-66</a>
-        </p>
+        <p class="footer-contacts-left">
+         #visitSEDONA<br>ТЕЛ:+7(495) 666-01-66
+    </p>
       </section>
-      <section class="footer-social">
-        <ul class="footer-social-list">
-          <li>
-            <a class="social-button" href="#">Twitter</a>
-          </li>
-          <li>
-            <a class="social-button" href="#">Facebook</a>
-          </li>
-          <li>
-            <a class="social-button" href="#">Youtube</a>
-          </li>
-        </ul>
-      </section>
-      <p class="footer-copyright">Website by<img src="img/logo-htmlacademy.png" width="115" height="41" alt="HTMLAcademy лого"></p>
-    </footer>
+       <section class="footer-social">
+         <ul class="footer-social-list">
+         <li>
+        <a class="social-button" href="#">Twitter</a>
+         </li>
+         <li>
+        <a class="social-button" href="#">Facebook</a>
+         </li>
+      <li>
+        <a class="social-button" href="#">Youtube</a>
+      </li>
+    </ul>
+  </section>
+  <p class="footer-copyright">Website by<a href="#"><img src="img/logo-htmlacademy.png" width="115" height="41" alt="HTMLAcademy лого" class="academy-logo"></a></p>
+</footer>
   </body>
 </html>

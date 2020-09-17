@@ -13,9 +13,12 @@
   --basic-black-opacity-03: rgba(0, 0, 0, 0.3);
 
   --box-shadow-color: rgba(0, 1, 1, 0.15);
+  --darker-gray: #EBEBEB;
   --basic-gray: #eeeeee;
   --lighter-gray: #F2F2F2;
   --increase-decrease-gray: #A9A9A9;
+
+  --gray-for-rating: #666666;
 
   --basic-white: #ffffff;
   --basic-white-opacity-03: rgba(255, 255, 255, 0.3);
@@ -123,6 +126,17 @@ form {
 .footer-social-list a:active{
   color: var(--basic-black-opacity-03);
 }
+
+/* Активная страница: здесь судя по всему требуется скрипт, чего мы пока не знаем */
+
+
+/* Убираем рамку(возможную) в состоянии focus */
+.site-navigation a:focus,
+.footer-contacts a:focus,
+.footer-social-list a:focus{
+  border: none;
+}
+
 
 .main-header-wrapper {
   padding-top: 43px;
@@ -233,7 +247,7 @@ form {
   height: 395px;
   margin: 50px auto;
   margin-bottom: -310px;
-  background: var(--basic-white);
+  background-color: var(--basic-white);
   box-shadow: 0 7px 15px var(--box-shadow-color);
   z-index: 1;
   position: relative;
@@ -266,6 +280,22 @@ label {
   border: none;
 }
 
+/* Воспользуемся хитростью для смены цвета замещающего текста в браузерах Safari и Chrome */
+input::-webkit-input-placeholder {
+  color: var(--basic-black);
+}
+
+input.main-page-form {
+  background-color: var(--lighter-gray);
+}
+
+input.main-page-form:hover {
+  background-color: var(--darker-gray);
+}
+
+input.main-page-form:active {
+  background-color: var(--basic-white);
+}
 /* Делаем как в демке: Стилизуем кнопки. Используем значение inherit для свойства font для переопределения значения по умолчанию. Выровняем текст по центру, укажем цвет и размер, а также фон. Отключим стили для обводки. */
 
 /* Buttons */
@@ -316,11 +346,37 @@ label {
   color: var(--basic-white-opacity-03);
 }
 
+/* Убираем рамку(возможную) в состоянии focus */
+
+.button.form-top-search-submit:focus,
+.button.form-bottom-search-submit:focus {
+  border: none;
+}
+
 .adult-number-decrease,
 .adult-number-increase,
 .children-number-decrease,
 .children-number-increase {
   background-color: transparent;
+}
+
+button.filter-submit {
+  width: 137px;
+  height: 36px;
+  background-color: transparent;
+  border: 2px solid var(--basic-white);
+  border-radius: 2px;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 21px;
+  text-transform: uppercase;
+  color: var(--basic-white);
+}
+
+button.filter-submit:hover {
+  background-color: var(--basic-white);
+  color: var(--basic-black);
+
 }
 
 /* Footer */
@@ -345,9 +401,8 @@ label {
   list-style: none;
 }
 
-.footer-contacts a,
-.footer-social-list a,
-.phone {
+.footer-contacts-left,
+.footer-social-list a {
   font-style: normal;
   font-weight: bold;
   font-size: 21px;
@@ -355,6 +410,226 @@ label {
   color: var(--basic-black);
   text-transform: uppercase;
 }
+
+/* Сюда допишем стилизацию страницы hotels.html */
+
+.infrastructure-legend,
+.accommodation-legend,
+.range-selector-and-submit {
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 21px;
+  text-transform: uppercase;
+  color: var(--basic-white);
+}
+
+.range-selector-and-submit label {
+  font-size: 16px;
+  line-height: 21px;
+}
+
+.filter-option label{
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 21px;
+  text-transform: uppercase;
+  color: var(--basic-white);
+}
+
+.price-output {
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 21px;
+}
+
+.hotels-filter {
+  width: 1200px;
+  height: 217px;
+  background-color: var(--special-blue);
+  background: url("../img/filter-background.png");
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.infrastructure-fields,
+.accommodation-fields {
+  border: none;
+  margin-top: 30px;
+  text-align: left;
+}
+
+/* Убираем буллеты у элементов списков */
+.infrastructure-fields li,
+.accommodation-fields li{
+  list-style: none;
+}
+
+.filter {
+  display: grid;
+  grid-template-columns: 222px 281px 291px auto;
+  grid-template-rows: 217px;
+}
+
+.infrastructure-fields {
+  grid-column: 1 / 2;
+  grid-row: 1 / 2;
+}
+
+.accommodation-fields {
+  grid-column: 2 / 3;
+  grid-row: 1 / 2;
+}
+
+.range-selector-and-submit {
+  margin-top: 30px;
+  border: none;
+  grid-column: 4 / 5;
+  grid-row: 1 / 2;
+}
+
+.price-output {
+  border: 2px solid var(--basic-white);
+  display: flex;
+  justify-content: space-around;
+}
+
+button.filter-submit {
+  margin-top: 50px;
+}
+
+/* Неудачная попытка сделать грид */
+/*
+.hotels-found {
+  display: grid;
+  grid-template-columns: 222px 281px 291px auto;
+  grid-template-rows: 86px 151px 152px 150px;
+}
+
+.found {
+  grid-column: 1 / 2;
+  grid-row: 1 / 2;
+}
+
+.sort-by {
+  grid-column: 2 / 3;
+  grid-row: 1 / 2;
+}
+
+.sort-by-text-buttons {
+  grid-column: 3 / 4;
+  grid-row: 1 / 2;
+} */
+
+.hotels-list li{
+  list-style: none;
+}
+
+p.found {
+  font-weight: bold;
+  font-size: 21px;
+  line-height: 26px;
+}
+
+p.sort-by,
+button.sort-by-text {
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 18px;
+  text-transform: uppercase;
+  background-color: transparent;
+  border: none;
+  color: var(--basic-black);
+  margin: 30px;
+}
+
+button.sort-by-text {
+  color: var(--basic-black-opacity-03);
+  border-bottom: 1px dashed #81B3D2;
+}
+
+button.sort-by-text:hover {
+  color: var(--special-blue);
+  border-bottom: 1px dashed #81B3D2;
+}
+
+button.sort-by-text:active {
+  color: var(--basic-black);
+  border-bottom: none;
+}
+
+h3.hotel-name {
+  font-weight: bold;
+  font-size: 21px;
+  line-height: 26px;
+  text-transform: uppercase;
+}
+
+.hotel-link {
+  color: var(--basic-black);
+}
+
+.hotel-link:hover {
+  color: var(--special-blue);
+}
+
+.hotel-link:active {
+  color: var(--basic-black-opacity-03);
+}
+
+.accommodation-type,
+.price-from,
+.rating {
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 21px;
+  text-transform: uppercase;
+  color: var(--basic-dark);
+}
+
+.rating-wrapper {
+  background-color: var(--lighter-gray);
+  padding: 5px 20px;
+  color: var(--gray-for-rating);
+}
+
+.hotel-button {
+  height: 27px;
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 21px;
+  text-transform: uppercase;
+  color: var(--basic-white);
+  border: none;
+}
+
+.hotel-button.details {
+  width: 110px;
+  background-color: var(--special-blue);
+}
+
+.hotel-button.details:hover {
+  background-color: var(--darker-blue);
+}
+
+.hotel-button.details:active {
+  background-color: var(--the-darkest-blue);
+  color: var(--basic-white-opacity-03);
+}
+
+.hotel-button.reserve {
+  width: 142px;
+  background-color: var(--basic-brown);
+}
+
+.hotel-button.reserve:hover {
+  background-color: var(--darker-brown);
+}
+
+.hotel-button.reserve:active {
+  background-color: var(--the-darkest-brown);
+  color: var(--basic-white-opacity-03);
+}
+
 
 /* Other */
 

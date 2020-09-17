@@ -117,21 +117,21 @@
             <div class="hotel-search-form-main-content">
               <p class="hotel-search-item">
                 <label for="arrival-date">Дата заезда</label>
-                <input id="arrival-date" type="date" name="arrival-date" placeholder="24 апреля 2017">
+                <input id="arrival-date" type="date" name="arrival-date" placeholder="24 апреля 2017" class="main-page-form">
               </p>
               <p class="hotel-search-item">
                 <label for="departure-date">Дата выезда</label>
-                <input id="departure-date" type="date" name="departure-date" placeholder="4 июля 2017">
+                <input id="departure-date" type="date" name="departure-date" placeholder="4 июля 2017" class="main-page-form">
               </p>
               <!-- далее идут 2 инпута, которые вероятно требуют использования JS-скрипта, поэтому пока сделаем их просто текстовыми полями со значениями по умолчанию -->
               <p class="hotel-search-items-block">
                   <label for="number-of-adults">Взрослые</label>
                   <button type="button" class="button adult-number-decrease"><img src="img/minus.png" width="12" height="3" alt="Кнопка уменьшения значения"></button>
-                  <input id="number-of-adults" type="text" name="number-of-adults" placeholder="2">
+                  <input id="number-of-adults" type="text" name="number-of-adults" placeholder="2" class="main-page-form">
                   <button type="button" class="button adult-number-increase"><img src="img/plus.png" width="11" height="11" alt="Кнопка увеличения значения"></button>
                   <label for="number-of-children">Дети</label>
                   <button type="button" class="button children-number-decrease"><img src="img/minus.png" width="12" height="3" alt="Кнопка уменьшения значения"></button>
-                  <input id="number-of-children" type="text" name="number-of-children" placeholder="0">
+                  <input id="number-of-children" type="text" name="number-of-children" placeholder="0" class="main-page-form">
                   <button type="button" class="button children-number-increase"><img src="img/plus.png" width="11" height="11" alt="Кнопка увеличения значения"></button>
               </p>
               <button type="submit" class="button form-bottom-search-submit">Найти</button>
@@ -144,9 +144,9 @@
       </main>
       <footer class="page-footer main-footer">
         <section class="footer-contacts">
-          <p>
-            <a href="#">#visitSEDONA</a><br>
-            <span class="phone">ТЕЛ:</span><a class="footer-phone" href="tel:+74956660166">+7(495) 666-01-66</a>
+          <p class="footer-contacts-left">
+            #visitSEDONA<br>
+            ТЕЛ:+7(495) 666-01-66
           </p>
         </section>
         <section class="footer-social">
@@ -162,7 +162,7 @@
             </li>
           </ul>
         </section>
-        <p class="footer-copyright">Website by<img src="img/logo-htmlacademy.png" width="115" height="41" alt="HTMLAcademy лого"></p>
+        <p class="footer-copyright">Website by<a href="#"><img src="img/logo-htmlacademy.png" width="115" height="41" alt="HTMLAcademy лого" class="academy-logo"></a></p>
       </footer>
     </body>
 </html>
