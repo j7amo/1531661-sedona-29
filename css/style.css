@@ -131,10 +131,12 @@ form {
 
 
 /* Убираем рамку(возможную) в состоянии focus */
-.site-navigation a:focus,
-.footer-contacts a:focus,
-.footer-social-list a:focus{
+a:focus,
+.filter-submit:focus,
+input:focus,
+button:focus {
   border: none;
+  outline: none;
 }
 
 
