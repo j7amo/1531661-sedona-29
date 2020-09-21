@@ -78,7 +78,7 @@ form {
 /* Взял на себя смелость экспортировать в проект немного графики, тем более в демке "Барбершоп" был экспортирован (правда, ничего не объяснили) логотип */
 
 .main-decoration-photo {/* ОТСЕБЯТИНА */
-  background-image: url("../img/background.png");/* ОТСЕБЯТИНА */
+  background-image: url("../img/background.jpg");/* ОТСЕБЯТИНА */
   background-position: center;/* ОТСЕБЯТИНА */
   background-repeat: no-repeat;/* ОТСЕБЯТИНА */
 }

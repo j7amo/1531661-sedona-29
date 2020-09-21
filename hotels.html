@@ -1,37 +1,37 @@
 <!DOCTYPE html>
 <!-- добавим всей странице класс page, чтобы не использовать глобальные селекторы-->
 <html class="page" lang="ru">
-<head>
-  <meta charset="utf-8">
-  <title>HTML Academy: Седона</title>
-  <!-- подключаем шрифт из Google Fonts (в макете, если верить Фигме, используется PT Sans -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=PT+Sans:wght@400;700&display=swap">
-  <!-- подключаем normalize.css (предварительно скачав его) и основной стилевой файл -->
-  <link href="css/normalize.css" rel="stylesheet">
-  <link href="css/style.css" rel="stylesheet">
-</head>
+  <head>
+    <meta charset="utf-8">
+    <title>HTML Academy: Седона</title>
+    <!-- подключаем шрифт из Google Fonts (в макете, если верить Фигме, используется PT Sans -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=PT+Sans:wght@400;700&display=swap">
+    <!-- подключаем normalize.css (предварительно скачав его) и основной стилевой файл -->
+    <link href="css/normalize.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+  </head>
 <!-- тут делаем то же самое - добавляем класс для body-->
-<body class="page-body">
+  <body class="page-body">
 <!-- Добавим классы для header,nav и логотипа-->
-<header class="main-header">
-  <nav class="main-navigation">
-    <a class="main-header-logo">
-      <img src="img/logo.png" width="138" height="70" alt="Логотип CITY OF SEDONA">
-    </a>
-    <!-- на данном этапе делаем как в демке "Барбершоп": добавляем 2 дива (один будет видимо для горизонтального позиционирования, другой - для вертикального, но это не точно=)) -->
-    <div class="main-navigation-wrapper">
-      <div class="container">
-        <ul class="site-navigation">
-          <li><a href="blank.html">Информация</a></li>
-          <li><a href="blank.html">Фото и видео</a></li>
-          <li><a href="blank.html">Карта штата</a></li>
-          <li><a href="hotels.html">Гостиницы</a></li>
-        </ul>
-      </div>
-    </div>
-    <!-- т.к. список у нас не единственный, а стилизация списков разная, то нам надо каждому списку добавить свой класс -->
-  </nav>
-</header>
+    <header class="main-header">
+      <nav class="main-navigation">
+        <a class="main-header-logo">
+          <img src="img/logo.svg" width="138" height="70" alt="Логотип CITY OF SEDONA">
+        </a>
+        <!-- на данном этапе делаем как в демке "Барбершоп": добавляем 2 дива (один будет видимо для горизонтального позиционирования, другой - для вертикального, но это не точно=)) -->
+        <div class="main-navigation-wrapper">
+          <div class="container">
+            <ul class="site-navigation">
+              <li><a href="blank.html">Информация</a></li>
+              <li><a href="blank.html">Фото и видео</a></li>
+              <li><a href="blank.html">Карта штата</a></li>
+              <li><a href="hotels.html">Гостиницы</a></li>
+            </ul>
+          </div>
+        </div>
+        <!-- т.к. список у нас не единственный, а стилизация списков разная, то нам надо каждому списку добавить свой класс -->
+      </nav>
+    </header>
     <main class="container">
       <!-- на странице с отелями никаких заголовков на макете не видно,
        поэтому добавим заголовок (который потом скроем) для описания содержимого страницы-->
@@ -98,8 +98,8 @@
           <button type="button" class="sort-by-text">По цене</button>
           <button type="button" class="sort-by-text">По типу</button>
           <button type="button" class="sort-by-text">По рейтингу</button>
-          <img src="img/icon-up-dir.png" width="11" height="10" alt="Стрелка вверх (сортировка по возрастанию)">
-          <img src="img/icon-down-dir.png" width="11" height="10" alt="Стрелка вниз (сортировка по убыванию)">
+          <img src="img/icon-up-dir.svg" width="11" height="10" alt="Стрелка вверх (сортировка по возрастанию)">
+          <img src="img/icon-down-dir.svg" width="11" height="10" alt="Стрелка вниз (сортировка по убыванию)">
         </p>
         <ul class="hotels-list">
           <li>
@@ -110,13 +110,13 @@
             <button type="button" class="hotel-button details">Подробнее</button>
             <button type="button" class="hotel-button reserve">Забронировать</button>
             <p>
-              <img src="img/star.png" width="19" height="17" alt="Изображение звезды рейтинга">
-              <img src="img/star.png" width="19" height="17" alt="Изображение звезды рейтинга">
-              <img src="img/star.png" width="19" height="17" alt="Изображение звезды рейтинга">
-              <img src="img/star.png" width="19" height="17" alt="Изображение звезды рейтинга">
+              <img src="img/star.svg" width="19" height="17" alt="Изображение звезды рейтинга">
+              <img src="img/star.svg" width="19" height="17" alt="Изображение звезды рейтинга">
+              <img src="img/star.svg" width="19" height="17" alt="Изображение звезды рейтинга">
+              <img src="img/star.svg" width="19" height="17" alt="Изображение звезды рейтинга">
             </p>
             <p>
-              <img src="img/amara.png" width="135" height="90" alt="Фото Amara Resort & Spa">
+              <img src="img/amara.jpg" width="135" height="90" alt="Фото Amara Resort & Spa">
             </p>
           </li>
           <li>
@@ -127,12 +127,12 @@
             <button type="button" class="hotel-button details">Подробнее</button>
             <button type="button" class="hotel-button reserve">Забронировать</button>
             <p>
-              <img src="img/star.png" width="19" height="17" alt="Изображение звезды рейтинга">
-              <img src="img/star.png" width="19" height="17" alt="Изображение звезды рейтинга">
-              <img src="img/star.png" width="19" height="17" alt="Изображение звезды рейтинга">
+              <img src="img/star.svg" width="19" height="17" alt="Изображение звезды рейтинга">
+              <img src="img/star.svg" width="19" height="17" alt="Изображение звезды рейтинга">
+              <img src="img/star.svg" width="19" height="17" alt="Изображение звезды рейтинга">
             </p>
             <p>
-              <img src="img/desert.png" width="135" height="90" alt="Фото Desert Quail Inn">
+              <img src="img/desert.jpg" width="135" height="90" alt="Фото Desert Quail Inn">
             </p>
           </li>
           <li>
@@ -143,37 +143,37 @@
             <button type="button" class="hotel-button details">Подробнее</button>
             <button type="button" class="hotel-button reserve">Забронировать</button>
             <p>
-              <img src="img/star.png" width="19" height="17" alt="Изображение звезды рейтинга">
-              <img src="img/star.png" width="19" height="17" alt="Изображение звезды рейтинга">
+              <img src="img/star.svg" width="19" height="17" alt="Изображение звезды рейтинга">
+              <img src="img/star.svg" width="19" height="17" alt="Изображение звезды рейтинга">
             </p>
             <p>
-              <img src="img/villas.png" width="135" height="90" alt="Фото Villas at Poco Diablo">
+              <img src="img/villas.jpg" width="135" height="90" alt="Фото Villas at Poco Diablo">
             </p>
           </li>
         </ul>
       </section>
     </main>
-
     <footer class="page-footer main-footer">
       <section class="footer-contacts">
         <p class="footer-contacts-left">
-         #visitSEDONA<br>ТЕЛ:+7(495) 666-01-66
-    </p>
+          #visitSEDONA<br>
+          ТЕЛ:+7(495) 666-01-66
+        </p>
       </section>
-       <section class="footer-social">
-         <ul class="footer-social-list">
-         <li>
-        <a class="social-button" href="#">Twitter</a>
-         </li>
-         <li>
-        <a class="social-button" href="#">Facebook</a>
-         </li>
-      <li>
-        <a class="social-button" href="#">Youtube</a>
-      </li>
-    </ul>
-  </section>
-  <p class="footer-copyright">Website by<a href="#"><img src="img/logo-htmlacademy.png" width="115" height="41" alt="HTMLAcademy лого" class="academy-logo"></a></p>
-</footer>
+      <section class="footer-social">
+        <ul class="footer-social-list">
+          <li>
+            <a class="social-button" href="#"><img src="img/twitter.svg" width="46" height="48" alt="Логотип Twitter"></a>
+          </li>
+          <li>
+            <a class="social-button" href="#"><img src="img/facebook.svg" width="46" height="48" alt="Логотип Facebook"></a>
+          </li>
+          <li>
+            <a class="social-button" href="#"><img src="img/youtube.svg" width="46" height="48" alt="Логотип Youtube"></a>
+          </li>
+        </ul>
+      </section>
+      <p class="footer-copyright">Website by<a href="#"><img src="img/logo-htmlacademy.svg" width="115" height="41" alt="HTMLAcademy лого" class="academy-logo"></a></p>
+    </footer>
   </body>
 </html>

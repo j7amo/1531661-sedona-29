@@ -16,7 +16,7 @@
       <header class="main-header">
         <nav class="main-navigation">
           <a class="main-header-logo">
-            <img src="img/logo.png" width="138" height="70" alt="Логотип CITY OF SEDONA">
+            <img src="img/logo.svg" width="138" height="70" alt="Логотип CITY OF SEDONA">
           </a>
           <!-- на данном этапе делаем как в демке "Барбершоп": добавляем 2 дива (один будет видимо для горизонтального позиционирования, другой - для вертикального, но это не точно=)) -->
           <div class="main-navigation-wrapper">
@@ -38,7 +38,7 @@
           <!-- добавляем скрытый заголовок для раздела -->
           <h2 class="visually-hidden">Красивые скалы</h2>
           <!-- произведём небольшое изменение: если в первоначальном варианте весь данный блок был представлен некой большой картинкой, то раз уж мы начинаем стилизацию, можно изображение скал задать в CSS в качестве фона для данного блока section, а в теге img загрузить только графику надписей-->
-          <img src="img/welcome.png" width="458" height="352" alt="Сложная графика надписей">
+          <img src="img/welcome.svg" width="458" height="352" alt="Сложная графика надписей">
         </section>
         <div class="main-header-wrapper">
           <h1 class="main-header">Седона — небольшой городок в Аризоне,<br> заслуживающий большего!</h1>
@@ -58,21 +58,21 @@
                 <p>Седона - не аттракцион для туристов, там<br> течёт своя жизнь</p>
               </div>
               <div class="feature-one-right">
-                <img src="img/house.png" width="800" height="256" alt="Фото какого-то отеля">
+                <img src="img/house.jpg" width="800" height="256" alt="Фото какого-то отеля">
               </div>
             </li>
             <li class="feature-item">
-              <img src="img/house-icon.png" width="75" height="72" alt="Иконка жилья">
+              <img src="img/house-icon.svg" width="75" height="72" alt="Иконка жилья">
               <h3>Жильё</h3>
               <p>Рекомендуем пожить в настоящем<br> мотеле, всё как в кино!</p>
             </li>
             <li class="feature-item">
-              <img src="img/food-icon.png" width="75" height="70" alt="Иконка еды">
+              <img src="img/food-icon.svg" width="75" height="70" alt="Иконка еды">
               <h3>Еда</h3>
               <p>Всегда заказывайте фирменный бургер,<br> вы не разочаруетесь!</p>
             </li>
             <li class="feature-item">
-              <img src="img/box-icon.png" width="64" height="77" alt="Иконка сувениров">
+              <img src="img/box-icon.svg" width="64" height="77" alt="Иконка сувениров">
               <h3>Сувениры</h3>
               <p>Не только китайского, но и местного<br> производства!</p>
             </li>
@@ -83,7 +83,7 @@
                 <p>Да, по нему можно пройти! Если конечно<br> вы осмелитесь</p>
               </div>
               <div class="feature-two-left">
-                <img src="img/devils-bridge.png" width="800" height="256" alt="Фото моста дьявола">
+                <img src="img/devils-bridge.jpg" width="800" height="256" alt="Фото моста дьявола">
               </div>
             </li>
             <li class="feature-item">
@@ -126,19 +126,19 @@
               <!-- далее идут 2 инпута, которые вероятно требуют использования JS-скрипта, поэтому пока сделаем их просто текстовыми полями со значениями по умолчанию -->
               <p class="hotel-search-items-block">
                   <label for="number-of-adults">Взрослые</label>
-                  <button type="button" class="button adult-number-decrease"><img src="img/minus.png" width="12" height="3" alt="Кнопка уменьшения значения"></button>
+                  <button type="button" class="button adult-number-decrease"><img src="img/minus.svg" width="12" height="3" alt="Кнопка уменьшения значения"></button>
                   <input id="number-of-adults" type="text" name="number-of-adults" placeholder="2" class="main-page-form">
-                  <button type="button" class="button adult-number-increase"><img src="img/plus.png" width="11" height="11" alt="Кнопка увеличения значения"></button>
+                  <button type="button" class="button adult-number-increase"><img src="img/plus.svg" width="11" height="11" alt="Кнопка увеличения значения"></button>
                   <label for="number-of-children">Дети</label>
-                  <button type="button" class="button children-number-decrease"><img src="img/minus.png" width="12" height="3" alt="Кнопка уменьшения значения"></button>
+                  <button type="button" class="button children-number-decrease"><img src="img/minus.svg" width="12" height="3" alt="Кнопка уменьшения значения"></button>
                   <input id="number-of-children" type="text" name="number-of-children" placeholder="0" class="main-page-form">
-                  <button type="button" class="button children-number-increase"><img src="img/plus.png" width="11" height="11" alt="Кнопка увеличения значения"></button>
+                  <button type="button" class="button children-number-increase"><img src="img/plus.svg" width="11" height="11" alt="Кнопка увеличения значения"></button>
               </p>
               <button type="submit" class="button form-bottom-search-submit">Найти</button>
             </div>
           </form>
           <div class="map">
-            <img src="img/map.png" width="1199" height="593" alt="Карта">
+            <img src="img/map.jpg" width="1199" height="593" alt="Карта">
           </div>
         </section>
       </main>
@@ -152,17 +152,17 @@
         <section class="footer-social">
           <ul class="footer-social-list">
             <li>
-              <a class="social-button" href="#">Twitter</a>
+              <a class="social-button" href="#"><img src="img/twitter.svg" width="46" height="48" alt="Логотип Twitter"></a>
             </li>
             <li>
-              <a class="social-button" href="#">Facebook</a>
+              <a class="social-button" href="#"><img src="img/facebook.svg" width="46" height="48" alt="Логотип Facebook"></a>
             </li>
             <li>
-              <a class="social-button" href="#">Youtube</a>
+              <a class="social-button" href="#"><img src="img/youtube.svg" width="46" height="48" alt="Логотип Youtube"></a>
             </li>
           </ul>
         </section>
-        <p class="footer-copyright">Website by<a href="#"><img src="img/logo-htmlacademy.png" width="115" height="41" alt="HTMLAcademy лого" class="academy-logo"></a></p>
+        <p class="footer-copyright">Website by<a href="#"><img src="img/logo-htmlacademy.svg" width="115" height="41" alt="HTMLAcademy лого" class="academy-logo"></a></p>
       </footer>
     </body>
 </html>
