@@ -14,9 +14,9 @@
     <body class="page-body">
     <div class="content-wrapper">
      <!-- Добавим классы для header,nav и логотипа-->
-      <header class="container">
+      <header class="header-block">
         <nav class="main-navigation">
-          <a href="#" class="main-header-logo"><img src="img/logo.svg" width="138" height="70" alt="Логотип CITY OF SEDONA"></a>
+              <a href="#" class="main-header-logo"><img src="img/logo.svg" width="138" height="70" alt="Логотип CITY OF SEDONA"></a>
               <ul class="site-navigation">
                 <li><a href="blank.html">Информация</a></li>
                 <li><a href="blank.html">Фото и видео</a></li>
@@ -27,7 +27,7 @@
         </nav>
       </header>
       <!-- даём название класса блоку main, используя одно из общепринятых названий для так называемых обёрток-центровщиков -->
-      <main class="container">
+      <main class="main-block">
         <section class="main-decoration-photo">
           <!-- добавляем скрытый заголовок для раздела -->
           <h2 class="visually-hidden">Красивые скалы</h2>
@@ -48,7 +48,7 @@
             <!-- т.к. у нас фичи немного отличаются друг от друга (есть с порядковым номером, а есть с иконками), то имеет смысл дать им доп.классы для облегчения стилизации-->
             <li class="feature-item">
               <div class="feature-one-left">
-                <h3>Настоящий городок</h3>
+                <h3>Настоящий<br>городок</h3>
                 <p>— №1 —</p>
                 <p>Седона - не аттракцион для туристов, там<br> течёт своя жизнь</p>
               </div>
@@ -73,7 +73,7 @@
             </li>
             <li class="feature-item">
               <div class="feature-two-right">
-                <h3>Там есть Мост дьявола</h3>
+                <h3>Там есть<br>Мост дьявола</h3>
                 <p>— №2 —</p>
                 <p>Да, по нему можно пройти! Если конечно<br> вы осмелитесь</p>
               </div>
@@ -82,17 +82,17 @@
               </div>
             </li>
             <li class="feature-item">
-              <h3>Небольшая площадь</h3>
+              <h3>Небольшая<br>площадь</h3>
               <p>— №3 —</p>
               <p>Все достопримечательности<br> находятся очень близко</p>
             </li>
             <li class="feature-item">
-              <h3>Красивая дорога</h3>
+              <h3>Красивая<br>дорога</h3>
               <p>— №4 —</p>
               <p>Ехать в седону из лас-вегаса совсем<br> не скучно!</p>
             </li>
             <li class="feature-item">
-              <h3>Мало туристов</h3>
+              <h3>Мало<br>туристов</h3>
               <p>— №5 —</p>
               <p>Большинство едет в гранд каньон<br> и толпится там</p>
             </li>
@@ -110,15 +110,15 @@
               <button type="submit" class="button form-top-search-submit">Поиск гостиницы в Седоне</button>
             </div>
             <div class="hotel-search-form-main-content">
-                <label for="arrival-date" class="arrival-date">Дата заезда</label>
+                <label for="arrival-date" class="arrival-date">Дата заезда:</label>
                 <input id="arrival-date" type="date" name="arrival-date" placeholder="24 апреля 2017" class="arrival-date">
-                <label for="departure-date" class="departure-date">Дата выезда</label>
+                <label for="departure-date" class="departure-date">Дата выезда:</label>
                 <input id="departure-date" type="date" name="departure-date" placeholder="4 июля 2017" class="departure-date">
-                <label for="number-of-adults" class="number-of-adults">Взрослые</label>
+                <label for="number-of-adults" class="number-of-adults">Взрослые:</label>
                <!-- <button type="button" class="button adult-number-decrease"><img src="img/minus.svg" width="12" height="3" alt="Кнопка уменьшения значения"></button> -->
                 <input id="number-of-adults" type="text" name="number-of-adults" placeholder="2" class="number-of-adults">
                <!-- <button type="button" class="button adult-number-increase"><img src="img/plus.svg" width="11" height="11" alt="Кнопка увеличения значения"></button> -->
-                <label for="number-of-children" class="number-of-children">Дети</label>
+                <label for="number-of-children" class="number-of-children">Дети:</label>
                <!-- <button type="button" class="button children-number-decrease"><img src="img/minus.svg" width="12" height="3" alt="Кнопка уменьшения значения"></button> -->
                 <input id="number-of-children" type="text" name="number-of-children" placeholder="0" class="number-of-children">
                <!-- <button type="button" class="button children-number-increase"><img src="img/plus.svg" width="11" height="11" alt="Кнопка увеличения значения"></button> -->
@@ -130,13 +130,13 @@
           </div>
         </section>
       </main>
-      <footer class="container main-footer">
+      <footer class="footer-block">
         <section class="footer-contacts">
           <p class="footer-contacts-hashtag">
             #visitSEDONA
           </p>
           <p class="footer-contacts-phone">
-            ТЕЛ:+7(495) 666-01-66
+            ТЕЛ:&nbsp;+7(495) 666-01-66
           </p>
         </section>
         <section class="footer-social">

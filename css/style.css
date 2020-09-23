@@ -23,6 +23,7 @@
 
   --basic-white: #ffffff;
   --basic-white-opacity-03: rgba(255, 255, 255, 0.3);
+  --basic-white-opacity-09: rgba(255, 255, 255, 0.9);
 
   --the-darkest-blue: #5496BD;
   --darker-blue: #669EC0;
@@ -38,7 +39,8 @@
 /* Global */
 
 body {
-  min-width: 1280px;
+  min-width: 1200px;
+  height: 2762px;
   margin: 0;
   padding: 0;
   font-family: "PT Sans", Arial, sans-serif;
@@ -61,6 +63,14 @@ body {
   background-color: var(--basic-white);
 }
 
+.page {
+  height: 100%;
+}
+
+.page-body {
+  min-height: 100%;
+}
+
 /* У ссылок уберём подчёркивание, так как подчёркивания нет во всём проекте, кроме пары мест. */
 
 a {
@@ -68,11 +78,38 @@ a {
   font-weight: bold;
 }
 
-/* Всем изображениям укажем max-width: 100%, чтобы они не вылезали за пределы своих родительских элементов, и укажем автоматическую высоту, чтобы изменение размеров было пропорциональным. */
+/* Сделаем общую сетку для крупных блоков и разместим их в ней*/
+
+.content-wrapper {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 56px 2586px 120px;
+}
+
+.header-block {
+  height: 56px;
+  grid-column: 1 / -1;
+  grid-row: 1 / 2;
+  z-index: 1;
+}
+
+.main-block {
+  height: 2706px;
+  grid-column: 1 / -1;
+  grid-row: 2 / 4;
+}
+
+.footer-block {
+  height: 120px;
+  grid-column: 1 / -1;
+  grid-row: 3 / 4;
+}
 
 
 
-/* ОТСЕБЯТИНА
+/* АУТЛАЙНЫ */
+
+/*
 section,
 div,
 nav,
@@ -90,14 +127,8 @@ li {
   outline: 5px dashed greenyellow;
   outline-offset: -5px;
 }
-ОТСЕБЯТИНА */
-/* Пока не понимаю как нормально разместить главный логотип. Временно сделаю так. */
-.main-header-logo {
-  position: absolute;
-  left: 46.3%;
-}
+ */
 
-/* Взял на себя смелость экспортировать в проект немного графики, тем более в демке "Барбершоп" был экспортирован (правда, ничего не объяснили) логотип */
 
 .main-decoration-photo {
   background-image: url("../img/background.jpg");
@@ -107,7 +138,7 @@ li {
 
 .text-graphics {
   margin-top: 76px;
-  margin-bottom: 20px;
+  margin-bottom: 18px;
 }
 
 /* Chrome применяет к спискам user agent стили и появляются лишние отступы. Уберём их. */
@@ -125,9 +156,19 @@ ul {
   line-height: 26px;
   color: var(--basic-black);
   background-color: transparent;
+
+  display: grid;
+  grid-template-rows: 56px;
+}
+
+.main-header-logo {
+  grid-column: 1 / -1;
+  grid-row: 1 / -1;
 }
 
 .site-navigation {
+  grid-column: 1 / -1;
+  grid-row: 1 / -1;
   display: grid;
   grid-template-rows: 56px;
   grid-template-columns: 72px 228px 228px 144px 228px 228px 72px;
@@ -194,7 +235,7 @@ button:focus {
 
 .main-header-wrapper {
   padding-top: 42px;
-  padding-bottom: 51px;
+  padding-bottom: 54px;
 }
 
 /* Стилизация основного заголовка */
@@ -202,7 +243,7 @@ button:focus {
   font-weight: bold;
   font-size: 21px;
   line-height: 26px;
-  margin-bottom: 16px;
+  margin: 0;
 }
 
 /* Причины крутизны Седоны */
@@ -210,6 +251,8 @@ button:focus {
 
 .five-reasons {
   line-height: 21px;
+  margin: 0;
+  margin-top: 46px;
 }
 
 .features-list {
@@ -286,6 +329,14 @@ button:focus {
   padding: 47px 10px 54px 10px;
 }
 
+.feature-one-left {
+  padding: 47px 10px 54px 10px;
+}
+
+.feature-two-right {
+  padding: 49px 10px 54px 10px;
+}
+
 .feature-two-left,
 .feature-one-right{
   width: 800px;
@@ -294,7 +345,7 @@ button:focus {
 .feature-item:nth-child(2) h3,
 .feature-item:nth-child(3) h3,
 .feature-item:nth-child(4) h3 {
-  margin-top: 28px;
+  margin-top: 23px;
 }
 
 .feature-one-left p,
@@ -302,6 +353,7 @@ button:focus {
 .feature-item:nth-child(6) p,
 .feature-item:nth-child(7) p,
 .feature-item:nth-child(8) p {
+  margin: 0;
   padding: 0 0 23px 0;
 }
 .feature-item:nth-child(6),
@@ -325,9 +377,13 @@ button:focus {
 .interested {
   font-size: 30px;
   line-height: 24px;
+  margin: 0;
+  margin-bottom: 27px;
 }
 
 .hotel-search-offer {
+  margin: 0;
+  padding-top: 5px;
   font-size: 14px;
   line-height: 24px;
 }
@@ -337,7 +393,7 @@ button:focus {
 .hotel-search-form {
   width: 568px;
   height: 481px;
-  margin: 49px auto;
+  margin: 43px auto;
   margin-bottom: -395px;
   background-color: var(--basic-white);
   box-shadow: 0 7px 15px var(--box-shadow-color);
@@ -354,6 +410,7 @@ label {
   font-weight: bold;
   font-size: 14px;
   line-height: 26px;
+  text-align: left;
 }
 
 /* Делаем форму на гридах */
@@ -367,22 +424,22 @@ label {
 
 label.arrival-date {
   grid-column: 2 / 3;
-  grid-row: 4 / 5;
+  grid-row: 2 / 3;
 }
 
 input.arrival-date {
   grid-column: 3 / 6;
-  grid-row: 4 / 5;
+  grid-row: 2 / 3;
 }
 
 label.departure-date {
   grid-column: 2 / 3;
-  grid-row: 2 / 3;
+  grid-row: 4 / 5;
 }
 
 input.departure-date {
   grid-column: 3 / 6;
-  grid-row: 2 / 3;
+  grid-row: 4 / 5;
 }
 
 label.number-of-adults {
@@ -393,6 +450,7 @@ label.number-of-adults {
 input.number-of-adults {
   grid-column: 3 / 4;
   grid-row: 6 / 7;
+  text-align: center;
 }
 
 label.number-of-children {
@@ -403,6 +461,7 @@ label.number-of-children {
 input.number-of-children {
   grid-column: 5 / 6;
   grid-row: 6 / 7;
+  text-align: center;
 }
 
 .hotel-search-form-main-content input{
@@ -410,7 +469,7 @@ input.number-of-children {
   font-size: 14px;
   line-height: 26px;
   text-transform: uppercase;
-  padding-left: 10px;
+  padding: 5px 5px 5px 15px;
   color: var(--basic-black);
   background-color: var(--lighter-gray);
   border: none;
@@ -525,11 +584,12 @@ button.filter-submit:hover {
 
 /* Footer */
 
-.main-footer {
+.footer-block {
   display: grid;
   width: 1200px;
   height: 120px;
   grid-template-columns: 1fr 1fr 1fr;
+  background-color: var(--basic-white-opacity-09);
 }
 
 .footer-contacts,
@@ -542,14 +602,17 @@ button.filter-submit:hover {
   font-size: 21px;
   font-weight: bold;
   line-height: 26px;
-  padding-top: 23px;
-  padding-left: 110px;
+  padding-left: 75px;
 }
 
 .footer-contacts p,
 .copyright-wrapper p {
   margin: 0;
   padding: 0;
+}
+
+p.footer-contacts-hashtag {
+  margin-top: 24px;
 }
 
 p.footer-contacts-hashtag,
@@ -567,14 +630,12 @@ p.footer-contacts-phone {
   text-transform: uppercase;
 }
 
-.footer-social {
-  padding-top: 36px;
-}
-
 .footer-social-list {
   display: flex;
   flex-direction: row;
   justify-content: center;
+  margin-top: 36px;
+  margin-left: 10px;
 }
 
 .footer-social-list li {
@@ -583,19 +644,24 @@ p.footer-contacts-phone {
 }
 
 .copyright-wrapper {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
 }
 
-.footer-copyright {
+p.footer-copyright {
   height: 41px;
   line-height: 26px;
-  align-self: center;
+  margin-top: 50px;
+  padding: 0;
+  padding-left: 15px;
+  text-align: right;
 }
 
 .copyright-logo {
-  align-self: center;
+  margin-top: 38px;
+  padding: 0;
+  padding-left: 10px;
+  text-align: left;
 }
 /* С ГЛАВНОЙ ЗАКОНЧИЛИ!!! */
 
