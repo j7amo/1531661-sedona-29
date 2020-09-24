@@ -68,6 +68,7 @@ body {
 }
 
 .page-body {
+  height: 2762px;
   min-height: 100%;
 }
 
@@ -668,6 +669,117 @@ p.footer-copyright {
 
 /* Сюда допишем стилизацию страницы hotels.html */
 
+.hotels-page-body {
+  height: 933px;
+  min-height: 100%;
+}
+
+/* Сначала сделаем общий грид. В нём разместим хедер, мэйн и футер */
+
+.hotels-content-wrapper {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 56px 757px 120px;
+  width: 1200px;
+  margin: 0 auto;
+  background-color: var(--basic-white);
+}
+
+/* Теперь займёмся локальными гридами:
+   Сделаем грид для формы с чекбоксами */
+
+.filter {
+  display: grid;
+  grid-template-columns: 72px 147px 107px 147px 337px 317px 73px;
+  grid-template-rows: 48px 47px 46px 45px 31px;
+}
+
+.infrastructure-fields-block {
+  grid-column: 2 / 3;
+  grid-row: 1 / -1;
+  padding: 0;
+  margin: 0;
+  border: none;
+}
+
+.accommodation-fields-block {
+  grid-column: 4 / 5;
+  grid-row: 1 / -1;
+  padding: 0;
+  margin: 0;
+  border: none;
+}
+
+.range-selector-and-submit {
+  grid-column: 6 / 7;
+  grid-row: 1 / -1;
+  padding: 0;
+  margin: 0;
+  border: none;
+}
+
+/* Делаем отдельные гриды для филдсэта "Инфраструктура" и "Размещение", т.к. они геометрически идентичны */
+
+.infrastructure-fields-block,
+.accommodation-fields-block {
+  display: grid;
+  /* grid-template-rows: 48px 169px; */
+}
+
+.infrastructure-legend,
+.accommodation-legend,
+.range-legend{
+  padding-top: 27px;
+}
+
+li.filter-option {
+  padding-top: 30px;
+}
+
+.infrastructure-fields,
+.accommodation-fields {
+  grid-row: 2 / 3;
+  display: grid;
+  grid-template-rows: 47px 46px 45px 31px;
+  vertical-align: bottom;
+}
+
+.infrastructure-fields li:nth-child(1),
+.accommodation-fields li:nth-child(1){
+  grid-row: 1 / 2;
+}
+
+.infrastructure-fields li:nth-child(2),
+.accommodation-fields li:nth-child(2){
+  grid-row: 2 / 3;
+}
+
+.infrastructure-fields li:nth-child(3),
+.accommodation-fields li:nth-child(3){
+  grid-row: 3 / 4;
+}
+
+/* Делаем грид для филдсэта "Стоимость в сутки". P.S. Да, я знаю, что гриды с филдсэтами не дружат, поэтому временно пойду на небольшую хитрость: запихну в филдсэт div, с которым и поработаю */
+
+.price-output-box {
+  display: grid;
+  grid-template-rows: 47px 46px 45px 31px;
+  align-items: center;
+}
+
+.price-output {
+  grid-row: 1 / 2;
+}
+
+.range-input {
+  grid-row: 2 / 3;
+}
+
+.filter-submit {
+  grid-row: 3 / 4;
+  justify-self: center;
+}
+
 .infrastructure-legend,
 .accommodation-legend,
 .range-selector-and-submit {
@@ -678,7 +790,7 @@ p.footer-copyright {
   color: var(--basic-white);
 }
 
-.range-selector-and-submit label {
+.range-selector-and-submit legend {
   font-size: 16px;
   line-height: 21px;
 }
@@ -689,9 +801,13 @@ p.footer-copyright {
   line-height: 21px;
   text-transform: uppercase;
   color: var(--basic-white);
+  padding-left: 20px;
 }
 
 .price-output {
+  border: 2px solid var(--basic-white);
+  display: flex;
+  justify-content: space-around;
   font-weight: normal;
   font-size: 14px;
   line-height: 21px;
@@ -709,71 +825,90 @@ p.footer-copyright {
 .infrastructure-fields,
 .accommodation-fields {
   border: none;
-  margin-top: 30px;
   text-align: left;
 }
-
 /* Убираем буллеты у элементов списков */
+
 .infrastructure-fields li,
 .accommodation-fields li{
   list-style: none;
 }
 
-.filter {
-  display: grid;
-  grid-template-columns: 222px 281px 291px auto;
-  grid-template-rows: 217px;
-}
-
-.infrastructure-fields {
-  grid-column: 1 / 2;
-  grid-row: 1 / 2;
-}
-
-.accommodation-fields {
-  grid-column: 2 / 3;
-  grid-row: 1 / 2;
-}
-
-.range-selector-and-submit {
-  margin-top: 30px;
-  border: none;
-  grid-column: 4 / 5;
-  grid-row: 1 / 2;
-}
-
-.price-output {
-  border: 2px solid var(--basic-white);
-  display: flex;
-  justify-content: space-around;
-}
-
-button.filter-submit {
-  margin-top: 50px;
-}
-
-/* Неудачная попытка сделать грид */
-/*
+/* Теперь сделаем общий грид для секции, в которой есть элементы управления сортировкой полученных результатов поиска гостиниц, а также сам список гостиниц */
 .hotels-found {
   display: grid;
-  grid-template-columns: 222px 281px 291px auto;
-  grid-template-rows: 86px 151px 152px 150px;
+  grid-template-rows: 86px 454px;
+}
+
+.sorting-controls-container {
+  grid-row: 1 / 2;
+}
+
+.hotels-list {
+  grid-row: 2 / 3;
+}
+
+/* Делаем свой грид для элементов управления сортировкой результатов поиска */
+.sorting-controls-container {
+  display: grid;
+  grid-template-columns: 72px 147px 92px 89px 81px 109px 220px 317px 73px;
+  grid-template-rows: 86px;
+  align-items: center;
+  justify-items: right;
 }
 
 .found {
-  grid-column: 1 / 2;
-  grid-row: 1 / 2;
+  grid-column: 2 / 3;
+  margin: 0;
+  padding: 0;
+  justify-self: left;
 }
 
 .sort-by {
-  grid-column: 2 / 3;
-  grid-row: 1 / 2;
+  grid-column: 3 / 4;
+  margin: 0;
+  padding: 0;
 }
 
-.sort-by-text-buttons {
-  grid-column: 3 / 4;
+
+.by-price {
+  grid-column: 4 / 5;
+  margin: 0;
+  padding: 0;
+}
+
+.by-type {
+  grid-column: 5 / 6;
+  margin: 0;
+  padding: 0;
+}
+
+.by-rating {
+  grid-column: 6 / 7;
+  margin: 0;
+  padding: 0;
+}
+
+.ascending-sort,
+.descending-sort {
+  width: 13px;
+  height: 12px;
+  border: none;
+  background: transparent;
+  margin: 0;
+  padding: 0;
+}
+
+.ascending-sort {
+  grid-column: 8 / 9;
   grid-row: 1 / 2;
-} */
+  margin-right: 23px;
+}
+
+.descending-sort {
+  grid-column: 8 / 9;
+  grid-row: 1 / 2;
+}
 
 .hotels-list li{
   list-style: none;
@@ -794,7 +929,6 @@ button.sort-by-text {
   background-color: transparent;
   border: none;
   color: var(--basic-black);
-  margin: 30px;
 }
 
 button.sort-by-text {
@@ -812,11 +946,102 @@ button.sort-by-text:active {
   border-bottom: none;
 }
 
+/* Теперь сделаем грид для списка гостиниц */
+
+.hotels-list {
+  display: grid;
+  grid-template-rows: 150px 150px 150px;
+}
+
+.hotels-list li:nth-child(1) {
+  grid-row: 1 / 2;
+}
+
+.hotels-list li:nth-child(2) {
+  grid-row: 2 / 3;
+}
+
+.hotels-list li:nth-child(3) {
+  grid-row: 3 / 4;
+}
+
+/* Теперь сделаем каждый пункт списка грид-контейнером */
+
+.hotels-list li:nth-child(1),
+.hotels-list li:nth-child(2),
+.hotels-list li:nth-child(3) {
+  display: grid;
+  grid-template-columns: 73px 135px 29px 110px 6px 142px 522px 110px 73px;
+  grid-template-rows: 51px 28px 42px 30px;
+  text-align: left;
+  align-items: flex-end;
+}
+
+.hotel-photo {
+  grid-column: 2 / 3;
+  grid-row: 1 / 4;
+}
+
+.hotel-link {
+  grid-column: 4 / 7;
+  grid-row: 1 / 2;
+}
+
+.accommodation-type,
+.hotel-button.details{
+  grid-column: 4 / 5;
+  margin: 0;
+  padding: 0;
+}
+
+.accommodation-type {
+  grid-row: 2 / 3;
+}
+
+.hotel-button.details {
+  grid-row: 3 / 4;
+}
+
+.price-from,
+.hotel-button.reserve {
+  grid-column: 6 / 7;
+  margin: 0;
+  padding: 0;
+}
+
+.price-from {
+  grid-row: 2 / 3;
+}
+
+.hotel-button.reserve {
+  grid-row: 3 / 4;
+}
+
+.rating,
+.rating-star-wrapper {
+  grid-column: 8 / 9;
+  margin: 0;
+  padding: 0;
+}
+
+.rating-star-wrapper {
+  grid-row: 1 / 2;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.rating {
+  grid-row: 3 / 4;
+  text-align: center;
+}
+
 h3.hotel-name {
   font-weight: bold;
   font-size: 21px;
   line-height: 26px;
   text-transform: uppercase;
+  margin: 0;
+  padding: 0;
 }
 
 .hotel-link {
@@ -843,7 +1068,7 @@ h3.hotel-name {
 
 .rating-wrapper {
   background-color: var(--lighter-gray);
-  padding: 5px 20px;
+  padding: 5px 12px;
   color: var(--gray-for-rating);
 }
 
@@ -860,6 +1085,7 @@ h3.hotel-name {
 .hotel-button.details {
   width: 110px;
   background-color: var(--special-blue);
+  padding: 0;
 }
 
 .hotel-button.details:hover {
@@ -874,6 +1100,7 @@ h3.hotel-name {
 .hotel-button.reserve {
   width: 142px;
   background-color: var(--basic-brown);
+  padding: 0;
 }
 
 .hotel-button.reserve:hover {

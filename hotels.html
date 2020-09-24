@@ -1,38 +1,33 @@
 <!DOCTYPE html>
 <!-- добавим всей странице класс page, чтобы не использовать глобальные селекторы-->
 <html class="page" lang="ru">
-  <head>
-    <meta charset="utf-8">
-    <title>HTML Academy: Седона</title>
-    <!-- подключаем шрифт из Google Fonts (в макете, если верить Фигме, используется PT Sans -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=PT+Sans:wght@400;700&display=swap">
-    <!-- подключаем normalize.css (предварительно скачав его) и основной стилевой файл -->
-    <link href="css/normalize.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
-  </head>
+<head>
+  <meta charset="utf-8">
+  <title>HTML Academy: Седона</title>
+  <!-- подключаем шрифт из Google Fonts (в макете, если верить Фигме, используется PT Sans -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=PT+Sans:wght@400;700&display=swap">
+  <!-- подключаем normalize.css (предварительно скачав его) и основной стилевой файл -->
+  <link href="css/normalize.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+</head>
 <!-- тут делаем то же самое - добавляем класс для body-->
-  <body class="page-body">
-<!-- Добавим классы для header,nav и логотипа-->
-    <header class="main-header">
-      <nav class="main-navigation">
-        <a class="main-header-logo">
-          <img src="img/logo.svg" width="138" height="70" alt="Логотип CITY OF SEDONA">
-        </a>
-        <!-- на данном этапе делаем как в демке "Барбершоп": добавляем 2 дива (один будет видимо для горизонтального позиционирования, другой - для вертикального, но это не точно=)) -->
-        <div class="main-navigation-wrapper">
-          <div class="container">
-            <ul class="site-navigation">
-              <li><a href="blank.html">Информация</a></li>
-              <li><a href="blank.html">Фото и видео</a></li>
-              <li><a href="blank.html">Карта штата</a></li>
-              <li><a href="hotels.html">Гостиницы</a></li>
-            </ul>
-          </div>
-        </div>
-        <!-- т.к. список у нас не единственный, а стилизация списков разная, то нам надо каждому списку добавить свой класс -->
-      </nav>
-    </header>
-    <main class="container">
+<body class="hotels-page-body">
+<div class="hotels-content-wrapper">
+  <!-- Добавим классы для header,nav и логотипа-->
+  <header class="header-block">
+    <nav class="main-navigation">
+      <a href="#" class="main-header-logo"><img src="img/logo.svg" width="138" height="70" alt="Логотип CITY OF SEDONA"></a>
+      <ul class="site-navigation">
+        <li><a href="blank.html">Информация</a></li>
+        <li><a href="blank.html">Фото и видео</a></li>
+        <li><a href="blank.html">Карта штата</a></li>
+        <li><a href="hotels.html">Гостиницы</a></li>
+      </ul>
+      <!-- т.к. список у нас не единственный, а стилизация списков разная, то нам надо каждому списку добавить свой класс -->
+    </nav>
+  </header>
+
+    <main class="hotels-main-block">
       <!-- на странице с отелями никаких заголовков на макете не видно,
        поэтому добавим заголовок (который потом скроем) для описания содержимого страницы-->
       <h1 class="visually-hidden">Гостиницы Седоны</h1>
@@ -42,7 +37,7 @@
         <!-- Добавим форму -->
         <form class="filter" method="get" action="#">
           <!-- Филдсэты -->
-          <fieldset class="infrastructure-fields">
+          <fieldset class="infrastructure-fields-block">
             <legend class="infrastructure-legend">Инфраструктура</legend>
             <ul class="infrastructure-fields">
               <li class="filter-option">
@@ -59,7 +54,7 @@
               </li>
             </ul>
           </fieldset>
-          <fieldset class="accommodation-fields">
+          <fieldset class="accommodation-fields-block">
             <legend class="accommodation-legend">Тип жилья</legend>
             <ul class="accommodation-fields">
               <li class="filter-option">
@@ -77,13 +72,15 @@
             </ul>
           </fieldset>
           <fieldset class="range-selector-and-submit">
-            <label for="range">Стоимость в сутки (Р):</label>
-            <div class="price-output">
+            <legend class="range-legend">Стоимость в сутки (Р):</legend>
+            <div class="price-output-box">
+             <div class="price-output">
               <output name="price-start">от 0</output>
               <output name="price-end">до 3000</output>
+             </div>
+             <input type="range" min="0" max="3000" name="range" id="range" class="range-input">
+             <button type="submit" class="filter-submit">Показать</button>
             </div>
-            <input type="range" min="0" max="3000" name="range" id="range">
-            <button type="submit" class="filter-submit">Показать</button>
           </fieldset>
         </form>
       </section>
@@ -91,16 +88,15 @@
       <section class="hotels-found">
         <!-- Этот заголовок будет скрыт-->
         <h2 class="visually-hidden">Найденные гостиницы</h2>
-        <p class="found">Найдено: 3</p>
-        <p class="sort-by">Сортировка:</p>
-        <!-- в данном блоке разметку сделал исходя из того, что это кнопки-->
-        <p class="sort-by-text-buttons">
-          <button type="button" class="sort-by-text">По цене</button>
-          <button type="button" class="sort-by-text">По типу</button>
-          <button type="button" class="sort-by-text">По рейтингу</button>
-          <img src="img/icon-up-dir.svg" width="11" height="10" alt="Стрелка вверх (сортировка по возрастанию)">
-          <img src="img/icon-down-dir.svg" width="11" height="10" alt="Стрелка вниз (сортировка по убыванию)">
-        </p>
+        <div class="sorting-controls-container">
+          <p class="found">Найдено: 3</p>
+          <p class="sort-by">Сортировка:</p>
+          <button type="button" class="sort-by-text by-price">По цене</button>
+          <button type="button" class="sort-by-text by-type">По типу</button>
+          <button type="button" class="sort-by-text by-rating">По рейтингу</button>
+          <button type="button" class="ascending-sort"><img src="img/icon-up-dir.svg" width="11" height="10" alt="Стрелка вверх (сортировка по возрастанию)"></button>
+          <button type="button" class="descending-sort"><img src="img/icon-down-dir.svg" width="11" height="10" alt="Стрелка вниз (сортировка по убыванию)"></button>
+        </div>
         <ul class="hotels-list">
           <li>
             <a class="hotel-link" href=""><h3 class="hotel-name">Amara Resort & Spa</h3></a>
@@ -109,15 +105,13 @@
             <p class="rating"><span class="rating-wrapper">Рейтинг: 8,5</span></p>
             <button type="button" class="hotel-button details">Подробнее</button>
             <button type="button" class="hotel-button reserve">Забронировать</button>
-            <p>
-              <img src="img/star.svg" width="19" height="17" alt="Изображение звезды рейтинга">
-              <img src="img/star.svg" width="19" height="17" alt="Изображение звезды рейтинга">
-              <img src="img/star.svg" width="19" height="17" alt="Изображение звезды рейтинга">
-              <img src="img/star.svg" width="19" height="17" alt="Изображение звезды рейтинга">
-            </p>
-            <p>
-              <img src="img/amara.jpg" width="135" height="90" alt="Фото Amara Resort & Spa">
-            </p>
+            <div class="rating-star-wrapper">
+              <img src="img/star.svg" width="19" height="17" alt="Изображение звезды рейтинга" class="rating-star">
+              <img src="img/star.svg" width="19" height="17" alt="Изображение звезды рейтинга" class="rating-star">
+              <img src="img/star.svg" width="19" height="17" alt="Изображение звезды рейтинга" class="rating-star">
+              <img src="img/star.svg" width="19" height="17" alt="Изображение звезды рейтинга" class="rating-star">
+            </div>
+              <img src="img/amara.jpg" width="135" height="90" alt="Фото Amara Resort & Spa" class="hotel-photo">
           </li>
           <li>
             <a class="hotel-link" href=""><h3 class="hotel-name">Desert Quail Inn</h3></a>
@@ -126,14 +120,12 @@
             <p class="rating"><span class="rating-wrapper">Рейтинг: 8,9</span></p>
             <button type="button" class="hotel-button details">Подробнее</button>
             <button type="button" class="hotel-button reserve">Забронировать</button>
-            <p>
-              <img src="img/star.svg" width="19" height="17" alt="Изображение звезды рейтинга">
-              <img src="img/star.svg" width="19" height="17" alt="Изображение звезды рейтинга">
-              <img src="img/star.svg" width="19" height="17" alt="Изображение звезды рейтинга">
-            </p>
-            <p>
-              <img src="img/desert.jpg" width="135" height="90" alt="Фото Desert Quail Inn">
-            </p>
+            <div class="rating-star-wrapper">
+            <img src="img/star.svg" width="19" height="17" alt="Изображение звезды рейтинга" class="rating-star">
+            <img src="img/star.svg" width="19" height="17" alt="Изображение звезды рейтинга" class="rating-star">
+            <img src="img/star.svg" width="19" height="17" alt="Изображение звезды рейтинга" class="rating-star">
+            </div>
+            <img src="img/desert.jpg" width="135" height="90" alt="Фото Desert Quail Inn" class="hotel-photo">
           </li>
           <li>
             <a class="hotel-link" href=""><h3 class="hotel-name">Villas at Poco Diablo</h3></a>
@@ -142,38 +134,43 @@
             <p class="rating"><span class="rating-wrapper">Рейтинг: 9,2</span></p>
             <button type="button" class="hotel-button details">Подробнее</button>
             <button type="button" class="hotel-button reserve">Забронировать</button>
-            <p>
-              <img src="img/star.svg" width="19" height="17" alt="Изображение звезды рейтинга">
-              <img src="img/star.svg" width="19" height="17" alt="Изображение звезды рейтинга">
-            </p>
-            <p>
-              <img src="img/villas.jpg" width="135" height="90" alt="Фото Villas at Poco Diablo">
-            </p>
+            <div class="rating-star-wrapper">
+            <img src="img/star.svg" width="19" height="17" alt="Изображение звезды рейтинга" class="rating-star">
+            <img src="img/star.svg" width="19" height="17" alt="Изображение звезды рейтинга" class="rating-star">
+            </div>
+            <img src="img/villas.jpg" width="135" height="90" alt="Фото Villas at Poco Diablo" class="hotel-photo">
           </li>
         </ul>
       </section>
     </main>
-    <footer class="page-footer main-footer">
-      <section class="footer-contacts">
-        <p class="footer-contacts-left">
-          #visitSEDONA<br>
-          ТЕЛ:+7(495) 666-01-66
-        </p>
-      </section>
-      <section class="footer-social">
-        <ul class="footer-social-list">
-          <li>
-            <a class="social-button" href="#"><img src="img/twitter.svg" width="46" height="48" alt="Логотип Twitter"></a>
-          </li>
-          <li>
-            <a class="social-button" href="#"><img src="img/facebook.svg" width="46" height="48" alt="Логотип Facebook"></a>
-          </li>
-          <li>
-            <a class="social-button" href="#"><img src="img/youtube.svg" width="46" height="48" alt="Логотип Youtube"></a>
-          </li>
-        </ul>
-      </section>
-      <p class="footer-copyright">Website by<a href="#"><img src="img/logo-htmlacademy.svg" width="115" height="41" alt="HTMLAcademy лого" class="academy-logo"></a></p>
-    </footer>
-  </body>
+
+  <footer class="footer-block">
+    <section class="footer-contacts">
+      <p class="footer-contacts-hashtag">
+        #visitSEDONA
+      </p>
+      <p class="footer-contacts-phone">
+        ТЕЛ:&nbsp;+7(495) 666-01-66
+      </p>
+    </section>
+    <section class="footer-social">
+      <ul class="footer-social-list">
+        <li>
+          <a class="social-button" href="#"><img src="img/twitter.svg" width="46" height="48" alt="Логотип Twitter"></a>
+        </li>
+        <li>
+          <a class="social-button" href="#"><img src="img/facebook.svg" width="46" height="48" alt="Логотип Facebook"></a>
+        </li>
+        <li>
+          <a class="social-button" href="#"><img src="img/youtube.svg" width="46" height="48" alt="Логотип Youtube"></a>
+        </li>
+      </ul>
+    </section>
+    <div class="copyright-wrapper">
+      <p class="footer-copyright">Website by</p>
+      <a href="#" class="copyright-logo"><img src="img/logo-htmlacademy.svg" width="115" height="41" alt="HTMLAcademy лого" class="academy-logo"></a>
+    </div>
+  </footer>
+</div>
+</body>
 </html>
