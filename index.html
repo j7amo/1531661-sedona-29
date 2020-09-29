@@ -17,12 +17,15 @@
       <header class="header-block">
         <nav class="main-navigation">
               <a href="#" class="main-header-logo"><img src="img/logo.svg" width="138" height="70" alt="Логотип CITY OF SEDONA"></a>
-              <ul class="site-navigation">
+             <!-- Сделаем 2 отдельных списка пунктов навигации по сайту. Это нужно для того, чтобы можно было гибко добавлять/удалять пункты -->
+               <ul class="site-navigation-left">
                 <li><a href="blank.html">Информация</a></li>
                 <li><a href="blank.html">Фото и видео</a></li>
+               </ul>
+               <ul class="site-navigation-right">
                 <li><a href="blank.html">Карта штата</a></li>
                 <li><a href="hotels.html">Гостиницы</a></li>
-              </ul>
+               </ul>
           <!-- т.к. список у нас не единственный, а стилизация списков разная, то нам надо каждому списку добавить свой класс -->
         </nav>
       </header>
@@ -112,17 +115,27 @@
             </div>
             <div class="hotel-search-form-main-content">
                 <label for="arrival-date" class="arrival-date">Дата заезда:</label>
-                <input id="arrival-date" type="date" name="arrival-date" placeholder="24 апреля 2017" class="arrival-date">
+                <div class="arrival-date-container">
+                  <input id="arrival-date" type="date" name="arrival-date" placeholder="24 апреля 2017" class="arrival-date">
+                  <button type="button" class="button calendar"></button>
+                </div>
                 <label for="departure-date" class="departure-date">Дата выезда:</label>
-                <input id="departure-date" type="date" name="departure-date" placeholder="4 июля 2017" class="departure-date">
+                <div class="departure-date-container">
+                  <input id="departure-date" type="date" name="departure-date" placeholder="4 июля 2017" class="departure-date">
+                  <button type="button" class="button calendar"></button>
+                </div>
                 <label for="number-of-adults" class="number-of-adults">Взрослые:</label>
-               <!-- <button type="button" class="button adult-number-decrease"><img src="img/minus.svg" width="12" height="3" alt="Кнопка уменьшения значения"></button> -->
-                <input id="number-of-adults" type="text" name="number-of-adults" placeholder="2" class="number-of-adults">
-               <!-- <button type="button" class="button adult-number-increase"><img src="img/plus.svg" width="11" height="11" alt="Кнопка увеличения значения"></button> -->
+                <div class="number-of-adults-container">
+                  <button type="button" class="button adult-number-decrease"></button>
+                  <input id="number-of-adults" type="text" name="number-of-adults" placeholder="2" class="number-of-adults">
+                  <button type="button" class="button adult-number-increase"></button>
+                </div>
                 <label for="number-of-children" class="number-of-children">Дети:</label>
-               <!-- <button type="button" class="button children-number-decrease"><img src="img/minus.svg" width="12" height="3" alt="Кнопка уменьшения значения"></button> -->
-                <input id="number-of-children" type="text" name="number-of-children" placeholder="0" class="number-of-children">
-               <!-- <button type="button" class="button children-number-increase"><img src="img/plus.svg" width="11" height="11" alt="Кнопка увеличения значения"></button> -->
+                <div class="number-of-children-container">
+                  <button type="button" class="button children-number-decrease"></button>
+                  <input id="number-of-children" type="text" name="number-of-children" placeholder="0" class="number-of-children">
+                  <button type="button" class="button children-number-increase"></button>
+                </div>
                 <button type="submit" class="button form-bottom-search-submit">Найти</button>
             </div>
           </form>
@@ -143,20 +156,38 @@
         </section>
         <section class="footer-social">
           <ul class="footer-social-list">
-            <li>
-              <a class="social-button" href="#"><img src="img/twitter.svg" width="46" height="48" alt="Логотип Twitter"></a>
+            <li class="twitter-logo-container">
+              <a class="social-button" href="#">
+                <img src="img/twitter.svg" width="46" height="48" class="twitter-still" alt="Логотип Twitter">
+                <img src="img/twitter-hover.svg" width="46" height="48" class="twitter-hover" alt="Логотип Twitter">
+                <img src="img/twitter-active.svg" width="46" height="48" class="twitter-active" alt="Логотип Twitter">
+              </a>
             </li>
-            <li>
-              <a class="social-button" href="#"><img src="img/facebook.svg" width="46" height="48" alt="Логотип Facebook"></a>
+            <li class="facebook-logo-container">
+              <a class="social-button" href="#">
+                <img src="img/facebook.svg" width="46" height="48" class="facebook-still" alt="Логотип Facebook">
+                <img src="img/facebook-hover.svg" width="46" height="48" class="facebook-hover" alt="Логотип Facebook">
+                <img src="img/facebook-active.svg" width="46" height="48" class="facebook-active" alt="Логотип Facebook">
+              </a>
             </li>
-            <li>
-              <a class="social-button" href="#"><img src="img/youtube.svg" width="46" height="48" alt="Логотип Youtube"></a>
+            <li class="youtube-logo-container">
+              <a class="social-button" href="#">
+                <img src="img/youtube.svg" width="46" height="48" class="youtube-still" alt="Логотип Youtube">
+                <img src="img/youtube-hover.svg" width="46" height="48" class="youtube-hover" alt="Логотип Youtube">
+                <img src="img/youtube-active.svg" width="46" height="48" class="youtube-active" alt="Логотип Youtube">
+              </a>
             </li>
           </ul>
         </section>
         <div class="copyright-wrapper">
           <p class="footer-copyright">Website by</p>
-          <a href="#" class="copyright-logo"><img src="img/logo-htmlacademy.svg" width="115" height="41" alt="HTMLAcademy лого" class="academy-logo"></a>
+          <div class="copyright-logo-wrapper">
+            <a href="#" class="copyright-logo">
+              <img src="img/logo-htmlacademy.svg" width="115" height="41" alt="HTMLAcademy лого" class="academy-logo">
+              <img src="img/logo-htmlacademy-hover.svg" width="115" height="41" alt="HTMLAcademy лого" class="academy-logo-hover">
+              <img src="img/logo-htmlacademy-active.svg" width="115" height="41" alt="HTMLAcademy лого" class="academy-logo-active">
+            </a>
+          </div>
         </div>
       </footer>
     </div>

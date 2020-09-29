@@ -14,19 +14,21 @@
 <body class="hotels-page-body">
 <div class="hotels-content-wrapper">
   <!-- Добавим классы для header,nav и логотипа-->
-  <header class="header-block">
-    <nav class="main-navigation">
-      <a href="#" class="main-header-logo"><img src="img/logo.svg" width="138" height="70" alt="Логотип CITY OF SEDONA"></a>
-      <ul class="site-navigation">
-        <li><a href="blank.html">Информация</a></li>
-        <li><a href="blank.html">Фото и видео</a></li>
-        <li><a href="blank.html">Карта штата</a></li>
-        <li><a href="hotels.html">Гостиницы</a></li>
-      </ul>
-      <!-- т.к. список у нас не единственный, а стилизация списков разная, то нам надо каждому списку добавить свой класс -->
-    </nav>
-  </header>
-
+    <header class="header-block">
+      <nav class="main-navigation">
+        <a href="index.html" class="main-header-logo"><img src="img/logo.svg" width="138" height="70" alt="Логотип CITY OF SEDONA"></a>
+        <!-- Сделаем 2 отдельных списка пунктов навигации по сайту. Это нужно для того, чтобы можно было гибко добавлять/удалять пункты -->
+        <ul class="site-navigation-left">
+          <li><a href="blank.html">Информация</a></li>
+          <li><a href="blank.html">Фото и видео</a></li>
+        </ul>
+        <ul class="site-navigation-right">
+          <li><a href="blank.html">Карта штата</a></li>
+          <li><a href="hotels.html"><span class="active-page">Гостиницы</span></a></li>
+        </ul>
+        <!-- т.к. список у нас не единственный, а стилизация списков разная, то нам надо каждому списку добавить свой класс -->
+      </nav>
+    </header>
     <main class="hotels-main-block">
       <!-- на странице с отелями никаких заголовков на макете не видно,
        поэтому добавим заголовок (который потом скроем) для описания содержимого страницы-->
@@ -59,7 +61,7 @@
             <ul class="accommodation-fields">
               <li class="filter-option">
                 <input class="filter-option-checkbox" type="checkbox" checked name="hotel" id="hotel">
-                <label for="hotel">Отель</label>
+                <label for="hotel">Гостиница</label>
               </li>
               <li class="filter-option">
                 <input class="filter-option-checkbox" type="checkbox" checked name="parking-lot" id="motel">
@@ -94,8 +96,8 @@
           <button type="button" class="sort-by-text by-price">По цене</button>
           <button type="button" class="sort-by-text by-type">По типу</button>
           <button type="button" class="sort-by-text by-rating">По рейтингу</button>
-          <button type="button" class="ascending-sort"><img src="img/icon-up-dir.svg" width="11" height="10" alt="Стрелка вверх (сортировка по возрастанию)"></button>
-          <button type="button" class="descending-sort"><img src="img/icon-down-dir.svg" width="11" height="10" alt="Стрелка вниз (сортировка по убыванию)"></button>
+          <button type="button" class="ascending-sort"></button>
+          <button type="button" class="descending-sort"></button>
         </div>
         <ul class="hotels-list">
           <li>
@@ -155,20 +157,38 @@
     </section>
     <section class="footer-social">
       <ul class="footer-social-list">
-        <li>
-          <a class="social-button" href="#"><img src="img/twitter.svg" width="46" height="48" alt="Логотип Twitter"></a>
+        <li class="twitter-logo-container">
+          <a class="social-button" href="#">
+            <img src="img/twitter.svg" width="46" height="48" class="twitter-still" alt="Логотип Twitter">
+            <img src="img/twitter-hover.svg" width="46" height="48" class="twitter-hover" alt="Логотип Twitter">
+            <img src="img/twitter-active.svg" width="46" height="48" class="twitter-active" alt="Логотип Twitter">
+          </a>
         </li>
-        <li>
-          <a class="social-button" href="#"><img src="img/facebook.svg" width="46" height="48" alt="Логотип Facebook"></a>
+        <li class="facebook-logo-container">
+          <a class="social-button" href="#">
+            <img src="img/facebook.svg" width="46" height="48" class="facebook-still" alt="Логотип Facebook">
+            <img src="img/facebook-hover.svg" width="46" height="48" class="facebook-hover" alt="Логотип Facebook">
+            <img src="img/facebook-active.svg" width="46" height="48" class="facebook-active" alt="Логотип Facebook">
+          </a>
         </li>
-        <li>
-          <a class="social-button" href="#"><img src="img/youtube.svg" width="46" height="48" alt="Логотип Youtube"></a>
+        <li class="youtube-logo-container">
+          <a class="social-button" href="#">
+            <img src="img/youtube.svg" width="46" height="48" class="youtube-still" alt="Логотип Youtube">
+            <img src="img/youtube-hover.svg" width="46" height="48" class="youtube-hover" alt="Логотип Youtube">
+            <img src="img/youtube-active.svg" width="46" height="48" class="youtube-active" alt="Логотип Youtube">
+          </a>
         </li>
       </ul>
     </section>
     <div class="copyright-wrapper">
       <p class="footer-copyright">Website by</p>
-      <a href="#" class="copyright-logo"><img src="img/logo-htmlacademy.svg" width="115" height="41" alt="HTMLAcademy лого" class="academy-logo"></a>
+      <div class="copyright-logo-wrapper">
+        <a href="#" class="copyright-logo">
+           <img src="img/logo-htmlacademy.svg" width="115" height="41" alt="HTMLAcademy лого" class="academy-logo">
+           <img src="img/logo-htmlacademy-hover.svg" width="115" height="41" alt="HTMLAcademy лого" class="academy-logo-hover">
+           <img src="img/logo-htmlacademy-active.svg" width="115" height="41" alt="HTMLAcademy лого" class="academy-logo-active">
+        </a>
+      </div>
     </div>
   </footer>
 </div>

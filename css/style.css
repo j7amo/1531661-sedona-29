@@ -40,7 +40,7 @@
 
 body {
   min-width: 1200px;
-  height: 2762px;
+  /* height: 2762px; */
   margin: 0;
   padding: 0;
   font-family: "PT Sans", Arial, sans-serif;
@@ -56,13 +56,7 @@ body {
   text-align: center; /* ОТСЕБЯТИНА */
 }
 
-/* Отцентруем все блоки на странице */
-.content-wrapper {
-  width: 1200px;
-  margin: 0 auto;
-  background-color: var(--basic-white);
-}
-
+/* Добавим всей странице высоту в 100%. Это нужно, чтобы при нехватке контента подвал прижимался к нижней части страницы. */
 .page {
   height: 100%;
 }
@@ -82,20 +76,26 @@ a {
 /* Сделаем общую сетку для крупных блоков и разместим их в ней*/
 
 .content-wrapper {
+  /* Сделаем так называемый sticky footer */
+  min-height: 100%;
   display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: 56px 2586px 120px;
+  /* grid-template-rows: 56px 2586px 120px; */
+  grid-template-rows: min-content 2586px min-content; /* Здесь пришлось задать блоку main фиксированную ширину, чтобы избежать изменения размера этой области в результате раздувания футера при переполнении контента */
+  width: 1200px;
+  margin: 0 auto;
+  background-color: var(--basic-white);
 }
 
 .header-block {
-  height: 56px;
+  /* следующие 2 строки позволяют нам задать футеру минимальную высоту (то есть высоту, меньше которой он не может быть) и автоматическое увеличение его высоты в зав-ти от контента */
+  min-height: 56px;
+  height: auto;
   grid-column: 1 / -1;
   grid-row: 1 / 2;
   z-index: 1;
 }
 
 .main-block {
-  height: 2706px;
   grid-column: 1 / -1;
   grid-row: 2 / 4;
 }
@@ -105,8 +105,6 @@ a {
   grid-column: 1 / -1;
   grid-row: 3 / 4;
 }
-
-
 
 /* АУТЛАЙНЫ */
 
@@ -130,6 +128,12 @@ li {
 }
  */
 
+/* Стилизация активной страницы */
+
+.active-page {
+  color: var(--basic-brown);
+}
+
 
 .main-decoration-photo {
   background-image: url("../img/background.jpg");
@@ -148,30 +152,30 @@ ul {
   padding: 0;
 }
 
-/* Стилизуем текст в Навигации, добавим ему фон и уберём буллеты у элементов списка */
-
 /* Main navigation */
 
 .main-navigation {
+  min-height: 56px;
   font-size: 14px;
   line-height: 26px;
   color: var(--basic-black);
   background-color: transparent;
-
   display: grid;
-  grid-template-rows: 56px;
+  grid-template-columns: 531px 138px 531px;
 }
 
 .main-header-logo {
-  grid-column: 1 / -1;
+  grid-column: 2 / 3;
   grid-row: 1 / -1;
+  margin-bottom: -50px; /* этот марджин нужен для того, чтобы логотип не влиял на увеличение высоты шапки */
 }
 
+/* Это шапка на гридах. Ниже будет версия шапки на флексах (её и будем использовать в проекте)
 .site-navigation {
   grid-column: 1 / -1;
   grid-row: 1 / -1;
   display: grid;
-  grid-template-rows: 56px;
+  grid-template-rows: min-content;
   grid-template-columns: 72px 228px 228px 144px 228px 228px 72px;
   list-style: none;
 }
@@ -199,25 +203,94 @@ ul {
   text-align: right;
   grid-column: 6 / 7;
 }
+*/
 
-/* Пользовательская навигация */
+/* Шапка на флексах */
 
-/* User navigation */
+.site-navigation-left {
+  grid-column: 1 / 2;
+  grid-row: 1 / -1;
+  display: flex;
+  align-items: center;
+  list-style: none;
+  text-align: left;
+}
+
+.site-navigation-right {
+  grid-column: 3 / 4;
+  grid-row: 1 / -1;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  list-style: none;
+  text-align: right;
+}
+
+.site-navigation-left li,
+.site-navigation-right li{
+  width: 120px;
+}
+
+/* стилизуем левую часть навигации */
+
+.site-navigation-left li:first-child {
+  margin-left: 72px;
+  margin-right: auto;
+}
+
+.site-navigation-left li:last-child {
+  margin-right: 111px;
+  margin-left: auto;
+}
+
+/* правило для любых элементов, которые одновременно НЕ первые и НЕ последние */
+.site-navigation-left li:not(:first-child):not(:last-child) {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* стилизуем правую часть навигации */
+
+.site-navigation-right li:first-child {
+  margin-left: 111px;
+  margin-right: auto;
+}
+
+.site-navigation-right li:last-child {
+  margin-right: 72px;
+  margin-left: auto;
+}
+
+/* правило для любых элементов, которые одновременно НЕ первые и НЕ последние */
+.site-navigation-right li:not(:first-child):not(:last-child) {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* стилизуем правую часть навигации */
+
+/* Сделаем "распорку" для пунктов навигации. Моё видение такое: количество пунктов меню чётное, распорка стоит всегда посередине, она невидимая и не позволяет пунктам меню залезать на логотип
+.divider {
+  width: 50px;
+} */
+
+/* Состояния навигации */
 
 /* в состоянии покоя */
-.site-navigation a{
+.site-navigation-left a,
+.site-navigation-right a{
   color: var(--basic-black);
 }
 
 /* при наведении */
-.site-navigation a:hover,
-.footer-social-list a:hover{
+.site-navigation-left a:hover,
+.site-navigation-right a:hover {
   color: var(--special-blue);
 }
 
 /* при нажатии */
-.site-navigation a:active,
-.footer-social-list a:active{
+.site-navigation-left a:active,
+.site-navigation-right a:active {
   color: var(--basic-black-opacity-03);
 }
 
@@ -414,57 +487,6 @@ label {
   text-align: left;
 }
 
-/* Делаем форму на гридах */
-
-.hotel-search-form-main-content {
-  display: grid;
-  grid-template-columns: 55px 112px 114px 118px 114px 55px;
-  grid-template-rows: 55px 38px 29px 38px 30px 38px 54px 58px 55px;
-  align-items: baseline;
-}
-
-label.arrival-date {
-  grid-column: 2 / 3;
-  grid-row: 2 / 3;
-}
-
-input.arrival-date {
-  grid-column: 3 / 6;
-  grid-row: 2 / 3;
-}
-
-label.departure-date {
-  grid-column: 2 / 3;
-  grid-row: 4 / 5;
-}
-
-input.departure-date {
-  grid-column: 3 / 6;
-  grid-row: 4 / 5;
-}
-
-label.number-of-adults {
-  grid-column: 2 / 3;
-  grid-row: 6 / 7;
-}
-
-input.number-of-adults {
-  grid-column: 3 / 4;
-  grid-row: 6 / 7;
-  text-align: center;
-}
-
-label.number-of-children {
-  grid-column: 4 / 5;
-  grid-row: 6 / 7;
-}
-
-input.number-of-children {
-  grid-column: 5 / 6;
-  grid-row: 6 / 7;
-  text-align: center;
-}
-
 .hotel-search-form-main-content input{
   font-weight: bold;
   font-size: 14px;
@@ -474,6 +496,11 @@ input.number-of-children {
   color: var(--basic-black);
   background-color: var(--lighter-gray);
   border: none;
+}
+
+input.number-of-children,
+input.number-of-adults {
+  padding: 5px 0;
 }
 
 .hotel-search-form-main-content input:hover {
@@ -494,6 +521,188 @@ input::-webkit-input-placeholder {
 input.main-page-form {
   background-color: var(--lighter-gray);
 }
+
+/* Делаем форму на гридах */
+
+.hotel-search-form-main-content {
+  display: grid;
+  grid-template-columns: 55px 112px 114px 118px 114px 55px;
+  grid-template-rows: 55px 38px 29px 38px 30px 38px 54px 58px 55px;
+  align-items: center;
+}
+
+label.arrival-date {
+  grid-column: 2 / 3;
+  grid-row: 2 / 3;
+}
+
+label.departure-date {
+  grid-column: 2 / 3;
+  grid-row: 4 / 5;
+}
+
+label.number-of-adults {
+  grid-column: 2 / 3;
+  grid-row: 6 / 7;
+}
+
+label.number-of-children {
+  grid-column: 4 / 5;
+  grid-row: 6 / 7;
+  text-align: right;
+  padding-right: 26px;
+}
+
+/*
+input.arrival-date {
+  grid-column: 3 / 6;
+  grid-row: 2 / 3;
+}
+
+input.departure-date {
+  grid-column: 3 / 6;
+  grid-row: 4 / 5;
+}*/
+
+/* Сделаем локальные гриды для размещения в них инпутов и кнопок + - */
+
+.arrival-date-container {
+  grid-column: 3 / 6;
+  grid-row: 2 / 3;
+  display: grid;
+  grid-template-columns: 9fr 1fr;
+  grid-template-rows: 1fr;
+  align-items: center;
+  width: 346px;
+  height: 38px;
+}
+
+.departure-date-container {
+  grid-column: 3 / 6;
+  grid-row: 4 / 5;
+  display: grid;
+  grid-template-columns: 9fr 1fr;
+  grid-template-rows: 1fr;
+  align-items: center;
+  width: 346px;
+  height: 38px;
+}
+
+.departure-date,
+.arrival-date {
+  grid-column: 1 / -1;
+  grid-row: 1 / 2;
+}
+
+.calendar {
+  grid-column: 2 / 3;
+  grid-row: 1 / 2;
+  background-image: url("../img/calendar.svg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: var(--lighter-gray);
+  padding: 0;
+  align-self: center;
+  height: 36px;
+  z-index: 1;
+}
+
+.calendar:hover {
+  background-image: url("../img/calendar-hover.svg");
+}
+
+.calendar:active {
+  background-image: url("../img/calendar-active.svg");
+}
+
+.number-of-adults-container {
+  width: 114px;
+  height: 38px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr;
+  align-items: center;
+  grid-column: 3 / 4;
+  grid-row: 6 / 7;
+  text-align: center;
+}
+.number-of-children-container {
+  width: 114px;
+  height: 38px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr;
+  align-items: center;
+  grid-column: 5 / 6;
+  grid-row: 6 / 7;
+  text-align: center;
+}
+
+/* Теперь разместим инпут и кнопки в гриде */
+
+input.number-of-adults,
+input.number-of-children {
+  grid-column: 1 / -1;
+  grid-row: 1 / 2;
+  text-align: center;
+}
+
+button.adult-number-decrease,
+button.children-number-decrease {
+  grid-column: 1 / 2;
+  grid-row: 1 / 2;
+  z-index: 1;
+}
+
+button.adult-number-increase,
+button.children-number-increase {
+  grid-column: 3 / 4;
+  grid-row: 1 / 2;
+}
+
+/* Теперь стилизуем состояния этих кнопок */
+
+.adult-number-decrease,
+.children-number-decrease {
+  background-image: url("../img/minus.svg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: transparent;
+  padding: 0;
+  height: 100%;
+}
+
+.adult-number-decrease:hover,
+.children-number-decrease:hover {
+  background-image: url("../img/minus-hover.svg");
+}
+
+.adult-number-decrease:active,
+.children-number-decrease:active {
+  background-image: url("../img/minus-active.svg");
+}
+
+.adult-number-increase,
+.children-number-increase {
+  background-image: url("../img/plus.svg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: transparent;
+  padding: 0;
+  height: 100%;
+}
+
+.adult-number-increase:hover,
+.children-number-increase:hover {
+  background-image: url("../img/plus-hover.svg");
+}
+
+.adult-number-increase:active,
+.children-number-increase:active {
+  background-image: url("../img/plus-active.svg");
+}
+
+
 
 .map {
   height: 593px;
@@ -557,12 +766,13 @@ input.main-page-form {
   border: none;
 }
 
+/*
 .adult-number-decrease,
 .adult-number-increase,
 .children-number-decrease,
 .children-number-increase {
   background-color: transparent;
-}
+}*/
 
 button.filter-submit {
   width: 137px;
@@ -586,24 +796,25 @@ button.filter-submit:hover {
 /* Footer */
 
 .footer-block {
-  display: grid;
+  display: flex;
   width: 1200px;
-  height: 120px;
-  grid-template-columns: 1fr 1fr 1fr;
+  /* следующие 2 строки позволяют нам задать футеру минимальную высоту (то есть высоту, меньше которой он не может быть) и автоматическое увеличение его высоты в зав-ти от контента */
+  min-height: 120px;
+  height: auto;
   background-color: var(--basic-white-opacity-09);
 }
 
 .footer-contacts,
 .footer-social,
 .copyright-wrapper {
-  height: 120px;
+  flex-grow: 1;
+  width: 400px;
 }
 
 .footer-contacts {
   font-size: 21px;
   font-weight: bold;
   line-height: 26px;
-  padding-left: 75px;
 }
 
 .footer-contacts p,
@@ -614,6 +825,11 @@ button.filter-submit:hover {
 
 p.footer-contacts-hashtag {
   margin-top: 24px;
+  margin-left: 75px;
+}
+
+p.footer-contacts-phone {
+  margin-left: 75px;
 }
 
 p.footer-contacts-hashtag,
@@ -632,7 +848,9 @@ p.footer-contacts-phone {
 }
 
 .footer-social-list {
+
   display: flex;
+  flex-wrap: wrap; /* добавим перенос элементов в флекс-контейнере для того, чтобы при добавлении новых иконок (переполнение) контент переносился и вёрстка не ломалась */
   flex-direction: row;
   justify-content: center;
   margin-top: 36px;
@@ -640,46 +858,103 @@ p.footer-contacts-phone {
 }
 
 .footer-social-list li {
+  position: relative;
   margin-right: 6px;
   list-style: none;
 }
 
+.twitter-hover,
+.twitter-active,
+.facebook-hover,
+.facebook-active,
+.youtube-hover,
+.youtube-active {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 99;
+}
+
+.twitter-logo-container:hover .twitter-hover,
+.twitter-logo-container:active .twitter-active,
+.facebook-logo-container:hover .facebook-hover,
+.facebook-logo-container:active .facebook-active,
+.youtube-logo-container:hover .youtube-hover,
+.youtube-logo-container:active .youtube-active {
+  display: inline;
+}
+
 .copyright-wrapper {
-  display: grid;
-  grid-template-columns: 1fr 2fr;
+  display: flex;
 }
 
 p.footer-copyright {
-  height: 41px;
+  max-width: 277px; /* задаём максимальную ширину для блока с текстом, чтобы в случае его возможного переполнения вёрстка не сломалась, при этом мы понимаем, что соседний блок с лого будет сдвигаться */
   line-height: 26px;
   margin-top: 50px;
   padding: 0;
-  padding-left: 15px;
+  margin-left: auto;
+  /*flex-grow: 1;*/
   text-align: right;
 }
 
 .copyright-logo {
   margin-top: 38px;
   padding: 0;
-  padding-left: 10px;
-  text-align: left;
 }
+
+.copyright-logo-wrapper {
+  position: relative;
+  min-width: 115px; /* Задаём минимальную ширину для данного блока, чтобы при наполнении текстом соседнего блока, текущий не вылез за границы основного содержимого сайта */
+  padding-top: 38px;
+  padding-left: 8px;
+  margin-right: 138px;
+  text-align: left;
+  /*flex-grow: 3;*/
+}
+
+.academy-logo-hover,
+.academy-logo-active{
+  display: none;
+  position: absolute;
+  top: 38px;
+  left: 8px;
+  z-index: 99;
+}
+
+.copyright-logo-wrapper:hover .academy-logo-hover {
+  display: inline;
+}
+
+.copyright-logo-wrapper:active .academy-logo-active {
+  display: inline;
+}
+
 /* С ГЛАВНОЙ ЗАКОНЧИЛИ!!! */
 
 
 /* Сюда допишем стилизацию страницы hotels.html */
+
 
 .hotels-page-body {
   height: 933px;
   min-height: 100%;
 }
 
+/* зададим минимальную высоту для блока main для того, чтобы он не уменьшался при раздувании футера, т.е. чтобы футер смещался при увеличении только вниз */
+.hotels-main-block {
+  min-height: 100%;
+}
+
 /* Сначала сделаем общий грид. В нём разместим хедер, мэйн и футер */
 
 .hotels-content-wrapper {
+  /* Сделаем так называемый sticky footer */
+  min-height: 100%;
   display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: 56px 757px 120px;
+  /* grid-template-rows: 56px 757px 120px; */
+  grid-template-rows: min-content 1fr min-content;
   width: 1200px;
   margin: 0 auto;
   background-color: var(--basic-white);
@@ -894,20 +1169,45 @@ li.filter-option {
   width: 13px;
   height: 12px;
   border: none;
-  background: transparent;
   margin: 0;
   padding: 0;
 }
 
 .ascending-sort {
+  background-image: url("../img/icon-up-dir-still.svg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: var(--basic-white);
   grid-column: 8 / 9;
   grid-row: 1 / 2;
   margin-right: 23px;
 }
 
+/* Стилизуем состояния кнопок сортировки результатов по возрастанию и убыванию */
+
+.ascending-sort:hover {
+  background-image: url("../img/icon-up-dir-hover.svg");
+}
+
+.ascending-sort:active {
+  background-image: url("../img/icon-up-dir-active.svg");
+}
+
 .descending-sort {
+  background-image: url("../img/icon-down-dir-still.svg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: var(--basic-white);
   grid-column: 8 / 9;
   grid-row: 1 / 2;
+}
+
+.descending-sort:hover {
+  background-image: url("../img/icon-down-dir-hover.svg");
+}
+
+.descending-sort:active {
+  background-image: url("../img/icon-down-dir-active.svg");
 }
 
 .hotels-list li{
