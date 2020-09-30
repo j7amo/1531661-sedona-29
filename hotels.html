@@ -37,21 +37,21 @@
       <section class="hotels-filter">
         <h2 class="visually-hidden">Фильтр гостиниц</h2>
         <!-- Добавим форму -->
-        <form class="filter" method="get" action="#">
+        <form class="filter" method="get" action="#" oninput="pricestart.value=pricerange.value"> <!-- свяжем аутпут с инпутом -->
           <!-- Филдсэты -->
           <fieldset class="infrastructure-fields-block">
             <legend class="infrastructure-legend">Инфраструктура</legend>
             <ul class="infrastructure-fields">
               <li class="filter-option">
-                <input class="filter-option-checkbox" type="checkbox" checked name="swimming-pool" id="swimming-pool">
+                <input class="filter-option-custom-checkbox" type="checkbox" checked name="swimming-pool" id="swimming-pool">
                 <label for="swimming-pool">Бассейн</label>
               </li>
               <li class="filter-option">
-                <input class="filter-option-checkbox" type="checkbox" name="parking-lot" id="parking-lot">
+                <input class="filter-option-custom-checkbox" type="checkbox" name="parking-lot" id="parking-lot">
                 <label for="parking-lot">Парковка</label>
               </li>
               <li class="filter-option">
-                <input class="filter-option-checkbox" type="checkbox" name="wi-fi" id="wi-fi">
+                <input class="filter-option-custom-checkbox" type="checkbox" name="wi-fi" id="wi-fi">
                 <label for="wi-fi">wi-fi</label>
               </li>
             </ul>
@@ -60,27 +60,28 @@
             <legend class="accommodation-legend">Тип жилья</legend>
             <ul class="accommodation-fields">
               <li class="filter-option">
-                <input class="filter-option-checkbox" type="checkbox" checked name="hotel" id="hotel">
+                <input class="filter-option-custom-checkbox" type="checkbox" checked name="hotel" id="hotel">
                 <label for="hotel">Гостиница</label>
               </li>
               <li class="filter-option">
-                <input class="filter-option-checkbox" type="checkbox" checked name="parking-lot" id="motel">
+                <input class="filter-option-custom-checkbox" type="checkbox" checked name="parking-lot" id="motel">
                 <label for="motel">Мотель</label>
               </li>
               <li class="filter-option">
-                <input class="filter-option-checkbox" type="checkbox" checked name="wi-fi" id="appartment">
+                <input class="filter-option-custom-checkbox" type="checkbox" checked name="wi-fi" id="appartment">
                 <label for="appartment">Аппартаменты</label>
               </li>
             </ul>
           </fieldset>
-          <fieldset class="range-selector-and-submit">
+          <fieldset class="range-selector-and-submit-block">
             <legend class="range-legend">Стоимость в сутки (Р):</legend>
             <div class="price-output-box">
              <div class="price-output">
-              <output name="price-start">от 0</output>
-              <output name="price-end">до 3000</output>
+              <output name="pricestart" class="price-output-from">от 0</output>
+              <img src="img/output-divider.svg" width="2" height="22">
+              <output name="priceend" class="price-output-to">до 3000</output>
              </div>
-             <input type="range" min="0" max="3000" name="range" id="range" class="range-input">
+             <input type="range" min="0" max="10000" step="100" name="pricerange" id="range" class="range-input">
              <button type="submit" class="filter-submit">Показать</button>
             </div>
           </fieldset>
