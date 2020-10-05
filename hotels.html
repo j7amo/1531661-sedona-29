@@ -37,7 +37,7 @@
       <section class="hotels-filter">
         <h2 class="visually-hidden">Фильтр гостиниц</h2>
         <!-- Добавим форму -->
-        <form class="filter" method="get" action="#" oninput="pricestart.value=pricerange.value"> <!-- свяжем аутпут с инпутом -->
+        <form class="filter" method="get" action="#">
           <!-- Филдсэты -->
           <fieldset class="infrastructure-fields-block">
             <legend class="infrastructure-legend">Инфраструктура:</legend>
@@ -73,18 +73,36 @@
               </li>
             </ul>
           </fieldset>
+
           <fieldset class="range-selector-and-submit-block">
+
             <legend class="range-legend">Стоимость в сутки (Р):</legend>
-            <div class="price-output-box">
-             <div class="price-output">
-              <output name="pricestart" class="price-output-from">от 0</output>
-              <img src="img/output-divider.svg" width="2" height="22">
-              <output name="priceend" class="price-output-to">до 3000</output>
-             </div>
-             <input type="range" min="0" max="10000" step="100" name="pricerange" id="range" class="range-input">
-             <button type="submit" class="filter-submit">Показать</button>
+
+            <div class="range-filter">
+
+              <div class="price-controls">
+                <label class="min-price">
+                  от <input type="number" name="min-price" value="0">
+                </label>
+                <img src="img/output-divider.svg" width="2" height="22" alt="">
+                <label class="max-price">
+                  до <input type="number" name="max-price" value="3000">
+                </label>
+              </div>
+
+              <div class="range-controls">
+                <div class="scale">
+                  <div class="bar"></div>
+                </div>
+                <div class="toggle toggle-min"></div>
+                <div class="toggle toggle-max"></div>
+              </div>
+
+              <button type="submit" class="filter-submit">Показать</button>
+
             </div>
           </fieldset>
+
         </form>
       </section>
 

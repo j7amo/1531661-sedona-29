@@ -21,6 +21,7 @@
   --increase-decrease-gray: #A9A9A9;
   --inner-shadow-gray: #E5E5E5;
   --gray-for-rating: #666666;
+  --toggle-shadow: rgba(171, 171, 171, 0.3);;
 
   --basic-white: #ffffff;
   --basic-white-opacity-03: rgba(255, 255, 255, 0.3);
@@ -1017,15 +1018,14 @@ li.filter-option:first-child {
  -элемента управления диапазоном
  - кнопки подтверждения */
 
-.price-output-box {
+.range-filter {
   width: 100%;
   display: grid;
   grid-template-rows: 47px 46px 45px 31px;
   align-items: flex-end;
 }
 
-/* Теперь локальный флекс-контейнер для двух аутпутов и графического элемента между ними */
-.price-output {
+.price-controls {
   height: 32px;
   grid-row: 1 / 2;
   border: 2px solid var(--basic-white);
@@ -1037,22 +1037,73 @@ li.filter-option:first-child {
   line-height: 21px;
 }
 
-.price-output-from {
-  width: 58px;
-  height: 21px;
-  margin-left: 52px;
-  margin-right: 49px;
+.price-controls input {
+  width: 60px;
+  background-color: transparent;
+  margin: 0;
+  padding: 0;
+  border: none;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 21px;
+  color: var(--basic-white);
 }
 
-.price-output-to {
-  width: 83px;
-  height: 21px;
-  margin-left: 37px;
+.min-price,
+.max-price {
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 21px;
+  color: var(--basic-white);
+  margin-bottom: 1px;
 }
 
-.range-input {
-  grid-row: 2 / 3;
-  align-self: center;
+.min-price {
+  margin-left: 65px;
+  margin-right: 11px;
+}
+
+.max-price {
+  margin-left: auto;
+  margin-right: 20px;
+}
+
+.range-controls {
+  position: relative;
+}
+
+.range-controls .scale {
+  height: 2px;
+  background: var(--basic-white-opacity-03);
+  margin-bottom: 24px;
+}
+
+.range-controls .bar {
+  width: 83%;
+  height: 2px;
+  background: var(--basic-white);
+}
+
+.range-controls .toggle {
+  position: absolute;
+  top: -8px;
+  left: 0;
+  width: 4px;
+  height: 4px;
+  padding: 0;
+  border: 7px solid #ffffff;
+  background-color: #ababab;
+  border-radius: 50%;
+  box-shadow: 0 2px 0 0 var(--toggle-shadow);
+  cursor: pointer;
+}
+
+.range-controls .toggle-max {
+  left: 252px;
+}
+
+.range-controls .toggle:hover {
+  transform: scale(1.2);
 }
 
 .filter-submit {
