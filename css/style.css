@@ -17,6 +17,7 @@
   --darker-gray: #EBEBEB;
   --basic-gray: #eeeeee;
   --lighter-gray: #F2F2F2;
+  --academy-logo-gray: #BDBBBC;
   --increase-decrease-gray: #A9A9A9;
   --inner-shadow-gray: #E5E5E5;
   --gray-for-rating: #666666;
@@ -133,7 +134,6 @@ li {
 .active-page {
   color: var(--basic-brown);
 }
-
 
 .main-decoration-photo {
   background-image: url("../img/background.jpg");
@@ -269,11 +269,6 @@ ul {
 
 /* стилизуем правую часть навигации */
 
-/* Сделаем "распорку" для пунктов навигации. Моё видение такое: количество пунктов меню чётное, распорка стоит всегда посередине, она невидимая и не позволяет пунктам меню залезать на логотип
-.divider {
-  width: 50px;
-} */
-
 /* Состояния навигации */
 
 /* в состоянии покоя */
@@ -294,9 +289,6 @@ ul {
   color: var(--basic-black-opacity-03);
 }
 
-/* Активная страница: здесь судя по всему требуется скрипт, чего мы пока не знаем */
-
-
 /* Убираем рамку(возможную) в состоянии focus */
 a:focus,
 .filter-submit:focus,
@@ -305,7 +297,6 @@ button:focus {
   border: none;
   outline: none;
 }
-
 
 .main-header-wrapper {
   padding-top: 42px;
@@ -438,10 +429,6 @@ button:focus {
   padding-bottom: 54px;
 }
 
-/* Hotel search */
-.hotel-search {
-}
-
 /* Interested block */
 
 .interested-block {
@@ -553,17 +540,6 @@ label.number-of-children {
   padding-right: 26px;
 }
 
-/*
-input.arrival-date {
-  grid-column: 3 / 6;
-  grid-row: 2 / 3;
-}
-
-input.departure-date {
-  grid-column: 3 / 6;
-  grid-row: 4 / 5;
-}*/
-
 /* Сделаем локальные гриды для размещения в них инпутов и кнопок + - */
 
 .arrival-date-container {
@@ -594,12 +570,10 @@ input.departure-date {
   grid-row: 1 / 2;
 }
 
+
 .calendar {
   grid-column: 2 / 3;
   grid-row: 1 / 2;
-  background-image: url("../img/calendar.svg");
-  background-position: center;
-  background-repeat: no-repeat;
   background-color: var(--lighter-gray);
   padding: 0;
   align-self: center;
@@ -607,12 +581,12 @@ input.departure-date {
   z-index: 1;
 }
 
-.calendar:hover {
-  background-image: url("../img/calendar-hover.svg");
+.calendar:hover path{
+  fill: var(--basic-black);
 }
 
-.calendar:active {
-  background-image: url("../img/calendar-active.svg");
+.calendar:active path{
+  fill: var(--special-blue);
 }
 
 .number-of-adults-container {
@@ -664,50 +638,42 @@ button.children-number-increase {
 
 .adult-number-decrease,
 .children-number-decrease {
-  background-image: url("../img/minus.svg");
-  background-position: center;
-  background-repeat: no-repeat;
   background-color: transparent;
   padding: 0;
-  height: 100%;
+  padding-bottom: 6px;
 }
 
-.adult-number-decrease:hover,
-.children-number-decrease:hover {
-  background-image: url("../img/minus-hover.svg");
+.adult-number-decrease:hover rect,
+.children-number-decrease:hover rect {
+  fill: var(--basic-black);
 }
 
-.adult-number-decrease:active,
-.children-number-decrease:active {
-  background-image: url("../img/minus-active.svg");
+.adult-number-decrease:active rect,
+.children-number-decrease:active rect{
+  fill: var(--special-blue);
 }
 
 .adult-number-increase,
 .children-number-increase {
-  background-image: url("../img/plus.svg");
-  background-position: center;
-  background-repeat: no-repeat;
   background-color: transparent;
   padding: 0;
-  height: 100%;
 }
 
-.adult-number-increase:hover,
-.children-number-increase:hover {
-  background-image: url("../img/plus-hover.svg");
+.adult-number-increase:hover path,
+.children-number-increase:hover path{
+  fill: var(--basic-black);
 }
 
-.adult-number-increase:active,
-.children-number-increase:active {
-  background-image: url("../img/plus-active.svg");
+.adult-number-increase:active path,
+.children-number-increase:active path{
+  fill: var(--special-blue);
 }
-
-
 
 .map {
   height: 593px;
 }
-/* Делаем как в демке: Стилизуем кнопки. Используем значение inherit для свойства font для переопределения значения по умолчанию. Выровняем текст по центру, укажем цвет и размер, а также фон. Отключим стили для обводки. */
+/* Делаем как в демке: Стилизуем кнопки. Используем значение inherit для свойства font для переопределения значения по умолчанию.
+Выровняем текст по центру, укажем цвет и размер, а также фон. Отключим стили для обводки. */
 
 /* Buttons */
 
@@ -766,14 +732,6 @@ button.children-number-increase {
   border: none;
 }
 
-/*
-.adult-number-decrease,
-.adult-number-increase,
-.children-number-decrease,
-.children-number-increase {
-  background-color: transparent;
-}*/
-
 button.filter-submit {
   width: 137px;
   height: 36px;
@@ -790,7 +748,6 @@ button.filter-submit {
 button.filter-submit:hover {
   background-color: var(--basic-white);
   color: var(--basic-black);
-
 }
 
 /* Footer */
@@ -848,7 +805,6 @@ p.footer-contacts-phone {
 }
 
 .footer-social-list {
-
   display: flex;
   flex-wrap: wrap; /* добавим перенос элементов в флекс-контейнере для того, чтобы при добавлении новых иконок (переполнение) контент переносился и вёрстка не ломалась */
   flex-direction: row;
@@ -863,26 +819,25 @@ p.footer-contacts-phone {
   list-style: none;
 }
 
-.twitter-hover,
-.twitter-active,
-.facebook-hover,
-.facebook-active,
-.youtube-hover,
-.youtube-active {
-  display: none;
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 99;
+.social-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 46px;
+  height: 48px;
+  background-color: var(--special-blue);
 }
 
-.twitter-logo-container:hover .twitter-hover,
-.twitter-logo-container:active .twitter-active,
-.facebook-logo-container:hover .facebook-hover,
-.facebook-logo-container:active .facebook-active,
-.youtube-logo-container:hover .youtube-hover,
-.youtube-logo-container:active .youtube-active {
-  display: inline;
+.social-button:hover {
+  background-color: var(--darker-blue);
+}
+
+.social-button:active {
+  background-color: var(--the-darkest-blue);
+}
+
+.social-button:active path {
+  opacity: 30%;
 }
 
 .copyright-wrapper {
@@ -895,13 +850,7 @@ p.footer-copyright {
   margin-top: 50px;
   padding: 0;
   margin-left: auto;
-  /*flex-grow: 1;*/
   text-align: right;
-}
-
-.copyright-logo {
-  margin-top: 38px;
-  padding: 0;
 }
 
 .copyright-logo-wrapper {
@@ -911,31 +860,24 @@ p.footer-copyright {
   padding-left: 8px;
   margin-right: 138px;
   text-align: left;
-  /*flex-grow: 3;*/
 }
 
-.academy-logo-hover,
-.academy-logo-active{
-  display: none;
-  position: absolute;
-  top: 38px;
-  left: 8px;
-  z-index: 99;
+.copyright-logo {
+  margin-top: 38px;
+  padding: 0;
 }
 
-.copyright-logo-wrapper:hover .academy-logo-hover {
-  display: inline;
+.copyright-logo:hover path{
+  fill: var(--special-blue);
 }
 
-.copyright-logo-wrapper:active .academy-logo-active {
-  display: inline;
+.copyright-logo:active path{
+  fill: var(--academy-logo-gray);
 }
 
 /* С ГЛАВНОЙ ЗАКОНЧИЛИ!!! */
 
-
 /* Сюда допишем стилизацию страницы hotels.html */
-
 
 .hotels-page-body {
   height: 933px;
@@ -961,38 +903,6 @@ p.footer-copyright {
   margin: 0 auto;
   background-color: var(--basic-white);
 }
-
-/*
-
-.filter {
-  display: grid;
-  grid-template-columns: 72px 147px 107px 147px 337px 317px 73px;
-  grid-template-rows: 48px 47px 46px 45px 31px;
-}
-
-.infrastructure-fields-block {
-  grid-column: 2 / 3;
-  grid-row: 1 / -1;
-  padding: 0;
-  margin: 0;
-  border: none;
-}
-
-.accommodation-fields-block {
-  grid-column: 4 / 5;
-  grid-row: 1 / -1;
-  padding: 0;
-  margin: 0;
-  border: none;
-}
-
-.range-selector-and-submit-block {
-  grid-column: 6 / 7;
-  grid-row: 1 / -1;
-  padding: 0;
-  margin: 0;
-  border: none;
-} */
 
 /* Теперь займёмся локальными гридами/флексами. */
 
@@ -1052,7 +962,10 @@ p.footer-copyright {
 }
 
 li.filter-option {
-  padding-top: 17px;
+  padding-top: 25px;
+}
+li.filter-option:first-child {
+  padding-top: 20px;
 }
 
 .infrastructure-fields,
@@ -1060,45 +973,40 @@ li.filter-option {
   width: 100%;
 }
 
-/* Делаем кастомные чекбоксы (по материалам https://itchief.ru/html-and-css/styling-checkbox-and-radio) */
+/* Делаем кастомные чекбоксы (как в демке) */
 
-.filter-option-custom-checkbox {
-  position: absolute;
-  z-index: -1;
-  opacity: 0;
-}
-
-.filter-option-custom-checkbox+label {
-  display: inline-flex;
-  align-items: center;
+.filter-option label {
+  position: relative;
+  display: block;
+  cursor: pointer;
   user-select: none;
+  left: 25px;
 }
-.filter-option-custom-checkbox+label::before {
-  content: '';
-  min-width: 27px;
+
+.filter-option-custom-checkbox + label::before {
+  content: "";
+  position: absolute;
+  left: -25px;
+  top: 0;
+  width: 23px;
   height: 23px;
-  margin-left: -16px;
-  margin-right: 15px;
   background-image: url("../img/checkbox-off.svg");
   background-repeat: no-repeat;
-  background-position: center center;
+  background-position: center;
 }
 
-.filter-option-custom-checkbox:hover+label::before {
-  margin-left: -14px;
-  margin-right: 13px;
+.filter-option-custom-checkbox:checked + label::before {
+  content: "";
+  position: absolute;
+  left: -25px;
+  top: 0;
+  width: 27px;
+  height: 23px;
   background-image: url("../img/checkbox-on.svg");
   background-repeat: no-repeat;
-  background-position: center center;
+  background-position: center;
 }
 
-.filter-option-custom-checkbox:checked+label::before {
-  margin-left: -14px;
-  margin-right: 13px;
-  background-image: url("../img/checkbox-on.svg");
-  background-repeat: no-repeat;
-  background-position: center center;
-}
 
 /* Кастомные чекбоксы закончены! */
 
@@ -1175,49 +1083,6 @@ li.filter-option {
   color: var(--basic-white);
   padding-left: 15px;
 }
-
-/* Стилизация  input range для Safari/Chrome. Честно стырено отсюда: https://css-tricks.com/styling-cross-browser-compatible-range-inputs-css/ */
-
-input[type=range] {
-  -webkit-appearance: none;
-  margin: 18px 0;
-  width: 100%;
-}
-
-input[type=range]:focus {
-  outline: none;
-}
-
-input[type=range]::-webkit-slider-runnable-track {
-  width: 100%;
-  height: 2px;
-  cursor: pointer;
-  background-color: var(--basic-white);
-}
-
-input[type=range]::-webkit-slider-thumb {
-  width: 19px;
-  height: 21px;
-  background-image: url("../img/radio-button-still.svg");
-  background-color: transparent;
-  cursor: pointer;
-  -webkit-appearance: none;
-  margin-top: -9px;
-}
-
-input[type=range]::-webkit-slider-thumb:hover {
-  width: 23px;
-  height: 24px;
-  background-image: url("../img/radio-button-hover.svg");
-  background-color: transparent;
-  cursor: pointer;
-  -webkit-appearance: none;
-  margin-top: -9px;
-}
-
-/**/
-
-
 
 .hotels-filter {
   width: 1200px;
@@ -1304,43 +1169,25 @@ input[type=range]::-webkit-slider-thumb:hover {
   border: none;
   margin: 0;
   padding: 0;
-}
-
-.ascending-sort {
-  background-image: url("../img/icon-up-dir-still.svg");
-  background-position: center;
-  background-repeat: no-repeat;
   background-color: var(--basic-white);
   grid-column: 8 / 9;
   grid-row: 1 / 2;
+}
+
+.ascending-sort {
   margin-right: 23px;
 }
 
 /* Стилизуем состояния кнопок сортировки результатов по возрастанию и убыванию */
 
-.ascending-sort:hover {
-  background-image: url("../img/icon-up-dir-hover.svg");
+.ascending-sort:hover path,
+.descending-sort:hover path {
+  fill: var(--basic-black);
 }
 
-.ascending-sort:active {
-  background-image: url("../img/icon-up-dir-active.svg");
-}
-
-.descending-sort {
-  background-image: url("../img/icon-down-dir-still.svg");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-color: var(--basic-white);
-  grid-column: 8 / 9;
-  grid-row: 1 / 2;
-}
-
-.descending-sort:hover {
-  background-image: url("../img/icon-down-dir-hover.svg");
-}
-
-.descending-sort:active {
-  background-image: url("../img/icon-down-dir-active.svg");
+.ascending-sort:active path,
+.descending-sort:active path {
+  fill: var(--special-blue)
 }
 
 .hotels-list li{
@@ -1362,6 +1209,7 @@ button.sort-by-text {
   background-color: transparent;
   border: none;
   color: var(--basic-black);
+  margin-bottom: 5px;
 }
 
 button.sort-by-text {
@@ -1394,6 +1242,11 @@ button.sort-by-text:active {
   grid-template-rows: 51px 28px 42px 30px;
   text-align: left;
   align-items: flex-end;
+  border-top: 1px solid var(--inner-shadow-gray);
+}
+
+.hotels-list li:last-child{
+  border-bottom: 1px solid var(--inner-shadow-gray);
 }
 
 .hotel-photo {
@@ -1447,11 +1300,19 @@ button.sort-by-text:active {
   grid-row: 1 / 2;
   display: flex;
   justify-content: flex-end;
+  margin-bottom: 5px;
+}
+
+.rating-star-wrapper svg {
+  margin-left: 4px;
 }
 
 .rating {
   grid-row: 3 / 4;
   text-align: center;
+  margin: 0;
+  padding: 3px 12px;
+  background-color: var(--lighter-gray);
 }
 
 h3.hotel-name {
@@ -1486,8 +1347,6 @@ h3.hotel-name {
 }
 
 .rating-wrapper {
-  background-color: var(--lighter-gray);
-  padding: 5px 12px;
   color: var(--gray-for-rating);
 }
 
@@ -1536,8 +1395,13 @@ h3.hotel-name {
 
 .visually-hidden {
   position: absolute;
-  clip: rect(0 0 0 0);
   width: 1px;
   height: 1px;
   margin: -1px;
+  border: 0;
+  padding: 0;
+  white-space: nowrap;
+  clip-path: inset(100%);
+  clip: rect(0 0 0 0);
+  overflow: hidden;
 }
