@@ -112,7 +112,7 @@
         <div class="sorting-controls-container">
           <p class="found">Найдено: 3</p>
           <p class="sort-by">Сортировка:</p>
-          <button type="button" class="sort-by-text by-price">По цене</button>
+          <button type="button" class="sort-by-text by-price active-sort-type">По цене</button>
           <button type="button" class="sort-by-text by-type">По типу</button>
           <button type="button" class="sort-by-text by-rating">По рейтингу</button>
           <button type="button" class="ascending-sort">
@@ -120,7 +120,7 @@
               <path d="M5.5 0L0 10H11L5.5 0Z" fill="#CACACA"/>
             </svg>
           </button>
-          <button type="button" class="descending-sort">
+          <button type="button" class="descending-sort active-sort-direction">
             <svg width="11" height="10" viewBox="0 0 11 10" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M5.5 10L11 0L0 0L5.5 10Z" fill="#CACACA"/>
             </svg>
@@ -171,7 +171,7 @@
             <img src="img/desert.jpg" width="135" height="90" alt="Фото Desert Quail Inn" class="hotel-photo">
           </li>
           <li>
-            <a class="hotel-link" href=""><h3 class="hotel-name">ViLLas at Poco Diablo</h3></a>
+            <a class="hotel-link" href=""><h3 class="hotel-name">Villas at Poco Diablo</h3></a>
             <p class="accommodation-type">Апартаменты</p>
             <p class="price-from">От 2000 Р.</p>
             <p class="rating"><span class="rating-wrapper">Рейтинг: 9,2</span></p>
@@ -193,6 +193,7 @@
 
   <footer class="footer-block">
     <section class="footer-contacts">
+      <h2 class="visually-hidden">Телефон для связи</h2>
       <p class="footer-contacts-hashtag">
         #visitSEDONA
       </p>
@@ -201,6 +202,7 @@
       </p>
     </section>
     <section class="footer-social">
+      <h2 class="visually-hidden">Мы в социальных сетях</h2>
       <ul class="footer-social-list">
         <li class="twitter-logo-container">
           <a class="social-button" href="#">

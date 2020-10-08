@@ -14,6 +14,7 @@
 
   --dark-gray: #888888;
   --box-shadow-color: rgba(0, 1, 1, 0.15);
+  --box-shadow-color-big: rgba(0, 1, 1, 0.2);
   --darker-gray: #EBEBEB;
   --basic-gray: #eeeeee;
   --lighter-gray: #F2F2F2;
@@ -82,10 +83,12 @@ a {
   min-height: 100%;
   display: grid;
   /* grid-template-rows: 56px 2586px 120px; */
-  grid-template-rows: min-content 2586px min-content; /* Здесь пришлось задать блоку main фиксированную ширину, чтобы избежать изменения размера этой области в результате раздувания футера при переполнении контента */
+  /*grid-template-rows: min-content 2586px min-content; /* Здесь пришлось задать блоку main фиксированную ширину, чтобы избежать изменения размера этой области в результате раздувания футера при переполнении контента */
+  grid-template-rows: auto 1fr auto;
   width: 1200px;
   margin: 0 auto;
   background-color: var(--basic-white);
+  box-shadow: 0 5px 15px var(--box-shadow-color-big);
 }
 
 .header-block {
@@ -138,6 +141,7 @@ li {
 
 .main-decoration-photo {
   background-image: url("../img/background.jpg");
+  background-position: 0 -1px;
   background-repeat: no-repeat;
   height: 509px;
 }
@@ -171,47 +175,13 @@ ul {
   margin-bottom: -50px; /* этот марджин нужен для того, чтобы логотип не влиял на увеличение высоты шапки */
 }
 
-/* Это шапка на гридах. Ниже будет версия шапки на флексах (её и будем использовать в проекте)
-.site-navigation {
-  grid-column: 1 / -1;
-  grid-row: 1 / -1;
-  display: grid;
-  grid-template-rows: min-content;
-  grid-template-columns: 72px 228px 228px 144px 228px 228px 72px;
-  list-style: none;
-}
-
-.site-navigation li {
-  padding-top: 15px;
-}
-
-.site-navigation li:nth-child(1) {
-  text-align: left;
-  grid-column: 2 / 3;
-}
-
-.site-navigation li:nth-child(2) {
-  text-align: left;
-  grid-column: 3 / 4;
-}
-
-.site-navigation li:nth-child(3) {
-  text-align: right;
-  grid-column: 5 / 6;
-}
-
-.site-navigation li:nth-child(4) {
-  text-align: right;
-  grid-column: 6 / 7;
-}
-*/
-
 /* Шапка на флексах */
 
 .site-navigation-left {
   grid-column: 1 / 2;
   grid-row: 1 / -1;
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   list-style: none;
   text-align: left;
@@ -221,6 +191,7 @@ ul {
   grid-column: 3 / 4;
   grid-row: 1 / -1;
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-around;
   align-items: center;
   list-style: none;
@@ -229,46 +200,32 @@ ul {
 
 .site-navigation-left li,
 .site-navigation-right li{
-  width: 120px;
+  width: 173px;
 }
 
 /* стилизуем левую часть навигации */
 
-.site-navigation-left li:first-child {
+.site-navigation-left li:nth-child(2n + 1) {
   margin-left: 72px;
   margin-right: auto;
 }
 
-.site-navigation-left li:last-child {
-  margin-right: 111px;
+.site-navigation-left li:nth-child(2n) {
+  margin-right: 57px;
   margin-left: auto;
-}
-
-/* правило для любых элементов, которые одновременно НЕ первые и НЕ последние */
-.site-navigation-left li:not(:first-child):not(:last-child) {
-  margin-left: auto;
-  margin-right: auto;
 }
 
 /* стилизуем правую часть навигации */
 
-.site-navigation-right li:first-child {
-  margin-left: 111px;
+.site-navigation-right li:nth-child(2n + 1)  {
+  margin-left: 59px;
   margin-right: auto;
 }
 
-.site-navigation-right li:last-child {
+.site-navigation-right li:nth-child(2n) {
   margin-right: 72px;
   margin-left: auto;
 }
-
-/* правило для любых элементов, которые одновременно НЕ первые и НЕ последние */
-.site-navigation-right li:not(:first-child):not(:last-child) {
-  margin-left: auto;
-  margin-right: auto;
-}
-
-/* стилизуем правую часть навигации */
 
 /* Состояния навигации */
 
@@ -301,15 +258,16 @@ button:focus {
 
 .main-header-wrapper {
   padding-top: 42px;
-  padding-bottom: 54px;
+  padding-bottom: 53px;
 }
 
 /* Стилизация основного заголовка */
 .main-header {
   font-weight: bold;
   font-size: 21px;
-  line-height: 26px;
+  line-height: 27px;
   margin: 0;
+  padding: 0;
 }
 
 /* Причины крутизны Седоны */
@@ -317,14 +275,13 @@ button:focus {
 
 .five-reasons {
   line-height: 21px;
-  margin: 0;
-  margin-top: 46px;
+  margin: 44px 0 1px 0;
 }
 
 .features-list {
   display: grid;
   grid-template-columns: 400px 400px 400px;
-  grid-template-rows: 256px 330px 256px 256px;
+  grid-template-rows: min-content 330px 256px 256px;
   list-style: none;
 }
 
@@ -337,13 +294,17 @@ button:focus {
 .feature-item:nth-child(2) {
   grid-column: 1 / 2;
   grid-row: 2 / 3;
-  align-self: baseline;
+  margin-top: 60px;
+  position: relative;
+  left: -1px;
 }
 
 .feature-item:nth-child(3) {
   grid-column: 2 / 3;
   grid-row: 2 / 3;
-  align-self: baseline;
+  margin-top: 61px;
+  position: relative;
+  left: -1px;
 }
 
 .feature-item:nth-child(4) {
@@ -383,7 +344,7 @@ button:focus {
 
 .feature-item h3 {
   font-size: 21px;
-  line-height: 21px;
+  line-height: 22px;
   margin: 0 0 25px 0;
 }
 
@@ -392,11 +353,12 @@ button:focus {
   width: 400px;
   color: var(--basic-white);
   background-color: var(--special-blue);
-  padding: 47px 10px 54px 10px;
 }
 
 .feature-one-left {
-  padding: 47px 10px 54px 10px;
+  padding-top: 47px;
+  padding-bottom: 30px;
+  /*padding: 47px 10px 54px 10px;*/
 }
 
 .feature-two-right {
@@ -408,10 +370,28 @@ button:focus {
   width: 800px;
 }
 
+.feature-two-left img,
+.feature-one-right img{
+  display: block;
+  height: 100%;
+  object-fit: cover;
+}
+
 .feature-item:nth-child(2) h3,
-.feature-item:nth-child(3) h3,
 .feature-item:nth-child(4) h3 {
+  margin-top: 22px;
+  margin-bottom: 24px;
+}
+
+.feature-item:nth-child(3) h3 {
   margin-top: 23px;
+  margin-bottom: 24px;
+}
+
+.feature-item:nth-child(2) p,
+.feature-item:nth-child(3) p,
+.feature-item:nth-child(4) p {
+  margin-left: 1px;
 }
 
 .feature-one-left p,
@@ -420,7 +400,8 @@ button:focus {
 .feature-item:nth-child(7) p,
 .feature-item:nth-child(8) p {
   margin: 0;
-  padding: 0 0 23px 0;
+  padding: 0 0 22px 0;
+  line-height: 22px;
 }
 .feature-item:nth-child(6),
 .feature-item:nth-child(7),
@@ -428,6 +409,20 @@ button:focus {
 /* padding: 47px 51px 54px 51px; */
   padding-top: 47px;
   padding-bottom: 54px;
+}
+
+.feature-item:nth-child(6) h3 {
+  margin-left: -1px;
+  margin-top: 1px;
+}
+
+.feature-item:nth-child(6) p {
+  margin-left: -1px;
+  margin-top: -1px;
+}
+
+.feature-item:nth-child(7) p {
+  margin-left: 1px;
 }
 
 /* Interested block */
@@ -480,7 +475,7 @@ label {
   font-size: 14px;
   line-height: 26px;
   text-transform: uppercase;
-  padding: 5px 5px 5px 15px;
+  padding: 5px 5px 5px 13px;
   color: var(--basic-black);
   background-color: var(--lighter-gray);
   border: none;
@@ -538,7 +533,7 @@ label.number-of-children {
   grid-column: 4 / 5;
   grid-row: 6 / 7;
   text-align: right;
-  padding-right: 26px;
+  padding-right: 27px;
 }
 
 /* Сделаем локальные гриды для размещения в них инпутов и кнопок + - */
@@ -577,6 +572,8 @@ label.number-of-children {
   grid-row: 1 / 2;
   background-color: var(--lighter-gray);
   padding: 0;
+  padding-top: 4px;
+  padding-right: 4px;
   align-self: center;
   height: 36px;
   z-index: 1;
@@ -670,8 +667,12 @@ button.children-number-increase {
   fill: var(--special-blue);
 }
 
+
+/* Карту сделаем бэком для того, чтобы при проблемах с картой Гугла у нас всё равно что-нибудь отобразилось */
 .map {
   height: 593px;
+  background-image: url("../img/map.jpg");
+  z-index: 0;
 }
 /* Делаем как в демке: Стилизуем кнопки. Используем значение inherit для свойства font для переопределения значения по умолчанию.
 Выровняем текст по центру, укажем цвет и размер, а также фон. Отключим стили для обводки. */
@@ -760,6 +761,7 @@ button.filter-submit:hover {
   min-height: 120px;
   height: auto;
   background-color: var(--basic-white-opacity-09);
+  z-index: 1;
 }
 
 .footer-contacts,
@@ -783,11 +785,11 @@ button.filter-submit:hover {
 
 p.footer-contacts-hashtag {
   margin-top: 24px;
-  margin-left: 75px;
+  margin-left: 73px;
 }
 
 p.footer-contacts-phone {
-  margin-left: 75px;
+  margin-left: 74px;
 }
 
 p.footer-contacts-hashtag,
@@ -811,7 +813,7 @@ p.footer-contacts-phone {
   flex-direction: row;
   justify-content: center;
   margin-top: 36px;
-  margin-left: 10px;
+  margin-left: 5px;
 }
 
 .footer-social-list li {
@@ -903,6 +905,7 @@ p.footer-copyright {
   width: 1200px;
   margin: 0 auto;
   background-color: var(--basic-white);
+  box-shadow: 0 5px 15px var(--box-shadow-color-big);
 }
 
 /* Теперь займёмся локальными гридами/флексами. */
@@ -997,17 +1000,17 @@ li.filter-option:first-child {
 }
 
 .filter-option-custom-checkbox:checked + label::before {
-  content: "";
-  position: absolute;
-  left: -25px;
-  top: 0;
   width: 27px;
-  height: 23px;
   background-image: url("../img/checkbox-on.svg");
-  background-repeat: no-repeat;
-  background-position: center;
 }
 
+.filter-option-custom-checkbox:disabled + label::before {
+  background-image: url("../img/checkbox-off-blocked.svg");
+}
+
+.filter-option-custom-checkbox:checked:disabled + label::before {
+  background-image: url("../img/checkbox-on-blocked.svg");
+}
 
 /* Кастомные чекбоксы закончены! */
 
@@ -1086,12 +1089,12 @@ li.filter-option:first-child {
 
 .range-controls .toggle {
   position: absolute;
-  top: -8px;
+  top: -9px;
   left: 0;
   width: 4px;
   height: 4px;
   padding: 0;
-  border: 7px solid #ffffff;
+  border: 8px solid #ffffff;
   background-color: #ababab;
   border-radius: 50%;
   box-shadow: 0 2px 0 0 var(--toggle-shadow);
@@ -1133,6 +1136,10 @@ li.filter-option:first-child {
   text-transform: uppercase;
   color: var(--basic-white);
   padding-left: 15px;
+}
+
+.accommodation-fields label {
+  padding-left: 18px;
 }
 
 .hotels-filter {
@@ -1278,6 +1285,17 @@ button.sort-by-text:active {
   border-bottom: none;
 }
 
+/* Отдельно зададим стилизацию для активных компонентов (тип фильтрации и её направление) */
+
+button.active-sort-type {
+  border: none;
+  color: var(--special-blue);
+}
+
+.active-sort-direction path{
+  fill: var(--special-blue);
+}
+
 /* Сделаем список на флексах, так как это больше подходит по смыслу (смысл гибком реагировании на изменение кол-ва контента) */
 
 .hotels-list {
@@ -1399,6 +1417,8 @@ h3.hotel-name {
 
 .rating-wrapper {
   color: var(--gray-for-rating);
+  margin-left: 2px;
+  margin-bottom: 2px;
 }
 
 .hotel-button {
