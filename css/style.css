@@ -82,8 +82,6 @@ a {
   /* Сделаем так называемый sticky footer */
   min-height: 100%;
   display: grid;
-  /* grid-template-rows: 56px 2586px 120px; */
-  /*grid-template-rows: min-content 2586px min-content; /* Здесь пришлось задать блоку main фиксированную ширину, чтобы избежать изменения размера этой области в результате раздувания футера при переполнении контента */
   grid-template-rows: auto 1fr auto;
   width: 1200px;
   margin: 0 auto;
@@ -110,28 +108,6 @@ a {
   grid-column: 1 / -1;
   grid-row: 3 / 4;
 }
-
-/* АУТЛАЙНЫ */
-
-/*
-section,
-div,
-nav,
-form {
-  outline: 5px solid blue;
-  outline-offset: -5px;
-}
-
-ul {
-  outline: 5px dashed red;
-  outline-offset: -5px;
-}
-
-li {
-  outline: 5px dashed greenyellow;
-  outline-offset: -5px;
-}
- */
 
 /* Стилизация активной страницы */
 
@@ -247,14 +223,14 @@ ul {
   color: var(--basic-black-opacity-03);
 }
 
-/* Убираем рамку(возможную) в состоянии focus */
+/* Убираем рамку(возможную) в состоянии focus
 a:focus,
 .filter-submit:focus,
 input:focus,
 button:focus {
   border: none;
   outline: none;
-}
+}*/
 
 .main-header-wrapper {
   padding-top: 42px;
@@ -281,7 +257,7 @@ button:focus {
 .features-list {
   display: grid;
   grid-template-columns: 400px 400px 400px;
-  grid-template-rows: min-content 330px 256px 256px;
+  grid-template-rows: min-content min-content min-content min-content;
   list-style: none;
 }
 
@@ -358,11 +334,12 @@ button:focus {
 .feature-one-left {
   padding-top: 47px;
   padding-bottom: 30px;
-  /*padding: 47px 10px 54px 10px;*/
 }
 
 .feature-two-right {
-  padding: 49px 10px 54px 10px;
+  padding-top: 49px;
+  padding-bottom: 28px;
+  /*padding: 49px 10px 54px 10px;*/
 }
 
 .feature-two-left,
@@ -373,6 +350,7 @@ button:focus {
 .feature-two-left img,
 .feature-one-right img{
   display: block;
+  max-width: 100%;
   height: 100%;
   object-fit: cover;
 }
@@ -392,6 +370,7 @@ button:focus {
 .feature-item:nth-child(3) p,
 .feature-item:nth-child(4) p {
   margin-left: 1px;
+  margin-bottom: 82px;
 }
 
 .feature-one-left p,
@@ -408,7 +387,7 @@ button:focus {
 .feature-item:nth-child(8) {
 /* padding: 47px 51px 54px 51px; */
   padding-top: 47px;
-  padding-bottom: 54px;
+  padding-bottom: 30px;
 }
 
 .feature-item:nth-child(6) h3 {
@@ -496,8 +475,17 @@ input.number-of-adults {
   outline-offset: -2px;
 }
 
-/* Воспользуемся хитростью для смены цвета замещающего текста в браузерах Safari и Chrome */
+/* Воспользуемся хитростью для смены цвета замещающего текста в различных браузерах */
 input::-webkit-input-placeholder {
+  color: var(--basic-black);
+}
+
+input::placeholder {
+  color: var(--basic-black);
+  opacity: 1; /* "лечим" кастомный opacity, который выставлен в Firefox, жёстко прописывая это правило - в противном случае цвет текста будет блеклый и совсем не такой как в стилях */
+}
+
+input:-ms-input-placeholder {
   color: var(--basic-black);
 }
 
@@ -617,6 +605,7 @@ input.number-of-children {
   grid-column: 1 / -1;
   grid-row: 1 / 2;
   text-align: center;
+  min-width: 0; /* <-- Данный трюк непонятным мне образом позволяет сделать ширину input'ов в Firefox такой же как и в Safari/Chrome. Взято отсюда: https://stackoverflow.com/questions/43314921/strange-input-widths-in-firefox-vs-chrome */
 }
 
 button.adult-number-decrease,
@@ -727,12 +716,12 @@ button.children-number-increase {
   color: var(--basic-white-opacity-03);
 }
 
-/* Убираем рамку(возможную) в состоянии focus */
+/* Убираем рамку(возможную) в состоянии focus
 
 .button.form-top-search-submit:focus,
 .button.form-bottom-search-submit:focus {
   border: none;
-}
+}*/
 
 button.filter-submit {
   width: 137px;
@@ -1158,6 +1147,14 @@ li.filter-option:first-child {
   border: none;
   text-align: left;
 }
+
+/* Добавим последним элементам в списках с чекбоксами марджины снизу, чтобы при увеличении числа элементов списка они не прилипли к нижней границе блока */
+
+.infrastructure-fields li:last-child,
+.accommodation-fields li:last-child {
+  margin-bottom: 20px;
+}
+
 /* Убираем буллеты у элементов списков */
 
 .infrastructure-fields li,
@@ -1248,7 +1245,7 @@ li.filter-option:first-child {
   fill: var(--special-blue)
 }
 
-.hotels-list li{
+.hotels-list-element{
   list-style: none;
 }
 
@@ -1303,24 +1300,36 @@ button.active-sort-type {
   flex-wrap: wrap;
 }
 
-.hotels-list li{
+.hotels-list-element{
   width: 1200px;
-  height: 150px;
+  min-height: 150px;
+  height: auto;
   display: grid;
   grid-template-columns: 73px 135px 29px 110px 6px 142px 522px 110px 73px;
-  grid-template-rows: 51px 28px 42px 30px;
+  /*grid-template-rows: 51px 28px 42px 30px;*/
+  grid-template-rows: min-content min-content min-content 30px;
   text-align: left;
   align-items: flex-end;
   border-top: 1px solid var(--inner-shadow-gray);
 }
 
-.hotels-list li:last-child{
+.hotels-list-element:last-child{
   border-bottom: 1px solid var(--inner-shadow-gray);
 }
 
 .hotel-photo {
   grid-column: 2 / 3;
   grid-row: 1 / 4;
+}
+
+/* Зададим стилизацию для фотографий отелей. Это правило позволит в качестве фото отеля использовать практически любое изображение и не испортить вёрстку */
+
+.hotel-photo {
+  display: block;
+  margin-top: 30px;
+  width: 135px;
+  height: 90px;
+  object-fit: cover;
 }
 
 .hotel-link {
@@ -1391,6 +1400,8 @@ h3.hotel-name {
   text-transform: uppercase;
   margin: 0;
   padding: 0;
+  margin-top: 18px;
+  margin-left: 1px;
 }
 
 .hotel-link {
@@ -1413,6 +1424,11 @@ h3.hotel-name {
   line-height: 21px;
   text-transform: uppercase;
   color: var(--basic-dark);
+  margin-bottom: 8px;
+}
+
+.rating {
+  margin-bottom: 0;
 }
 
 .rating-wrapper {
