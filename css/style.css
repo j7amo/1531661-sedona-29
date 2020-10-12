@@ -562,8 +562,9 @@ label.number-of-children {
   padding: 0;
   padding-top: 4px;
   padding-right: 4px;
+  margin-bottom: 2px;
   align-self: center;
-  height: 36px;
+  height: 32px;
   z-index: 1;
 }
 
@@ -659,9 +660,17 @@ button.children-number-increase {
 
 /* Карту сделаем бэком для того, чтобы при проблемах с картой Гугла у нас всё равно что-нибудь отобразилось */
 .map {
+  position: relative;
   height: 593px;
   background-image: url("../img/map.jpg");
   z-index: 0;
+}
+
+iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
 }
 /* Делаем как в демке: Стилизуем кнопки. Используем значение inherit для свойства font для переопределения значения по умолчанию.
 Выровняем текст по центру, укажем цвет и размер, а также фон. Отключим стили для обводки. */
@@ -999,6 +1008,10 @@ li.filter-option:first-child {
 
 .filter-option-custom-checkbox:checked:disabled + label::before {
   background-image: url("../img/checkbox-on-blocked.svg");
+}
+
+.filter-option-custom-checkbox:focus + label::before {
+  outline: 5px auto -webkit-focus-ring-color;
 }
 
 /* Кастомные чекбоксы закончены! */
