@@ -657,6 +657,15 @@ button.children-number-increase {
   fill: var(--special-blue);
 }
 
+/* добавим стилизацию классам показа и сокрытия формы */
+.modal-show {
+  display: block;
+}
+
+.modal-hide {
+  display: none;
+}
+
 
 /* Карту сделаем бэком для того, чтобы при проблемах с картой Гугла у нас всё равно что-нибудь отобразилось */
 .map {
@@ -724,13 +733,6 @@ iframe {
   background-color: var(--the-darkest-blue);
   color: var(--basic-white-opacity-03);
 }
-
-/* Убираем рамку(возможную) в состоянии focus
-
-.button.form-top-search-submit:focus,
-.button.form-bottom-search-submit:focus {
-  border: none;
-}*/
 
 button.filter-submit {
   width: 137px;
