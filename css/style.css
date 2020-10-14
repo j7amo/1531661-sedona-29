@@ -249,6 +249,10 @@ button:focus {
 /* Причины крутизны Седоны */
 /* Features */
 
+.features {
+  z-index: 10;
+}
+
 .five-reasons {
   line-height: 21px;
   margin: 44px 0 1px 0;
@@ -339,7 +343,6 @@ button:focus {
 .feature-two-right {
   padding-top: 49px;
   padding-bottom: 28px;
-  /*padding: 49px 10px 54px 10px;*/
 }
 
 .feature-two-left,
@@ -385,7 +388,6 @@ button:focus {
 .feature-item:nth-child(6),
 .feature-item:nth-child(7),
 .feature-item:nth-child(8) {
-/* padding: 47px 51px 54px 51px; */
   padding-top: 47px;
   padding-bottom: 30px;
 }
@@ -408,6 +410,8 @@ button:focus {
 
 .interested-block {
   padding-top: 58px;
+  position: relative;
+  z-index: 10;
 }
 
 .interested {
@@ -426,10 +430,18 @@ button:focus {
 
 /* Hotel search form */
 
+/* Зададим расположение кнопке показа/сокрытия формы */
+
+.form-show-hide-wrapper {
+  margin: 43px auto 0;
+  position: relative;
+  z-index: 9;
+}
+
 .hotel-search-form {
   width: 568px;
-  height: 481px;
-  margin: 43px auto;
+  height: 395px;
+  margin: 0 auto;
   margin-bottom: -395px;
   background-color: var(--basic-white);
   box-shadow: 0 7px 15px var(--box-shadow-color);
@@ -660,12 +672,52 @@ button.children-number-increase {
 /* добавим стилизацию классам показа и сокрытия формы */
 .modal-show {
   display: block;
+  animation: slide 0.6s;
 }
 
 .modal-hide {
   display: none;
 }
 
+.modal-error {
+  animation: shake 0.6s;
+}
+
+/* Добавим анимации форме */
+
+@keyframes slide {
+  0% {
+    transform: translateY(-100px);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+
+  10%,
+  30%,
+  50%,
+  70%,
+  90% {
+    transform: translateX(-10px);
+  }
+
+  20%,
+  40%,
+  60%,
+  80% {
+    transform: translateX(10px);
+  }
+}
 
 /* Карту сделаем бэком для того, чтобы при проблемах с картой Гугла у нас всё равно что-нибудь отобразилось */
 .map {
@@ -698,7 +750,7 @@ iframe {
   border: none;
 }
 
-.button.form-top-search-submit {
+.button.form-show-hide {
   width: 568px;
   height: 86px;
   font-size: 21px;
@@ -706,11 +758,11 @@ iframe {
   background-color: var(--basic-brown);
 }
 
-.button.form-top-search-submit:hover {
+.button.form-show-hide:hover {
   background-color: var(--darker-brown);
 }
 
-.button.form-top-search-submit:active {
+.button.form-show-hide:active {
   background-color: var(--the-darkest-brown);
   color: var(--basic-white-opacity-03);
 }
