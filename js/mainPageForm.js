@@ -7,8 +7,8 @@ let childrenStored = "";
 
 // и попробуем обратиться к локальному хранилищу (try-catch позволит нам отловить исключение и продолжить нормальную работу скрипта)
 try {
-  adultsStored = localStorage.getItem("number-of-adults");
-  childrenStored = localStorage.getItem("number-of-children");
+  adultsStored = parseInt(localStorage.getItem("number-of-adults"));
+  childrenStored = parseInt(localStorage.getItem("number-of-children"));
 } catch (err) {
   isLocalStorageSupported = false;
 }
@@ -47,9 +47,17 @@ const childrenIncrButton = document.querySelector(".children-number-increase");
 let numberOfAdultsField = document.querySelector("input.number-of-adults");
 let numberOfChildrenField = document.querySelector("input.number-of-children");
 
-// также объявим переменные для хранения текущих значений этих полей (обязательно нужно строковое содержимое спарсить в целое число)
-let numberOfAdults = parseInt(numberOfAdultsField.value);
-let numberOfChildren = parseInt(numberOfChildrenField.value);
+// также объявим переменные для хранения текущих значений этих полей (обязательно нужно строковое содержимое спарсить в целое число, чтобы с ним потом можно было нормально производить математические действия)
+let numberOfAdults = 0;
+let numberOfChildren = 0;
+
+if (isNaN(adultsStored)) {
+  numberOfAdults = parseInt(numberOfAdultsField.placeholder);
+} else numberOfAdults = adultsStored;
+
+if (isNaN(childrenStored)) {
+  numberOfChildren = parseInt(numberOfChildrenField.placeholder);
+} else numberOfChildren = childrenStored;
 
 // вешаем обработчики на каждую кнопку
 adultDecrButton.addEventListener("click", function(evt){
@@ -80,23 +88,24 @@ childrenIncrButton.addEventListener("click", function(evt){
   numberOfChildrenField.value = numberOfChildren;
 });
 
-// теперь когда мы ввели все данные нужно запрограммировать поведение кнопки "Найти"
-const hotelSearchButton = document.querySelector(".form-bottom-search-submit");
-
 // сама форма (повесим на неё анимации)
 const mainPageForm = document.querySelector(".hotel-search-form");
 
 // здесь есть нюансы:
 // 1) нужно изменить тип события с "click" на "submit"
 // 2) сохранить по возможности кол-во взрослых и детей в локальное хранилище
-// 3) дать пользователю обратную связь о том, что он не заполнил какое-то поле (делаем как в демке - с помощью анимации тряски)
+// 3) дать пользователю обратную связь о том, что он не заполнил какое-то поле (делаем как в демке - с помощью анимации тряски + фокус на то поле, которое требует заполнения)
 mainPageForm.addEventListener("submit", function(evt){
   if (arrivalDateField.value.length === 0 || departureDateField.value.length === 0 || numberOfAdultsField.value.length === 0 || numberOfChildrenField.value.length === 0) {
     evt.preventDefault();
     mainPageForm.classList.remove("modal-error");
-    // трюк из демки
+    // трюк из демки, который позволяет анимации обновляться бесконечное количество раз
     mainPageForm.offsetWidth;
     mainPageForm.classList.add("modal-error");
+    if (numberOfChildrenField.value.length === 0) numberOfChildrenField.focus();
+    if (numberOfAdultsField.value.length === 0) numberOfAdultsField.focus();
+    if (departureDateField.value.length === 0) departureDateField.focus();
+    if (arrivalDateField.value.length === 0) arrivalDateField.focus();
   } else {
     if (isLocalStorageSupported) {
       localStorage.setItem("number-of-adults", numberOfAdultsField.value);
@@ -118,15 +127,9 @@ mainPageFormShowHideButton.addEventListener("click", function(evt) {
   // удаляем/добавляем класс modal-hide при помощи метода toggle(), чтобы форма показывалась/скрывалась
   mainPageForm.classList.toggle("modal-hide");
   mainPageForm.classList.toggle("modal-show");
-  // ускоряем процесс ввода данных в форму путём подстановки данных из локального хранилища и установки фокуса на следующее поле ввода (если такое есть)
+  // ускоряем процесс ввода данных в форму путём подстановки данных из локального хранилища (если такие данные имеются)
   if (adultsStored && childrenStored) {
     numberOfAdultsField.value = adultsStored;
     numberOfChildrenField.value = childrenStored;
-    } else if (adultsStored && !childrenStored) {
-      numberOfAdultsField.value = adultsStored;
-      numberOfChildrenField.focus();
-    } else if (!adultsStored && childrenStored) {
-      numberOfChildrenField.value = childrenStored;
-      numberOfAdultsField.focus();
     }
 });
