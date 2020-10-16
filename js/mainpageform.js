@@ -125,8 +125,24 @@ mainPageFormShowHideButton.addEventListener("click", function(evt) {
   // отключаем дефолтное действие кнопки
   evt.preventDefault();
   // удаляем/добавляем класс modal-hide при помощи метода toggle(), чтобы форма показывалась/скрывалась
-  mainPageForm.classList.toggle("modal-hide");
-  mainPageForm.classList.toggle("modal-show");
+  // задача осложняется тем, что форма изначально должна быть открыта, а также тем, что на ней может висеть класс ошибки заполнения параллельно с этими операциями
+  // 1) прячем форму первый раз
+  if (!mainPageForm.classList.contains("modal-hide") && !mainPageForm.classList.contains("modal-show")) {
+    mainPageForm.classList.toggle("modal-hide");
+    if (mainPageForm.classList.contains("modal-error")) mainPageForm.classList.toggle("modal-error");
+  }
+  // 2) показываем форму с анимацией (здесь убираем класс, который скрывает форму и добавляем тот, который добавляет анимацию)
+  else if (mainPageForm.classList.contains("modal-hide")) {
+    mainPageForm.classList.toggle("modal-hide");
+    mainPageForm.classList.toggle("modal-show");
+    if (mainPageForm.classList.contains("modal-error")) mainPageForm.classList.toggle("modal-error");
+  }
+  // 3) прячем форму после повторного её показа
+  else if (mainPageForm.classList.contains("modal-show")) {
+    mainPageForm.classList.toggle("modal-show");
+    mainPageForm.classList.toggle("modal-hide");
+    if (mainPageForm.classList.contains("modal-error")) mainPageForm.classList.toggle("modal-error");
+  }
   // ускоряем процесс ввода данных в форму путём подстановки данных из локального хранилища (если такие данные имеются)
   if (adultsStored && childrenStored) {
     numberOfAdultsField.value = adultsStored;

@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=PT+Sans:wght@400;700&display=swap">
     <!-- подключаем normalize.css (предварительно скачав его) и основной стилевой файл -->
     <link href="css/normalize.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
+    <link href="css/style-min.css" rel="stylesheet">
   </head>
   <!-- тут делаем то же самое - добавляем класс для body-->
     <body class="page-body">
@@ -18,12 +18,12 @@
         <nav class="main-navigation">
              <!-- Сделаем 2 отдельных списка пунктов навигации по сайту. Это нужно для того, чтобы можно было гибко добавлять/удалять пункты -->
           <ul class="site-navigation-left">
-                <li><a href="blank.html">Информация</a></li>
-                <li><a href="blank.html">Фото и видео</a></li>
+                <li><a href="#">Информация</a></li>
+                <li><a href="#">Фото и видео</a></li>
                </ul>
           <a href="#" class="main-header-logo"><img src="img/logo.svg" width="138" height="70" alt="Логотип CITY OF SEDONA"></a>
           <ul class="site-navigation-right">
-                <li><a href="blank.html">Карта штата</a></li>
+                <li><a href="#">Карта штата</a></li>
                 <li><a href="hotels.html">Гостиницы</a></li>
                </ul>
           <!-- т.к. список у нас не единственный, а стилизация списков разная, то нам надо каждому списку добавить свой класс -->
@@ -40,8 +40,8 @@
           <img src="img/peaks.svg" width="1200" height="57" alt="">
         </section>
         <div class="main-header-wrapper">
-          <h1 class="main-header">Седона&thinsp;&mdash;&thinsp;небольшой городок в Аризоне,<br> заслуживающий большего!</h1>
-          <p class="five-reasons">Рассмотрим 5 причин, по которым Седона круче, чем гранд каньон!</p>
+          <h1 class="main-header">Седона&thinsp;&mdash;&thinsp;небольшой&thinsp;городок&thinsp;в Аризоне,<br>заслуживающий большего!</h1>
+          <p class="five-reasons">Рассмотрим 5 причин, по которым Седона&thinsp;круче, чем гранд каньон!</p>
         </div>
         <!-- добавляем класс features (преимущества) -->
         <section class="features">
@@ -93,7 +93,7 @@
             <li class="feature-item">
               <h3>Красивая<br>дорога</h3>
               <p>— №4 —</p>
-              <p>Ехать в седону из лас-вегаса совсем<br> не скучно!</p>
+              <p>Ехать в седону из&thinsp;лас-вегаса&thinsp;совсем<br> не скучно!</p>
             </li>
             <li class="feature-item">
               <h3>Мало<br>туристов</h3>
@@ -111,7 +111,7 @@
             <h3 class="form-title visually-hidden">Поиск гостиницы в Седоне</h3>
             <button type="submit" class="button form-show-hide" aria-label="Открыть форму поиска гостиницы в Седоне">Поиск гостиницы в Седоне</button>
           </div>
-          <form class="hotel-search-form modal-hide" action="https://echo.htmlacademy.ru/" method="get">
+          <form class="hotel-search-form" action="https://echo.htmlacademy.ru/" method="get">
             <div class="hotel-search-form-main-content">
                 <label for="arrival-date" class="arrival-date">Дата заезда:</label>
                 <div class="arrival-date-container">
@@ -178,7 +178,7 @@
             #visitSEDONA
           </p>
           <p class="footer-contacts-phone">
-            ТЕЛ:&nbsp;+7(495) 666-01-66
+            ТЕЛ:&nbsp;<a href="tel:+74956660166">+7(495) 666-01-66</a>
           </p>
         </section>
         <section class="footer-social">
@@ -223,6 +223,6 @@
         </div>
       </footer>
     </div>
-    <script src="js/mainPageForm.js"></script>
+    <script src="js/mainpageform-min.js"></script>
     </body>
 </html>

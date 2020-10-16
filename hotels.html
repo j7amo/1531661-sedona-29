@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=PT+Sans:wght@400;700&display=swap">
   <!-- подключаем normalize.css (предварительно скачав его) и основной стилевой файл -->
   <link href="css/normalize.css" rel="stylesheet">
-  <link href="css/style.css" rel="stylesheet">
+  <link href="css/style-min.css" rel="stylesheet">
 </head>
 <!-- тут делаем то же самое - добавляем класс для body-->
 <body class="hotels-page-body">
@@ -18,13 +18,13 @@
       <nav class="main-navigation">
         <!-- Сделаем 2 отдельных списка пунктов навигации по сайту. Это нужно для того, чтобы можно было гибко добавлять/удалять пункты -->
         <ul class="site-navigation-left">
-          <li><a href="blank.html">Информация</a></li>
-          <li><a href="blank.html">Фото и видео</a></li>
+          <li><a href="#">Информация</a></li>
+          <li><a href="#">Фото и видео</a></li>
         </ul>
         <a href="index.html" class="main-header-logo"><img src="img/logo.svg" width="138" height="70" alt="Логотип CITY OF SEDONA"></a>
         <ul class="site-navigation-right">
-          <li><a href="blank.html">Карта штата</a></li>
-          <li><a href="hotels.html"><span class="active-page">Гостиницы</span></a></li>
+          <li><a href="#">Карта штата</a></li>
+          <li><a href="#"><span class="active-page">Гостиницы</span></a></li>
         </ul>
         <!-- т.к. список у нас не единственный, а стилизация списков разная, то нам надо каждому списку добавить свой класс -->
       </nav>
@@ -163,7 +163,7 @@
             <img src="img/desert.jpg" width="135" height="90" alt="Двухэтажный отель, напоминающий мотель, местность равнинная, не на фоне гор" class="hotel-photo">
           </li>
           <li class="hotels-list-element">
-            <a class="hotel-link" href=""><h3 class="hotel-name">Villas at Poco Diablo</h3></a>
+            <a class="hotel-link" href=""><h3 class="hotel-name">ViLLas at Poco Diablo</h3></a>
             <p class="accommodation-type">Апартаменты</p>
             <p class="price-from">От 2000 Р.</p>
             <p class="rating"><span class="rating-wrapper">Рейтинг: 9,2</span></p>
@@ -190,7 +190,7 @@
         #visitSEDONA
       </p>
       <p class="footer-contacts-phone">
-        ТЕЛ:&nbsp;+7(495) 666-01-66
+        ТЕЛ:&nbsp;<a href="tel:+74956660166">+7(495) 666-01-66</a>
       </p>
     </section>
     <section class="footer-social">

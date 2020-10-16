@@ -7,6 +7,7 @@
 
 :root {
 
+  --transparent: transparent;
 
   --basic-black: #000000;
   --basic-dark: #333333;
@@ -23,6 +24,8 @@
   --inner-shadow-gray: #E5E5E5;
   --gray-for-rating: #666666;
   --toggle-shadow: rgba(171, 171, 171, 0.3);;
+  --map-background: #F2F1EF;
+  --toggle-background-color: #ababab;
 
   --basic-white: #ffffff;
   --basic-white-opacity-03: rgba(255, 255, 255, 0.3);
@@ -31,6 +34,8 @@
   --the-darkest-blue: #5496BD;
   --darker-blue: #669EC0;
   --special-blue: #81B3D2;
+  --main-page-photo-background: #E2F0F7;
+  --hotels-page-filter-background: #5A87B1;
 
   --the-darkest-brown: #503E33;
   --darker-brown: #604E43;
@@ -116,6 +121,7 @@ a {
 }
 
 .main-decoration-photo {
+  background-color: var(--main-page-photo-background);
   background-image: url("../img/background.jpg");
   background-position: 0 -1px;
   background-repeat: no-repeat;
@@ -128,7 +134,8 @@ a {
 }
 
 /* Chrome применяет к спискам user agent стили и появляются лишние отступы. Уберём их. */
-ul {
+.page-body ul,
+.hotels-page-body ul {
   margin: 0;
   padding: 0;
 }
@@ -140,7 +147,7 @@ ul {
   font-size: 14px;
   line-height: 26px;
   color: var(--basic-black);
-  background-color: transparent;
+  background-color: var(--transparent);
   display: grid;
   grid-template-columns: 531px 138px 531px;
 }
@@ -187,7 +194,7 @@ ul {
 }
 
 .site-navigation-left li:nth-child(2n) {
-  margin-right: 57px;
+  margin-right: 58px;
   margin-left: auto;
 }
 
@@ -244,6 +251,7 @@ button:focus {
   line-height: 27px;
   margin: 0;
   padding: 0;
+  padding-right: 1px;
 }
 
 /* Причины крутизны Седоны */
@@ -454,7 +462,8 @@ button:focus {
   color: var(--basic-white)
 }
 
-label {
+.page-body label,
+.hotels-page-body label {
   font-weight: bold;
   font-size: 14px;
   line-height: 26px;
@@ -638,7 +647,7 @@ button.children-number-increase {
 
 .adult-number-decrease,
 .children-number-decrease {
-  background-color: transparent;
+  background-color: var(--transparent);
   padding: 0;
   padding-bottom: 6px;
 }
@@ -655,7 +664,7 @@ button.children-number-increase {
 
 .adult-number-increase,
 .children-number-increase {
-  background-color: transparent;
+  background-color: var(--transparent);
   padding: 0;
 }
 
@@ -723,11 +732,12 @@ button.children-number-increase {
 .map {
   position: relative;
   height: 593px;
+  background-color: var(--map-background);
   background-image: url("../img/map.jpg");
   z-index: 0;
 }
 
-iframe {
+.map iframe {
   position: absolute;
   top: 0;
   left: 0;
@@ -756,6 +766,7 @@ iframe {
   font-size: 21px;
   line-height: 26px;
   background-color: var(--basic-brown);
+  padding-top: 4px;
 }
 
 .button.form-show-hide:hover {
@@ -789,7 +800,7 @@ iframe {
 button.filter-submit {
   width: 137px;
   height: 36px;
-  background-color: transparent;
+  background-color: var(--transparent);
   border: 2px solid var(--basic-white);
   border-radius: 2px;
   font-weight: normal;
@@ -839,9 +850,13 @@ p.footer-contacts-hashtag {
   margin-top: 24px;
   margin-left: 73px;
 }
-
 p.footer-contacts-phone {
   margin-left: 74px;
+}
+
+.footer-contacts-phone a {
+  color: var(--basic-black);
+
 }
 
 p.footer-contacts-hashtag,
@@ -859,7 +874,7 @@ p.footer-contacts-phone {
   text-transform: uppercase;
 }
 
-.footer-social-list {
+.footer-social .footer-social-list {
   display: flex;
   flex-wrap: wrap; /* добавим перенос элементов в флекс-контейнере для того, чтобы при добавлении новых иконок (переполнение) контент переносился и вёрстка не ломалась */
   flex-direction: row;
@@ -871,6 +886,13 @@ p.footer-contacts-phone {
 .footer-social-list li {
   position: relative;
   margin-right: 6px;
+  list-style: none;
+}
+
+.footer-social-list li:first-child {
+  position: relative;
+  margin-right: 6px;
+  padding-left: 1px;
   list-style: none;
 }
 
@@ -1020,8 +1042,13 @@ p.footer-copyright {
 li.filter-option {
   padding-top: 25px;
 }
+
 li.filter-option:first-child {
   padding-top: 20px;
+}
+
+li.filter-option:nth-child(3) {
+  padding-top: 24px;
 }
 
 .infrastructure-fields,
@@ -1037,6 +1064,10 @@ li.filter-option:first-child {
   cursor: pointer;
   user-select: none;
   left: 25px;
+}
+
+.accommodation-fields-block label {
+  left: 26px;
 }
 
 .filter-option-custom-checkbox + label::before {
@@ -1098,7 +1129,7 @@ li.filter-option:first-child {
 
 .price-controls input {
   width: 60px;
-  background-color: transparent;
+  background-color: var(--transparent);
   margin: 0;
   padding: 0;
   border: none;
@@ -1150,8 +1181,8 @@ li.filter-option:first-child {
   width: 4px;
   height: 4px;
   padding: 0;
-  border: 8px solid #ffffff;
-  background-color: #ababab;
+  border: 8px solid var(--basic-white);
+  background-color: var(--toggle-background-color);
   border-radius: 50%;
   box-shadow: 0 2px 0 0 var(--toggle-shadow);
   cursor: pointer;
@@ -1202,7 +1233,7 @@ li.filter-option:first-child {
   width: 1200px;
   min-height: 217px;
   height: auto;
-  background-color: var(--special-blue); /* На всякий случай указал цвет заливки, чтобы здесь не было пусто в случае проблем с загрузкой файла фонового изображения (странно почему я не сделал этого в других местах...)*/
+  background-color: var(--hotels-page-filter-background); /* На всякий случай указал цвет заливки, чтобы здесь не было пусто в случае проблем с загрузкой файла фонового изображения (странно почему я не сделал этого в других местах...)*/
   background: url("../img/filter-background.jpg");
   background-position: center;
   background-repeat: no-repeat;
@@ -1316,6 +1347,14 @@ li.filter-option:first-child {
   list-style: none;
 }
 
+.hotels-list-element h3:nth-of-type(1){
+  padding-left: -3px;
+}
+
+.hotels-list-element h3:nth-of-type(3){
+  padding-left: 5px;
+}
+
 p.found {
   font-weight: bold;
   font-size: 21px;
@@ -1328,7 +1367,7 @@ button.sort-by-text {
   font-size: 12px;
   line-height: 18px;
   text-transform: uppercase;
-  background-color: transparent;
+  background-color: var(--transparent);
   border: none;
   color: var(--basic-black);
   margin-bottom: 5px;
@@ -1336,12 +1375,12 @@ button.sort-by-text {
 
 button.sort-by-text {
   color: var(--basic-black-opacity-03);
-  border-bottom: 1px dashed #81B3D2;
+  border-bottom: 1px dashed var(--special-blue);
 }
 
 button.sort-by-text:hover {
   color: var(--special-blue);
-  border-bottom: 1px dashed #81B3D2;
+  border-bottom: 1px dashed var(--special-blue);
 }
 
 button.sort-by-text:active {
@@ -1370,6 +1409,7 @@ button.active-sort-type {
 .hotels-list-element{
   width: 1200px;
   min-height: 150px;
+  position: relative;
   height: auto;
   display: grid;
   grid-template-columns: 73px 135px 29px 110px 6px 142px 522px 110px 73px;
@@ -1385,22 +1425,24 @@ button.active-sort-type {
 }
 
 .hotel-photo {
-  grid-column: 2 / 3;
-  grid-row: 1 / 4;
+  /*grid-column: 2 / 3;
+  grid-row: 1 / 4;*/
 }
 
 /* Зададим стилизацию для фотографий отелей. Это правило позволит в качестве фото отеля использовать практически любое изображение и не испортить вёрстку */
 
 .hotel-photo {
   display: block;
-  margin-top: 30px;
+  position: absolute;
+  top: 30px;
+  left: 73px;
   width: 135px;
   height: 90px;
   object-fit: cover;
 }
 
 .hotel-link {
-  grid-column: 4 / 7;
+  grid-column: 4 / 8;
   grid-row: 1 / 2;
 }
 
@@ -1467,7 +1509,7 @@ h3.hotel-name {
   text-transform: uppercase;
   margin: 0;
   padding: 0;
-  margin-top: 18px;
+  margin-top: 25px;
   margin-left: 1px;
 }
 
@@ -1491,7 +1533,8 @@ h3.hotel-name {
   line-height: 21px;
   text-transform: uppercase;
   color: var(--basic-dark);
-  margin-bottom: 8px;
+  margin-top: 6px;
+  margin-bottom: 9px;
 }
 
 .rating {
