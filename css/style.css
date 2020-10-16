@@ -230,15 +230,6 @@ a {
   color: var(--basic-black-opacity-03);
 }
 
-/* Убираем рамку(возможную) в состоянии focus
-a:focus,
-.filter-submit:focus,
-input:focus,
-button:focus {
-  border: none;
-  outline: none;
-}*/
-
 .main-header-wrapper {
   padding-top: 42px;
   padding-bottom: 53px;
@@ -1413,7 +1404,6 @@ button.active-sort-type {
   height: auto;
   display: grid;
   grid-template-columns: 73px 135px 29px 110px 6px 142px 522px 110px 73px;
-  /*grid-template-rows: 51px 28px 42px 30px;*/
   grid-template-rows: min-content min-content min-content 30px;
   text-align: left;
   align-items: flex-end;
@@ -1422,11 +1412,6 @@ button.active-sort-type {
 
 .hotels-list-element:last-child{
   border-bottom: 1px solid var(--inner-shadow-gray);
-}
-
-.hotel-photo {
-  /*grid-column: 2 / 3;
-  grid-row: 1 / 4;*/
 }
 
 /* Зададим стилизацию для фотографий отелей. Это правило позволит в качестве фото отеля использовать практически любое изображение и не испортить вёрстку */
