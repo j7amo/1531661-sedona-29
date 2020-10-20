@@ -1,45 +1,30 @@
 <!DOCTYPE html>
-<!-- добавим всей странице класс page, чтобы не использовать глобальные селекторы-->
 <html class="page" lang="ru">
 <head>
   <meta charset="utf-8">
   <title>HTML Academy: Седона</title>
-  <!-- подключаем шрифт из Google Fonts (в макете, если верить Фигме, используется PT Sans -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=PT+Sans:wght@400;700&display=swap">
-  <!-- подключаем normalize.css (предварительно скачав его) и основной стилевой файл -->
   <link href="css/normalize.css" rel="stylesheet">
-  <link href="css/style-min.css" rel="stylesheet">
+  <link href="css/style-minified.css" rel="stylesheet">
 </head>
-<!-- тут делаем то же самое - добавляем класс для body-->
 <body class="hotels-page-body">
 <div class="hotels-content-wrapper">
-  <!-- Добавим классы для header,nav и логотипа-->
     <header class="header-block">
       <nav class="main-navigation">
-        <!-- Сделаем 2 отдельных списка пунктов навигации по сайту. Это нужно для того, чтобы можно было гибко добавлять/удалять пункты -->
-        <ul class="site-navigation-left">
+        <a href="index.html" class="main-header-logo"><img src="img/logo.svg" width="138" height="70" alt="Логотип CITY OF SEDONA"></a>
+        <ul class="site-navigation">
           <li><a href="#">Информация</a></li>
           <li><a href="#">Фото и видео</a></li>
-        </ul>
-        <a href="index.html" class="main-header-logo"><img src="img/logo.svg" width="138" height="70" alt="Логотип CITY OF SEDONA"></a>
-        <ul class="site-navigation-right">
           <li><a href="#">Карта штата</a></li>
           <li><a href="#"><span class="active-page">Гостиницы</span></a></li>
         </ul>
-        <!-- т.к. список у нас не единственный, а стилизация списков разная, то нам надо каждому списку добавить свой класс -->
       </nav>
     </header>
-
     <main class="hotels-main-block">
-      <!-- на странице с отелями никаких заголовков на макете не видно,
-       поэтому добавим заголовок (который потом скроем) для описания содержимого страницы-->
       <h1 class="visually-hidden">Гостиницы Седоны</h1>
-      <!-- у нас будут 2 основные секции: Фильтр и Блок выдачи результатов (Найденные гостиницы)-->
       <section class="hotels-filter">
         <h2 class="visually-hidden">Фильтр гостиниц</h2>
-        <!-- Добавим форму -->
         <form class="filter" method="get" action="https://echo.htmlacademy.ru/">
-          <!-- Филдсэты -->
           <fieldset class="infrastructure-fields-block">
             <legend class="infrastructure-legend">Инфраструктура:</legend>
             <ul class="infrastructure-fields">
@@ -91,8 +76,8 @@
                 <div class="scale">
                   <div class="bar"></div>
                 </div>
-                <div class="toggle toggle-min"></div>
-                <div class="toggle toggle-max"></div>
+                <div class="toggle toggle-min" tabindex="0"></div>
+                <div class="toggle toggle-max" tabindex="0"></div>
               </div>
               <button type="submit" class="filter-submit" aria-label="Показать варианты размещения с учётом выбранных параметров">Показать</button>
             </div>
@@ -100,24 +85,25 @@
         </form>
       </section>
       <section class="hotels-found">
-        <!-- Этот заголовок будет скрыт-->
         <h2 class="visually-hidden">Найденные гостиницы</h2>
         <div class="sorting-controls-container">
           <p class="found">Найдено: 3</p>
           <p class="sort-by">Сортировка:</p>
-          <button type="button" class="sort-by-text by-price active-sort-type" aria-label="Отсортировать результаты поиска вариантов размещения по цене">По цене</button>
-          <button type="button" class="sort-by-text by-type" aria-label="Отсортировать результаты поиска вариантов размещения по типу">По типу</button>
-          <button type="button" class="sort-by-text by-rating" aria-label="Отсортировать результаты поиска вариантов размещения по рейтингу">По рейтингу</button>
-          <button type="button" class="ascending-sort" aria-label="Отсортировать результаты поиска вариантов размещения по возрастанию">
+          <div class="sorting-type-container">
+          <a href="#" class="button sort-by-text by-price active-sort-type" aria-label="Отсортировать результаты поиска вариантов размещения по цене">По цене</a>
+          <a href="#" class="button sort-by-text by-type" aria-label="Отсортировать результаты поиска вариантов размещения по типу">По типу</a>
+          <a href="#" class="button sort-by-text by-rating" aria-label="Отсортировать результаты поиска вариантов размещения по рейтингу">По рейтингу</a>
+          </div>
+          <a href="#" class="ascending-sort" aria-label="Отсортировать результаты поиска вариантов размещения по возрастанию">
             <svg aria-hidden="true" focusable="false" width="11" height="10" viewBox="0 0 11 10" fill="none">
               <path d="M5.5 0L0 10H11L5.5 0Z" fill="#CACACA"/>
             </svg>
-          </button>
-          <button type="button" class="descending-sort active-sort-direction" aria-label="Отсортировать результаты поиска вариантов размещения по убыванию">
+          </a>
+          <a href="#" class="descending-sort active-sort-direction" aria-label="Отсортировать результаты поиска вариантов размещения по убыванию">
             <svg aria-hidden="true" focusable="false" width="11" height="10" viewBox="0 0 11 10" fill="none">
               <path d="M5.5 10L11 0L0 0L5.5 10Z" fill="#CACACA"/>
             </svg>
-          </button>
+          </a>
         </div>
         <ul class="hotels-list">
           <li class="hotels-list-element">
@@ -125,8 +111,8 @@
             <p class="accommodation-type">Гостиница</p>
             <p class="price-from">От 4000 Р.</p>
             <p class="rating"><span class="rating-wrapper">Рейтинг: 8,5</span></p>
-            <button type="button" class="hotel-button details" aria-label="Перейти на страницу отеля для получения более подробной информации">Подробнее</button>
-            <button type="button" class="hotel-button reserve" aria-label="Перейти на страницу бронирования отеля">Забронировать</button>
+            <a href="#" class="hotel-button details" aria-label="Перейти на страницу отеля для получения более подробной информации">Подробнее</a>
+            <a href="#" class="hotel-button reserve" aria-label="Перейти на страницу бронирования отеля">Забронировать</a>
             <div class="rating-star-wrapper">
               <svg width="19" height="17" viewBox="0 0 19 17" fill="none" aria-hidden="true" focusable="false">
                 <path d="M9.002 0L11.128 6.494H18.005L12.441 10.506L14.566 17L9.002 12.987L3.438 17L5.564 10.506L0 6.494H6.878L9.002 0Z" fill="#81B3D2"/>
@@ -148,8 +134,8 @@
             <p class="accommodation-type">Мотель</p>
             <p class="price-from">От 3000 Р.</p>
             <p class="rating"><span class="rating-wrapper">Рейтинг: 8,9</span></p>
-            <button type="button" class="hotel-button details" aria-label="Перейти на страницу отеля для получения более подробной информации">Подробнее</button>
-            <button type="button" class="hotel-button reserve" aria-label="Перейти на страницу бронирования отеля">Забронировать</button>
+            <a href="#" class="hotel-button details" aria-label="Перейти на страницу отеля для получения более подробной информации">Подробнее</a>
+            <a href="#" class="hotel-button reserve" aria-label="Перейти на страницу бронирования отеля">Забронировать</a>
             <div class="rating-star-wrapper">
               <svg width="19" height="17" viewBox="0 0 19 17" fill="none" aria-hidden="true" focusable="false">
                 <path d="M9.002 0L11.128 6.494H18.005L12.441 10.506L14.566 17L9.002 12.987L3.438 17L5.564 10.506L0 6.494H6.878L9.002 0Z" fill="#81B3D2"/>
@@ -168,8 +154,8 @@
             <p class="accommodation-type">Апартаменты</p>
             <p class="price-from">От 2000 Р.</p>
             <p class="rating"><span class="rating-wrapper">Рейтинг: 9,2</span></p>
-            <button type="button" class="hotel-button details" aria-label="Перейти на страницу отеля для получения более подробной информации">Подробнее</button>
-            <button type="button" class="hotel-button reserve" aria-label="Перейти на страницу бронирования отеля">Забронировать</button>
+            <a href="#" class="hotel-button details" aria-label="Перейти на страницу отеля для получения более подробной информации">Подробнее</a>
+            <a href="#" class="hotel-button reserve" aria-label="Перейти на страницу бронирования отеля">Забронировать</a>
             <div class="rating-star-wrapper">
               <svg width="19" height="17" viewBox="0 0 19 17" fill="none" aria-hidden="true" focusable="false">
                 <path d="M9.002 0L11.128 6.494H18.005L12.441 10.506L14.566 17L9.002 12.987L3.438 17L5.564 10.506L0 6.494H6.878L9.002 0Z" fill="#81B3D2"/>
@@ -183,7 +169,6 @@
         </ul>
       </section>
     </main>
-
   <footer class="footer-block">
     <section class="footer-contacts">
       <h2 class="visually-hidden">Телефон для связи</h2>

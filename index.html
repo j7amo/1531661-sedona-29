@@ -1,102 +1,82 @@
 <!DOCTYPE html>
-<!-- добавим всей странице класс page, чтобы не использовать глобальные селекторы-->
 <html class="page" lang="ru">
   <head>
     <meta charset="utf-8">
     <title>HTML Academy: Седона</title>
-    <!-- подключаем шрифт из Google Fonts (в макете, если верить Фигме, используется PT Sans -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=PT+Sans:wght@400;700&display=swap">
-    <!-- подключаем normalize.css (предварительно скачав его) и основной стилевой файл -->
     <link href="css/normalize.css" rel="stylesheet">
-    <link href="css/style-min.css" rel="stylesheet">
+    <link href="css/style-minified.css" rel="stylesheet">
   </head>
-  <!-- тут делаем то же самое - добавляем класс для body-->
     <body class="page-body">
     <div class="content-wrapper">
-     <!-- Добавим классы для header,nav и логотипа-->
       <header class="header-block">
         <nav class="main-navigation">
-             <!-- Сделаем 2 отдельных списка пунктов навигации по сайту. Это нужно для того, чтобы можно было гибко добавлять/удалять пункты -->
-          <ul class="site-navigation-left">
-                <li><a href="#">Информация</a></li>
-                <li><a href="#">Фото и видео</a></li>
-               </ul>
           <a href="#" class="main-header-logo"><img src="img/logo.svg" width="138" height="70" alt="Логотип CITY OF SEDONA"></a>
-          <ul class="site-navigation-right">
-                <li><a href="#">Карта штата</a></li>
-                <li><a href="hotels.html">Гостиницы</a></li>
-               </ul>
-          <!-- т.к. список у нас не единственный, а стилизация списков разная, то нам надо каждому списку добавить свой класс -->
+          <ul class="site-navigation">
+            <li><a href="#">Информация</a></li>
+            <li><a href="#">Фото и видео</a></li>
+            <li><a href="#">Карта штата</a></li>
+            <li><a href="hotels.html">Гостиницы</a></li>
+          </ul>
         </nav>
       </header>
-
-      <!-- даём название класса блоку main, используя одно из общепринятых названий для так называемых обёрток-центровщиков -->
       <main class="main-block">
         <section class="main-decoration-photo">
-          <!-- добавляем скрытый заголовок для раздела -->
           <h2 class="visually-hidden">Красивые скалы</h2>
-          <!-- произведём небольшое изменение: если в первоначальном варианте весь данный блок был представлен некой большой картинкой, то раз уж мы начинаем стилизацию, можно изображение скал задать в CSS в качестве фона для данного блока section, а в теге img загрузить только графику надписей-->
           <img src="img/welcome.svg" class="text-graphics" width="458" height="352" alt="Приветственный текст: Welcome to gorgeous Sedona! Because the Grand Canyon sucks! ">
-          <!-- тому, кто будет проверять код на предмет заполненных альтов: заполнять этот конкретный альт смысла нет, т.к. изображение максимально абстрактное и само по себе никакой смысловой нагрузки не несёт -->
-          <img src="img/peaks.svg" width="1200" height="57" alt="" aria-hidden="true">
         </section>
         <div class="main-header-wrapper">
           <h1 class="main-header">Седона&thinsp;&mdash;&thinsp;небольшой&thinsp;городок&thinsp;в Аризоне,<br>заслуживающий большего!</h1>
           <p class="five-reasons">Рассмотрим 5 причин, по которым Седона&thinsp;круче, чем гранд каньон!</p>
         </div>
-        <!-- добавляем класс features (преимущества) -->
         <section class="features">
-          <!-- добавляем скрытый заголовок для раздела -->
           <h2 class="visually-hidden">Причины крутизны Седоны</h2>
-          <!-- т.к. список у нас не единственный, а стилизация списков разная, то нам надо каждому списку добавить свой класс -->
           <ul class="features-list">
-            <!-- т.к. у нас фичи немного отличаются друг от друга (есть с порядковым номером, а есть с иконками), то имеет смысл дать им доп.классы для облегчения стилизации-->
-            <li class="feature-item">
-              <div class="feature-one-left">
+            <li class="feature-item text-left-photo-right">
+              <div class="text-photo-text-block">
                 <h3>Настоящий<br>городок</h3>
                 <p>— №1 —</p>
                 <p>Седона - не аттракцион для туристов, там<br> течёт своя жизнь</p>
               </div>
-              <div class="feature-one-right">
+              <div class="text-photo-photo-block">
                 <img src="img/house.jpg" width="800" height="256" alt="Отель на фоне гор Седоны">
               </div>
+              <ul class="unordered-features">
+                <li class="feature-item">
+                  <h3>Жильё</h3>
+                  <p>Рекомендуем пожить в настоящем<br> мотеле, всё как в кино! </p>
+                </li>
+                <li class="feature-item">
+                  <h3>Еда</h3>
+                  <p>Всегда заказывайте фирменный бургер,<br> вы не разочаруетесь!</p>
+                </li>
+                <li class="feature-item">
+                  <h3>Сувениры</h3>
+                  <p>Не только китайского, но и местного<br> производства!</p>
+                </li>
+              </ul>
             </li>
-            <li class="feature-item">
-              <img src="img/house-icon.svg" width="75" height="72" alt="Одноэтажный дом с трубой">
-              <h3>Жильё</h3>
-              <p>Рекомендуем пожить в настоящем<br> мотеле, всё как в кино! </p>
-            </li>
-            <li class="feature-item">
-              <img src="img/food-icon.svg" width="75" height="70" alt="Бургер">
-              <h3>Еда</h3>
-              <p>Всегда заказывайте фирменный бургер,<br> вы не разочаруетесь!</p>
-            </li>
-            <li class="feature-item">
-              <img src="img/box-icon.svg" width="64" height="77" alt="Подарочная коробка с лентой">
-              <h3>Сувениры</h3>
-              <p>Не только китайского, но и местного<br> производства!</p>
-            </li>
-            <li class="feature-item">
-              <div class="feature-two-right">
+            <li class="feature-item text-right-photo-left">
+              <div class="text-photo-photo-block">
+                <img src="img/devils-bridge.jpg" width="800" height="256" alt="Скала в форме моста, под которым пропасть">
+              </div>
+              <div class="text-photo-text-block">
                 <h3>Там есть<br>Мост дьявола</h3>
                 <p>— №2 —</p>
                 <p>Да, по нему можно пройти! Если конечно<br> вы осмелитесь</p>
               </div>
-              <div class="feature-two-left">
-                <img src="img/devils-bridge.jpg" width="800" height="256" alt="Скала в форме моста, под которым пропасть">
-              </div>
             </li>
-            <li class="feature-item">
+            <li class="feature-item text-only">
               <h3>Небольшая<br>площадь</h3>
               <p>— №3 —</p>
               <p>Все достопримечательности<br> находятся очень близко</p>
             </li>
-            <li class="feature-item">
+            <li class="feature-item text-only">
               <h3>Красивая<br>дорога</h3>
               <p>— №4 —</p>
               <p>Ехать в седону из&thinsp;лас-вегаса&thinsp;совсем<br> не скучно!</p>
             </li>
-            <li class="feature-item">
+            <li class="feature-item text-only">
               <h3>Мало<br>туристов</h3>
               <p>— №5 —</p>
               <p>Большинство едет в гранд каньон<br> и толпится там</p>
@@ -110,7 +90,7 @@
           </div>
           <div class="form-show-hide-wrapper">
             <h3 class="form-title visually-hidden">Поиск гостиницы в Седоне</h3>
-            <button type="submit" class="button form-show-hide" aria-label="Открыть форму поиска гостиницы в Седоне">Поиск гостиницы в Седоне</button>
+            <button type="button" class="button form-show-hide" aria-label="Открыть форму поиска гостиницы в Седоне">Поиск гостиницы в Седоне</button>
           </div>
           <form class="hotel-search-form" action="https://echo.htmlacademy.ru/" method="get">
             <div class="hotel-search-form-main-content">
@@ -162,7 +142,7 @@
                     </svg>
                   </button>
                 </div>
-                <button type="submit" class="button form-bottom-search-submit" aria-label="Отправить запрос на поиск гостиницы с учётом ранее введённых параметров поездки">Найти</button>
+              <button type="submit" class="button form-bottom-search-submit" aria-label="Отправить запрос на поиск гостиницы с учётом ранее введённых параметров поездки">Найти</button>
             </div>
           </form>
           <div class="map">
@@ -171,7 +151,6 @@
           </div>
         </section>
       </main>
-
       <footer class="footer-block">
         <section class="footer-contacts">
           <h2 class="visually-hidden">Телефон для связи</h2>
@@ -224,6 +203,6 @@
         </div>
       </footer>
     </div>
-    <script src="js/mainpageform-min.js"></script>
+    <script src="js/form-minified.js"></script>
     </body>
 </html>
