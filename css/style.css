@@ -1013,6 +1013,19 @@ li.filter-option:nth-child(3) {
   display: grid;
   grid-template-rows: 47px 46px 45px 31px;
   align-items: flex-end;
+  position: relative;
+}
+
+.range-filter::after {
+  content:"";
+  width: 2px;
+  height: 22px;
+  position: absolute;
+  left: 159px;
+  top: 18px;
+  background-image: url("../img/output-divider.svg");
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .price-controls {
@@ -1221,6 +1234,7 @@ li.filter-option:nth-child(3) {
   padding: 0;
   grid-column: 8 / 9;
   grid-row: 1 / 2;
+  vertical-align: center;
 }
 
 .ascending-sort {
